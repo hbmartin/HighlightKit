@@ -1,0 +1,174 @@
+{
+ "language": "coffeescript",
+ "relevance": 1,
+ "tokens": [
+  {
+   "start": 10,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 39,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1001,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1320,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1540,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1944,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 2289,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 2313,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 2332,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 2664,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 2697,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 2884,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 2934,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 3107,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 3131,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 3335,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 3562,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 3630,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 3715,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 4123,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 4194,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 4610,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 4786,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 4946,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

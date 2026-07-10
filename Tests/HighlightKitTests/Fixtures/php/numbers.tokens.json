@@ -1,0 +1,153 @@
+{
+ "language": "php",
+ "relevance": 20,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 8,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 5,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 7,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 11,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 16,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 76,
+   "length": 4,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 83,
+   "length": 6,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 91,
+   "length": 8,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 102,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 111,
+   "length": 4,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 9,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 8,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 12,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 154,
+   "length": 9,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 166,
+   "length": 8,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 176,
+   "length": 4,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 183,
+   "length": 5,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 190,
+   "length": 5,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 198,
+   "length": 5,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

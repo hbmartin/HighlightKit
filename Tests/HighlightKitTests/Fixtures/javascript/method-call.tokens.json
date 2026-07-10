@@ -1,0 +1,62 @@
+{
+ "language": "javascript",
+ "relevance": 4,
+ "tokens": [
+  {
+   "start": 2,
+   "length": 8,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 11,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 7,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 20,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 23,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 7,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 96,
+   "length": 5,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 4,
+   "scopes": [
+    "regexp"
+   ]
+  }
+ ]
+}

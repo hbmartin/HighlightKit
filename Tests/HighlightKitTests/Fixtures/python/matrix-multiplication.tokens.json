@@ -1,0 +1,62 @@
+{
+ "language": "python",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 1,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 14,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 39,
+   "length": 1,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 19,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 136,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

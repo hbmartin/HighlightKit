@@ -1,0 +1,76 @@
+{
+ "language": "ini",
+ "relevance": 14,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 9,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 10,
+   "length": 19,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 30,
+   "length": 1,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 40,
+   "length": 22,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 1,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 71,
+   "length": 22,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 7,
+   "scopes": [
+    "section"
+   ]
+  },
+  {
+   "start": 102,
+   "length": 22,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

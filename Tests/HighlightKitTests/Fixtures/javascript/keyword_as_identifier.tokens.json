@@ -1,0 +1,111 @@
+{
+ "language": "javascript",
+ "relevance": 9,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 3,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 42,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 1,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 69,
+   "length": 5,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 1,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 5,
+   "scopes": [
+    "title.function"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,197 @@
+{
+ "language": "powershell",
+ "relevance": 21,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 12,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 8,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 37,
+   "length": 12,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 52,
+   "length": 12,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 7,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 85,
+   "length": 10,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 121,
+   "length": 8,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 132,
+   "length": 7,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 155,
+   "length": 23,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 184,
+   "length": 10,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 195,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 196,
+   "length": 12,
+   "scopes": [
+    "string",
+    "variable"
+   ]
+  },
+  {
+   "start": 208,
+   "length": 23,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 231,
+   "length": 8,
+   "scopes": [
+    "string",
+    "variable"
+   ]
+  },
+  {
+   "start": 239,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 245,
+   "length": 12,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 260,
+   "length": 12,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 281,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 289,
+   "length": 9,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 302,
+   "length": 18,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 334,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 341,
+   "length": 12,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 354,
+   "length": 3,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 359,
+   "length": 8,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 368,
+   "length": 12,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

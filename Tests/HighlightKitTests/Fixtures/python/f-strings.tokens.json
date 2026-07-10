@@ -1,0 +1,575 @@
+{
+ "language": "python",
+ "relevance": 60,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 2,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 2,
+   "length": 6,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 10,
+   "length": 2,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst",
+    "built_in"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 9,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst",
+    "number"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 4,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 33,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 4,
+   "scopes": [
+    "string",
+    "meta"
+   ]
+  },
+  {
+   "start": 42,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst",
+    "meta"
+   ]
+  },
+  {
+   "start": 48,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 56,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst",
+    "meta"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 62,
+   "length": 4,
+   "scopes": [
+    "string",
+    "meta"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 70,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 73,
+   "length": 6,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 79,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 81,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 6,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 92,
+   "length": 2,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 102,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 6,
+   "scopes": [
+    "string",
+    "subst",
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 110,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 111,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 112,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 114,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 123,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 125,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 145,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 152,
+   "length": 15,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 167,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 175,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 181,
+   "length": 4,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 185,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 191,
+   "length": 4,
+   "scopes": [
+    "string",
+    "meta"
+   ]
+  },
+  {
+   "start": 195,
+   "length": 43,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 239,
+   "length": 12,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 252,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 255,
+   "length": 12,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 268,
+   "length": 12,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 281,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 284,
+   "length": 12,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 303,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 305,
+   "length": 2,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 309,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 327,
+   "length": 4,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 331,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 350,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 356,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 363,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 372,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 378,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 385,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 395,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 407,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 409,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 417,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 429,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 432,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 440,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 452,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 455,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 470,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 472,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 477,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 489,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 491,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

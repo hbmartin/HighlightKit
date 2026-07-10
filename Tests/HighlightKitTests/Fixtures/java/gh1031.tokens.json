@@ -1,0 +1,62 @@
+{
+ "language": "java",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 18,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 97,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 110,
+   "length": 18,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

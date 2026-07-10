@@ -1,0 +1,202 @@
+{
+ "language": "css",
+ "relevance": 35,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 10,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 3,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 49,
+   "length": 10,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 86,
+   "length": 3,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 92,
+   "length": 10,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 108,
+   "length": 15,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 127,
+   "length": 3,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 16,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 151,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 155,
+   "length": 37,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 196,
+   "length": 3,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 202,
+   "length": 16,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 220,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 224,
+   "length": 39,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 267,
+   "length": 3,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 273,
+   "length": 16,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 291,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 295,
+   "length": 39,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 393,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 404,
+   "length": 27,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 433,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 437,
+   "length": 52,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

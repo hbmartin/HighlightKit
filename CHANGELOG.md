@@ -1,0 +1,47 @@
+# Changelog
+
+## 0.1.0 — 2026-07-10
+
+Initial release.
+
+### Highlights
+- Pure Swift 6.1 port of highlight.js: 65 language grammars, token-exact
+  output verified against the reference on a 375-fixture corpus.
+- `NSRange`-based tokens and native `NSAttributedString` rendering — no
+  JavaScript engine, no WebView, no HTML round-trip.
+- Typed themes (GitHub and Xcode styles, light/dark/adaptive), theme
+  registry with name lookup, and a one-call
+  `attributedString(for:language:theme:)` convenience.
+- `HighlightScope` — `Notification.Name`-style typed scope keys for
+  themes: autocomplete and typo safety for the standard highlight.js
+  scopes while custom grammar scopes stay expressible as string
+  literals.
+- Automatic language detection with a concurrent `async` overload
+  (processor-bounded task window, cooperative parser/ICU cancellation,
+  identical ranking when not cancelled, ~6× lower latency).
+- Continuation-threaded incremental highlighting for editors: highlight
+  chunks while carrying full nested/callback/keyword state, and stop forward
+  propagation when states converge; cross-chunk regex-boundary limits are
+  explicitly documented.
+- Generation-aware lazy grammar registration: cold callers compile exactly
+  once, failures are memoized, concurrent replacement cannot publish stale
+  graphs, and warm canonical lookup uses one table hash.
+- Thread-safe throughout (`Sendable`, `Synchronization.Mutex`); final
+  concurrency, continuation, and registry stress selections are
+  ThreadSanitizer-clean.
+- Engine performance: per-rule windowed match caching plus
+  shape-specialized prefilters, ~10× the naive port's throughput; every
+  optimization (adopted and rejected) measured and documented.
+- Custom-grammar hardening: a root-level `endsParent`, negative capture-group
+  indexes, and integer-overflowing backreferences fail safely instead of
+  reaching Foundation traps; each boundary has a direct regression test.
+- Corrected the C++ `function.dispatch` port to match highlight.js's exact
+  five-keyword exclusion set. Function-like `delete`, `static_assert`, and
+  casts now receive the reference `built_in` scope and relevance.
+- Re-audited all 65 grammars against highlight.js 11.11.1 and removed local
+  drift in C#, CSS/Less/SCSS/Stylus, Diff, ECMAScript, Go, Groovy, JSON, Leaf,
+  PHP, Python, Rust, and Shell. Adversarial fixture inputs remain, with their
+  expectations regenerated from the pinned reference.
+- Sub-language recursion now uses a bounded invocation-progress key (language,
+  UTF-16 input length, and initial compiled mode): direct/mutual cycles stop,
+  while whole-block and incremental XML self-delegation remain valid.

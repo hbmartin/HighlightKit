@@ -1,0 +1,384 @@
+{
+ "language": "c",
+ "relevance": 20,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 30,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 31,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 64,
+   "length": 15,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 5,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 87,
+   "length": 6,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 8,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 112,
+   "length": 20,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 138,
+   "length": 23,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 162,
+   "length": 10,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 174,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 178,
+   "length": 52,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 231,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 236,
+   "length": 52,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 290,
+   "length": 15,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 307,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 311,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 317,
+   "length": 9,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 328,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 331,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 336,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 348,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 351,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 353,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 357,
+   "length": 20,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 378,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 383,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 388,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 393,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 398,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 402,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 406,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 410,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 414,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 418,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 422,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 426,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 430,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 435,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 440,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 445,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 450,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 455,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 460,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 465,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 471,
+   "length": 19,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 491,
+   "length": 4,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 507,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 512,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,196 @@
+{
+ "language": "coffeescript",
+ "relevance": 25,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 10,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 10,
+   "length": 5,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 10,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 31,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 2,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 40,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 45,
+   "length": 6,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 54,
+   "length": 3,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 5,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 102,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 108,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 112,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 131,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 3,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 143,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 160,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 177,
+   "length": 14,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 193,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 202,
+   "length": 14,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 216,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 229,
+   "length": 4,
+   "scopes": [
+    "built_in"
+   ]
+  }
+ ]
+}

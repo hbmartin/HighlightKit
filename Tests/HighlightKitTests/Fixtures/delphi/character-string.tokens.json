@@ -1,0 +1,76 @@
+{
+ "language": "delphi",
+ "relevance": 13,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 72,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 138,
+   "length": 9,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 191,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 243,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 289,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 336,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 379,
+   "length": 23,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

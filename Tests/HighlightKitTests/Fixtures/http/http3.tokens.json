@@ -1,0 +1,188 @@
+{
+ "language": "http",
+ "relevance": 27,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 11,
+   "length": 16,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 13,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 3,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 13,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 97,
+   "length": 12,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 136,
+   "length": 4,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 172,
+   "length": 4,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 176,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 197,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 204,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 236,
+   "length": 13,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 249,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 281,
+   "length": 6,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 287,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 304,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 311,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 317,
+   "length": 14,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 331,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  }
+ ]
+}

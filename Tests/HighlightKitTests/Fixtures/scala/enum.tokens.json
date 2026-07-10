@@ -1,0 +1,90 @@
+{
+ "language": "scala",
+ "relevance": 5,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 5,
+   "length": 5,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 5,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 31,
+   "length": 4,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 37,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 42,
+   "length": 5,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 56,
+   "length": 2,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  }
+ ]
+}

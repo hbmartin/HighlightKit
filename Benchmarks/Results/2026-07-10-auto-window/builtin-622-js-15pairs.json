@@ -1,0 +1,2179 @@
+{
+  "schema_version": 1,
+  "campaign": "production-window-p-vs-2p-builtin-622-js",
+  "started_at_utc": "2026-07-10T12:53:39.321895+00:00",
+  "environment": {
+    "system": "Darwin",
+    "release": "25.5.0",
+    "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:39:42 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T6031",
+    "machine": "arm64",
+    "processor": "arm",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python_implementation": "CPython",
+    "python_version": "3.12.4",
+    "logical_cpu_count": 14,
+    "runner_pid": 61709,
+    "working_directory": "/Users/octree/Developer/Eversight/Highlight"
+  },
+  "paths": {
+    "baseline": "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+    "candidate": "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+    "input": null
+  },
+  "hashes_before": {
+    "baseline": "8b0325421f09ba30dac3005cc7ff3b85cd53aae48073691c03f0132c51a061ab",
+    "candidate": "f06b614baa266eb656e96638c71196678e133542d30ebec2771c5ef1a5d06531",
+    "input": null
+  },
+  "method": {
+    "pairs": 15,
+    "scenario_order": "cold->warm on even pair indices; warm->cold on odd indices",
+    "process_order": "alternated by pair plus scenario index so each binary runs first equally often",
+    "warmup": "one excluded process per scenario and binary",
+    "cold_definition": "each timed operation creates a fresh Highlighter and compiles the grammars required by async auto-detection",
+    "warm_definition": "one dedicated Highlighter per process; one async auto-detect warm-up is excluded before timed operations",
+    "timing_source": "ContinuousClock inside the benchmark host",
+    "ratio": "candidate/baseline; exp(mean(log(pair ratio)))",
+    "ci": "Student-t df=14 in the log domain, then exponentiated; t(0.975,14)=2.1447866879169273",
+    "exclusions": "none; all completed observations are retained"
+  },
+  "warmups": {
+    "cold": {
+      "process_order": [
+        "baseline",
+        "candidate"
+      ],
+      "baseline": {
+        "command": [
+          "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+          "--auto-bench",
+          "cold",
+          "1"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20946000,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020946,\"utf16_units\":622}",
+        "stderr": "",
+        "process_wall_seconds": 0.03615712496684864,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "javascript",
+          "input_checksum": "e618317a22b4ca5f",
+          "iterations": 1,
+          "language_count": 65,
+          "nanoseconds_per_operation": 20946000,
+          "relevance": 32,
+          "result_checksum": "9f53c72ffe2dc152",
+          "scenario": "cold",
+          "schema_version": 1,
+          "semantic_checksum": "09ea1c23fc54eb9f",
+          "token_count": 55,
+          "total_elapsed_seconds": 0.020946,
+          "utf16_units": 622,
+          "value": 20946000.0,
+          "value_unit": "ns/op"
+        }
+      },
+      "candidate": {
+        "command": [
+          "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+          "--auto-bench",
+          "cold",
+          "1"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":22093167,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.022093167,\"utf16_units\":622}",
+        "stderr": "",
+        "process_wall_seconds": 0.0407587910303846,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "javascript",
+          "input_checksum": "e618317a22b4ca5f",
+          "iterations": 1,
+          "language_count": 65,
+          "nanoseconds_per_operation": 22093167,
+          "relevance": 32,
+          "result_checksum": "9f53c72ffe2dc152",
+          "scenario": "cold",
+          "schema_version": 1,
+          "semantic_checksum": "09ea1c23fc54eb9f",
+          "token_count": 55,
+          "total_elapsed_seconds": 0.022093167,
+          "utf16_units": 622,
+          "value": 22093167.0,
+          "value_unit": "ns/op"
+        }
+      }
+    },
+    "warm": {
+      "process_order": [
+        "candidate",
+        "baseline"
+      ],
+      "candidate": {
+        "command": [
+          "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+          "--auto-bench",
+          "warm",
+          "10"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3286729,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.03286729,\"utf16_units\":622}",
+        "stderr": "",
+        "process_wall_seconds": 0.07441304199164733,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "javascript",
+          "input_checksum": "e618317a22b4ca5f",
+          "iterations": 10,
+          "language_count": 65,
+          "nanoseconds_per_operation": 3286729,
+          "relevance": 32,
+          "result_checksum": "9f53c72ffe2dc152",
+          "scenario": "warm",
+          "schema_version": 1,
+          "semantic_checksum": "b044ce3e99c61cc0",
+          "token_count": 55,
+          "total_elapsed_seconds": 0.03286729,
+          "utf16_units": 622,
+          "value": 3286729.0,
+          "value_unit": "ns/op"
+        }
+      },
+      "baseline": {
+        "command": [
+          "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+          "--auto-bench",
+          "warm",
+          "10"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3283945.9000000004,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032839459,\"utf16_units\":622}",
+        "stderr": "",
+        "process_wall_seconds": 0.06969024997670203,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "javascript",
+          "input_checksum": "e618317a22b4ca5f",
+          "iterations": 10,
+          "language_count": 65,
+          "nanoseconds_per_operation": 3283945.9000000004,
+          "relevance": 32,
+          "result_checksum": "9f53c72ffe2dc152",
+          "scenario": "warm",
+          "schema_version": 1,
+          "semantic_checksum": "b044ce3e99c61cc0",
+          "token_count": 55,
+          "total_elapsed_seconds": 0.032839459,
+          "utf16_units": 622,
+          "value": 3283945.9000000004,
+          "value_unit": "ns/op"
+        }
+      }
+    }
+  },
+  "scenarios": {
+    "cold": {
+      "iterations": 1,
+      "value_unit": "ns/op",
+      "samples": [
+        {
+          "pair_index": 0,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":21826583,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.021826583,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.04080899996915832,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 21826583,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.021826583,
+              "utf16_units": 622,
+              "value": 21826583.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20432375,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020432375,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03844683297211304,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20432375,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020432375,
+              "utf16_units": 622,
+              "value": 20432375.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 1,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20050000,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.02005,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03756537503795698,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20050000,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.02005,
+              "utf16_units": 622,
+              "value": 20050000.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20127417,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020127417,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03844554105307907,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20127417,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020127417,
+              "utf16_units": 622,
+              "value": 20127417.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 2,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20031958,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020031958,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.0388647909858264,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20031958,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020031958,
+              "utf16_units": 622,
+              "value": 20031958.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19494292,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.019494292,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03722566697979346,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19494292,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.019494292,
+              "utf16_units": 622,
+              "value": 19494292.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 3,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20002209,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020002209,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03808799997204915,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20002209,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020002209,
+              "utf16_units": 622,
+              "value": 20002209.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20059750,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.02005975,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.039420792018063366,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20059750,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.02005975,
+              "utf16_units": 622,
+              "value": 20059750.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 4,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20377333,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020377333,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.038411833986174315,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20377333,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020377333,
+              "utf16_units": 622,
+              "value": 20377333.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20390125,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020390125,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.038816082989796996,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20390125,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020390125,
+              "utf16_units": 622,
+              "value": 20390125.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 5,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20332042,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020332042,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03619466698728502,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20332042,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020332042,
+              "utf16_units": 622,
+              "value": 20332042.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20476250,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.02047625,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03973970899824053,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20476250,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.02047625,
+              "utf16_units": 622,
+              "value": 20476250.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 6,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19751291,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.019751291,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03756795800291002,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19751291,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.019751291,
+              "utf16_units": 622,
+              "value": 19751291.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19451875,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.019451875,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.037690291996113956,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19451875,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.019451875,
+              "utf16_units": 622,
+              "value": 19451875.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 7,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20345333,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020345333,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03606250003213063,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20345333,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020345333,
+              "utf16_units": 622,
+              "value": 20345333.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20176333,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020176333,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03670491703087464,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20176333,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020176333,
+              "utf16_units": 622,
+              "value": 20176333.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 8,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19885375,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.019885375,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.035751459014136344,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19885375,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.019885375,
+              "utf16_units": 622,
+              "value": 19885375.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19763916,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.019763916,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.035978375002741814,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19763916,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.019763916,
+              "utf16_units": 622,
+              "value": 19763916.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 9,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20213209,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020213209,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03976112505188212,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20213209,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020213209,
+              "utf16_units": 622,
+              "value": 20213209.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20876583,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020876583,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03725158399902284,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20876583,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020876583,
+              "utf16_units": 622,
+              "value": 20876583.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 10,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":21184375,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.021184375,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.04121633298927918,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 21184375,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.021184375,
+              "utf16_units": 622,
+              "value": 21184375.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19943500,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.0199435,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.038171667023561895,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19943500,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.0199435,
+              "utf16_units": 622,
+              "value": 19943500.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 11,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19895334,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.019895334,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.0381749999942258,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19895334,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.019895334,
+              "utf16_units": 622,
+              "value": 19895334.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20226666,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020226666,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.038797417015302926,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20226666,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020226666,
+              "utf16_units": 622,
+              "value": 20226666.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 12,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20050209,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020050209,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.038093708048108965,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20050209,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020050209,
+              "utf16_units": 622,
+              "value": 20050209.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20143916,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020143916,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.037352416024077684,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20143916,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020143916,
+              "utf16_units": 622,
+              "value": 20143916.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 13,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20887167,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020887167,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03997699997853488,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20887167,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020887167,
+              "utf16_units": 622,
+              "value": 20887167.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20190250,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.02019025,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.038577582978177816,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20190250,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.02019025,
+              "utf16_units": 622,
+              "value": 20190250.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 14,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":20178542,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.020178542,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03813020803499967,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 20178542,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.020178542,
+              "utf16_units": 622,
+              "value": 20178542.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":19913542,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"09ea1c23fc54eb9f\",\"token_count\":55,\"total_elapsed_seconds\":0.019913542,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.03897533402778208,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 19913542,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "09ea1c23fc54eb9f",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.019913542,
+              "utf16_units": 622,
+              "value": 19913542.0,
+              "value_unit": "ns/op"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "baseline_median_ns_per_operation": 20178542.0,
+        "candidate_median_ns_per_operation": 20050000.0,
+        "paired_geometric_mean_ratio_candidate_over_baseline": 0.9865424864603499,
+        "ratio_95_percent_ci": [
+          0.9727383376788239,
+          1.0005425301873112
+        ],
+        "percent_change": -1.345751353965008,
+        "percent_change_95_percent_ci": [
+          -2.7261662321176106,
+          0.05425301873112076
+        ],
+        "direction": "neutral",
+        "candidate_better_pairs": 11,
+        "log_ratio_mean": -0.013548886570176234,
+        "log_ratio_standard_error": 0.006570009838544292,
+        "student_t_critical_df14_975": 2.1447866879169273
+      }
+    },
+    "warm": {
+      "iterations": 10,
+      "value_unit": "ns/op",
+      "samples": [
+        {
+          "pair_index": 0,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3270395.8,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032703958,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07160166598623618,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3270395.8,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032703958,
+              "utf16_units": 622,
+              "value": 3270395.8,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3246862.5000000005,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032468625,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07102695904904976,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3246862.5000000005,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032468625,
+              "utf16_units": 622,
+              "value": 3246862.5000000005,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 1,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3224258.3,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032242583,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07131433300673962,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3224258.3,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032242583,
+              "utf16_units": 622,
+              "value": 3224258.3,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3313900.1,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.033139001,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07209025003248826,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3313900.1,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.033139001,
+              "utf16_units": 622,
+              "value": 3313900.1,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 2,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3281012.4999999995,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032810124999999996,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07151883299229667,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3281012.4999999995,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032810124999999996,
+              "utf16_units": 622,
+              "value": 3281012.4999999995,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3244570.9000000004,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032445709,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.0716045830049552,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3244570.9000000004,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032445709,
+              "utf16_units": 622,
+              "value": 3244570.9000000004,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 3,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3351637.5,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.033516375,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07199933298397809,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3351637.5,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.033516375,
+              "utf16_units": 622,
+              "value": 3351637.5,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3292229.3000000003,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032922293000000005,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07189162500435486,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3292229.3000000003,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032922293000000005,
+              "utf16_units": 622,
+              "value": 3292229.3000000003,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 4,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3264554.0999999996,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032645541,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07123937498545274,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3264554.0999999996,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032645541,
+              "utf16_units": 622,
+              "value": 3264554.0999999996,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3543595.8000000003,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.035435958000000004,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07330683403415605,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3543595.8000000003,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.035435958000000004,
+              "utf16_units": 622,
+              "value": 3543595.8000000003,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 5,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3280158.3000000003,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032801583,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07308570796158165,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3280158.3000000003,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032801583,
+              "utf16_units": 622,
+              "value": 3280158.3000000003,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3306870.9000000004,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.033068709,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.06945554196136072,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3306870.9000000004,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.033068709,
+              "utf16_units": 622,
+              "value": 3306870.9000000004,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 6,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3295775.1,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032957751,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.06889708305243403,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3295775.1,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032957751,
+              "utf16_units": 622,
+              "value": 3295775.1,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3388270.8000000003,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.033882708000000004,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.0722062080167234,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3388270.8000000003,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.033882708000000004,
+              "utf16_units": 622,
+              "value": 3388270.8000000003,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 7,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3268350.0000000005,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032683500000000004,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07189445901894942,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3268350.0000000005,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032683500000000004,
+              "utf16_units": 622,
+              "value": 3268350.0000000005,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3280212.8000000003,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032802128,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07325341703835875,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3280212.8000000003,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032802128,
+              "utf16_units": 622,
+              "value": 3280212.8000000003,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 8,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3315762.4999999995,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.033157624999999996,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07134983298601583,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3315762.4999999995,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.033157624999999996,
+              "utf16_units": 622,
+              "value": 3315762.4999999995,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3350737.5,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.033507375,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07490308303385973,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3350737.5,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.033507375,
+              "utf16_units": 622,
+              "value": 3350737.5,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 9,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3445158.3,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.034451583,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07400808302918449,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3445158.3,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.034451583,
+              "utf16_units": 622,
+              "value": 3445158.3,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3373850,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.0337385,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07151020801393315,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3373850,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.0337385,
+              "utf16_units": 622,
+              "value": 3373850.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 10,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3216383.2,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032163832,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.06972420803504065,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3216383.2,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032163832,
+              "utf16_units": 622,
+              "value": 3216383.2,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3319729.1000000006,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.033197291000000004,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07273154199356213,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3319729.1000000006,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.033197291000000004,
+              "utf16_units": 622,
+              "value": 3319729.1000000006,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 11,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3287687.4000000004,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032876874,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.0716436660150066,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3287687.4000000004,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032876874,
+              "utf16_units": 622,
+              "value": 3287687.4000000004,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3199908.4,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.031999084,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.071192333009094,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3199908.4,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.031999084,
+              "utf16_units": 622,
+              "value": 3199908.4,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 12,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3269745.9999999995,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.03269746,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.0708425419870764,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3269745.9999999995,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.03269746,
+              "utf16_units": 622,
+              "value": 3269745.9999999995,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3273950.1,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032739501,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07199349999427795,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3273950.1,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032739501,
+              "utf16_units": 622,
+              "value": 3273950.1,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 13,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3463337.3999999994,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.034633373999999995,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07224970898823813,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3463337.3999999994,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.034633373999999995,
+              "utf16_units": 622,
+              "value": 3463337.3999999994,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3363225,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.03363225,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07444524997845292,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3363225,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.03363225,
+              "utf16_units": 622,
+              "value": 3363225.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 14,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3189008.5,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.031890085,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.0705203750403598,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3189008.5,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.031890085,
+              "utf16_units": 622,
+              "value": 3189008.5,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"javascript\",\"input_checksum\":\"e618317a22b4ca5f\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":3267345.7999999993,\"relevance\":32,\"result_checksum\":\"9f53c72ffe2dc152\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"b044ce3e99c61cc0\",\"token_count\":55,\"total_elapsed_seconds\":0.032673457999999996,\"utf16_units\":622}",
+            "stderr": "",
+            "process_wall_seconds": 0.07279208296677098,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "javascript",
+              "input_checksum": "e618317a22b4ca5f",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 3267345.7999999993,
+              "relevance": 32,
+              "result_checksum": "9f53c72ffe2dc152",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "b044ce3e99c61cc0",
+              "token_count": 55,
+              "total_elapsed_seconds": 0.032673457999999996,
+              "utf16_units": 622,
+              "value": 3267345.7999999993,
+              "value_unit": "ns/op"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "baseline_median_ns_per_operation": 3287687.4000000004,
+        "candidate_median_ns_per_operation": 3281012.4999999995,
+        "paired_geometric_mean_ratio_candidate_over_baseline": 0.9857679069866985,
+        "ratio_95_percent_ci": [
+          0.971671907444262,
+          1.000068396544312
+        ],
+        "percent_change": -1.4232093013301528,
+        "percent_change_95_percent_ci": [
+          -2.8328092555737983,
+          0.006839654431201048
+        ],
+        "direction": "neutral",
+        "candidate_better_pairs": 10,
+        "log_ratio_mean": -0.014334340539335666,
+        "log_ratio_standard_error": 0.006715229456547493,
+        "student_t_critical_df14_975": 2.1447866879169273
+      }
+    }
+  },
+  "hashes_after": {
+    "baseline": "8b0325421f09ba30dac3005cc7ff3b85cd53aae48073691c03f0132c51a061ab",
+    "candidate": "f06b614baa266eb656e96638c71196678e133542d30ebec2771c5ef1a5d06531",
+    "input": null
+  },
+  "hashes_stable": true,
+  "completed_at_utc": "2026-07-10T12:53:42.932508+00:00"
+}

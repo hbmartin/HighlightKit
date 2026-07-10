@@ -1,0 +1,62 @@
+{
+ "language": "cpp",
+ "relevance": 7,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 11,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 15,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 22,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 54,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 48,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

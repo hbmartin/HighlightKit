@@ -1,0 +1,181 @@
+{
+ "language": "python",
+ "relevance": 14,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 4,
+   "scopes": [
+    "title.class.inherited"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 4,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 54,
+   "length": 14,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 83,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 91,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 9,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 115,
+   "length": 10,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 126,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 134,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 157,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 167,
+   "length": 4,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 172,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 178,
+   "length": 5,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 184,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 185,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 188,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 191,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 192,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 196,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

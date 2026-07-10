@@ -1,0 +1,83 @@
+{
+ "language": "diff",
+ "relevance": 20,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 24,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 67,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 93,
+   "length": 32,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 126,
+   "length": 39,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 166,
+   "length": 39,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 206,
+   "length": 15,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 222,
+   "length": 29,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 252,
+   "length": 4,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 257,
+   "length": 10,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 268,
+   "length": 5,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 274,
+   "length": 57,
+   "scopes": [
+    "addition"
+   ]
+  }
+ ]
+}

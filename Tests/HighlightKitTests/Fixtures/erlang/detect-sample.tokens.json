@@ -1,0 +1,523 @@
+{
+ "language": "erlang",
+ "relevance": 59,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 9,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 13,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 45,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 53,
+   "length": 1,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 54,
+   "length": 9,
+   "scopes": [
+    "params",
+    "string"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 1,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 26,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 93,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 100,
+   "length": 9,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 1,
+   "scopes": [
+    "params",
+    "number"
+   ]
+  },
+  {
+   "start": 110,
+   "length": 9,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 119,
+   "length": 1,
+   "scopes": [
+    "params",
+    "number"
+   ]
+  },
+  {
+   "start": 120,
+   "length": 9,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 1,
+   "scopes": [
+    "params",
+    "number"
+   ]
+  },
+  {
+   "start": 130,
+   "length": 9,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 139,
+   "length": 1,
+   "scopes": [
+    "params",
+    "number"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 7,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 147,
+   "length": 1,
+   "scopes": [
+    "params",
+    "number"
+   ]
+  },
+  {
+   "start": 148,
+   "length": 2,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 153,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 173,
+   "length": 19,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 216,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 234,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 240,
+   "length": 8,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 249,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 256,
+   "length": 35,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 294,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 303,
+   "length": 11,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 325,
+   "length": 2,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 329,
+   "length": 3,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 332,
+   "length": 3,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 335,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 339,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 347,
+   "length": 4,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 351,
+   "length": 5,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 356,
+   "length": 2,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 364,
+   "length": 4,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 368,
+   "length": 15,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 383,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 433,
+   "length": 4,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 437,
+   "length": 9,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 446,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 454,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 462,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 466,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 486,
+   "length": 16,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 564,
+   "length": 6,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 570,
+   "length": 10,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 580,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 592,
+   "length": 6,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 598,
+   "length": 7,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 605,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 649,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 678,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 691,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 721,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 749,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 766,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 778,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 803,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 820,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 888,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 894,
+   "length": 15,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 909,
+   "length": 30,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 939,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 999,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1058,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1131,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1204,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

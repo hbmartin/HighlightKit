@@ -1,0 +1,34 @@
+{
+ "language": "swift",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 9,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 13,
+   "scopes": [
+    "variable"
+   ]
+  }
+ ]
+}

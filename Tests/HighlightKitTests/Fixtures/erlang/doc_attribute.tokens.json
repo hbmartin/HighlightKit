@@ -1,0 +1,100 @@
+{
+ "language": "erlang",
+ "relevance": 13,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 7,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 38,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 68,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 6,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 81,
+   "length": 1,
+   "scopes": [
+    "params",
+    "number"
+   ]
+  },
+  {
+   "start": 82,
+   "length": 2,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 87,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 92,
+   "length": 19,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 113,
+   "length": 3,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 116,
+   "length": 10,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 126,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  }
+ ]
+}

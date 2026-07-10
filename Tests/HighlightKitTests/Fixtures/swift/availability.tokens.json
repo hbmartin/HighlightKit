@@ -1,0 +1,181 @@
+{
+ "language": "swift",
+ "relevance": 29,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 37,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 50,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 71,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 74,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 85,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 105,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 115,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 119,
+   "length": 12,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 134,
+   "length": 12,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 147,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 151,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 157,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 160,
+   "length": 16,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 177,
+   "length": 12,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 192,
+   "length": 12,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 209,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 215,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "language": "typescript",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 9,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 49,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 9,
+   "scopes": [
+    "title.class"
+   ]
+  }
+ ]
+}

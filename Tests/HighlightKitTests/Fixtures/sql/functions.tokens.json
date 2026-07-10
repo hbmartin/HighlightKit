@@ -1,0 +1,62 @@
+{
+ "language": "sql",
+ "relevance": 8,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 15,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 12,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 46,
+   "length": 12,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 64,
+   "length": 12,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 17,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 107,
+   "length": 17,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 127,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

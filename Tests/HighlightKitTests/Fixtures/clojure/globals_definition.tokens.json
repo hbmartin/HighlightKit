@@ -1,0 +1,873 @@
+{
+ "language": "clojure",
+ "relevance": 110,
+ "tokens": [
+  {
+   "start": 1,
+   "length": 2,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 8,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 3,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 59,
+   "length": 10,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 71,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 76,
+   "length": 16,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 3,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 117,
+   "length": 19,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 154,
+   "length": 9,
+   "scopes": [
+    "regex"
+   ]
+  },
+  {
+   "start": 181,
+   "length": 6,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 206,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 212,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 235,
+   "length": 13,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 254,
+   "length": 18,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 278,
+   "length": 2,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 281,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 293,
+   "length": 3,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 306,
+   "length": 4,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 321,
+   "length": 4,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 345,
+   "length": 10,
+   "scopes": [
+    "regex"
+   ]
+  },
+  {
+   "start": 357,
+   "length": 23,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 391,
+   "length": 6,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 398,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 413,
+   "length": 5,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 419,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 435,
+   "length": 5,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 448,
+   "length": 5,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 454,
+   "length": 18,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 479,
+   "length": 2,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 482,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 483,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 485,
+   "length": 2,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 488,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 492,
+   "length": 8,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 502,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 506,
+   "length": 8,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 516,
+   "length": 13,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 531,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 535,
+   "length": 15,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 551,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 558,
+   "length": 9,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 569,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 578,
+   "length": 8,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 587,
+   "length": 11,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 599,
+   "length": 6,
+   "scopes": [
+    "regex"
+   ]
+  },
+  {
+   "start": 608,
+   "length": 18,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 628,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 634,
+   "length": 3,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 645,
+   "length": 1,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 654,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 667,
+   "length": 11,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 679,
+   "length": 3,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 685,
+   "length": 30,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 719,
+   "length": 3,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 730,
+   "length": 15,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 750,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 760,
+   "length": 4,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 789,
+   "length": 3,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 801,
+   "length": 3,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 806,
+   "length": 5,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 818,
+   "length": 11,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 834,
+   "length": 14,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 850,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 859,
+   "length": 14,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 875,
+   "length": 2,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 887,
+   "length": 13,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 908,
+   "length": 4,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 923,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 933,
+   "length": 14,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 949,
+   "length": 11,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 961,
+   "length": 14,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 983,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 988,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 998,
+   "length": 14,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1014,
+   "length": 11,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 1026,
+   "length": 13,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 1048,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1053,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1063,
+   "length": 14,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1079,
+   "length": 13,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 1093,
+   "length": 13,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 1112,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1116,
+   "length": 8,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 1126,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1135,
+   "length": 6,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1157,
+   "length": 2,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 1161,
+   "length": 3,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 1182,
+   "length": 6,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1189,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 1196,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1204,
+   "length": 12,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 1219,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1227,
+   "length": 16,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 1247,
+   "length": 7,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 1256,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1264,
+   "length": 6,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1282,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1290,
+   "length": 6,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1314,
+   "length": 21,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 1337,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1346,
+   "length": 4,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1359,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1369,
+   "length": 4,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1390,
+   "length": 1,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 1401,
+   "length": 1,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 1404,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1416,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1431,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1441,
+   "length": 4,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1462,
+   "length": 1,
+   "scopes": [
+    "name",
+    "built_in"
+   ]
+  },
+  {
+   "start": 1465,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1477,
+   "length": 6,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1490,
+   "length": 44,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 1536,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1540,
+   "length": 8,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1550,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1558,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1564,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 1568,
+   "length": 8,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 1578,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 1586,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 1588,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

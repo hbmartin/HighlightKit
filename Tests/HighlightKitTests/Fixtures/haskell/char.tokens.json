@@ -1,0 +1,211 @@
+{
+ "language": "haskell",
+ "relevance": 18,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 16,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 17,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 11,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 14,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 50,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 18,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 79,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 100,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 112,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 117,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 2,
+   "scopes": [
+    "string",
+    "char.escape"
+   ]
+  },
+  {
+   "start": 120,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 124,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 130,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 134,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 139,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 2,
+   "scopes": [
+    "string",
+    "char.escape"
+   ]
+  },
+  {
+   "start": 142,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 146,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 152,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 157,
+   "length": 39,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 197,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 205,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 213,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 222,
+   "length": 2,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 230,
+   "length": 3,
+   "scopes": [
+    "title"
+   ]
+  }
+ ]
+}

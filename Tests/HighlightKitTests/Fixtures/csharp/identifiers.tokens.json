@@ -1,0 +1,27 @@
+{
+ "language": "csharp",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 53,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

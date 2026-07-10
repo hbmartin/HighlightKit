@@ -1,0 +1,41 @@
+{
+ "language": "csharp",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 122,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 124,
+   "length": 6,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 146,
+   "length": 171,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 324,
+   "length": 6,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 346,
+   "length": 167,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

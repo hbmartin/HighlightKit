@@ -1,0 +1,97 @@
+{
+ "language": "css",
+ "relevance": 18,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 4,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 12,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 4,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 10,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 91,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 111,
+   "length": 4,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 119,
+   "length": 13,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 134,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 141,
+   "length": 10,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 153,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  }
+ ]
+}

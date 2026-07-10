@@ -1,0 +1,213 @@
+{
+ "language": "markdown",
+ "relevance": 19,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 13,
+   "scopes": [
+    "section"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 18,
+   "scopes": [
+    "link"
+   ]
+  },
+  {
+   "start": 78,
+   "length": 15,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 95,
+   "length": 1,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 100,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 106,
+   "length": 7,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 4,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 135,
+   "length": 10,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 150,
+   "length": 8,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 161,
+   "length": 1,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 165,
+   "length": 18,
+   "scopes": [
+    "link"
+   ]
+  },
+  {
+   "start": 190,
+   "length": 23,
+   "scopes": [
+    "section"
+   ]
+  },
+  {
+   "start": 215,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 216,
+   "length": 7,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 223,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 224,
+   "length": 6,
+   "scopes": [
+    "tag",
+    "attr"
+   ]
+  },
+  {
+   "start": 230,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 231,
+   "length": 5,
+   "scopes": [
+    "tag",
+    "string"
+   ]
+  },
+  {
+   "start": 236,
+   "length": 3,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 239,
+   "length": 7,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 246,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 249,
+   "length": 21,
+   "scopes": [
+    "quote"
+   ]
+  },
+  {
+   "start": 272,
+   "length": 25,
+   "scopes": [
+    "code"
+   ]
+  },
+  {
+   "start": 298,
+   "length": 2,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 319,
+   "length": 2,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 332,
+   "length": 18,
+   "scopes": [
+    "code"
+   ]
+  },
+  {
+   "start": 356,
+   "length": 6,
+   "scopes": [
+    "code"
+   ]
+  }
+ ]
+}

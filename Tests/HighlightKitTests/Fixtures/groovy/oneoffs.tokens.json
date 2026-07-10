@@ -1,0 +1,48 @@
+{
+ "language": "groovy",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 29,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 30,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 44,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 134,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 147,
+   "length": 35,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

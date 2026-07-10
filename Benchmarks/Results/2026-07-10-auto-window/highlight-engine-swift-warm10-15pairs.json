@@ -1,0 +1,2243 @@
+{
+  "schema_version": 1,
+  "campaign": "production-window-p-vs-2p-highlight-engine-swift-warm10",
+  "started_at_utc": "2026-07-10T12:54:55.814954+00:00",
+  "environment": {
+    "system": "Darwin",
+    "release": "25.5.0",
+    "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:39:42 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T6031",
+    "machine": "arm64",
+    "processor": "arm",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python_implementation": "CPython",
+    "python_version": "3.12.4",
+    "logical_cpu_count": 14,
+    "runner_pid": 66090,
+    "working_directory": "/Users/octree/Developer/Eversight/Highlight"
+  },
+  "paths": {
+    "baseline": "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+    "candidate": "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+    "input": "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+  },
+  "hashes_before": {
+    "baseline": "8b0325421f09ba30dac3005cc7ff3b85cd53aae48073691c03f0132c51a061ab",
+    "candidate": "f06b614baa266eb656e96638c71196678e133542d30ebec2771c5ef1a5d06531",
+    "input": "d986fd1809b41a63bcd1761474c787402fdfd3b426796f9d9558ef43f84e8ff4"
+  },
+  "method": {
+    "pairs": 15,
+    "scenario_order": "cold->warm on even pair indices; warm->cold on odd indices",
+    "process_order": "alternated by pair plus scenario index so each binary runs first equally often",
+    "warmup": "one excluded process per scenario and binary",
+    "cold_definition": "each timed operation creates a fresh Highlighter and compiles the grammars required by async auto-detection",
+    "warm_definition": "one dedicated Highlighter per process; one async auto-detect warm-up is excluded before timed operations",
+    "timing_source": "ContinuousClock inside the benchmark host",
+    "ratio": "candidate/baseline; exp(mean(log(pair ratio)))",
+    "ci": "Student-t df=14 in the log domain, then exponentiated; t(0.975,14)=2.1447866879169273",
+    "exclusions": "none; all completed observations are retained"
+  },
+  "warmups": {
+    "cold": {
+      "process_order": [
+        "baseline",
+        "candidate"
+      ],
+      "baseline": {
+        "command": [
+          "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+          "--auto-bench",
+          "cold",
+          "1",
+          "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":123647292,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.123647292,\"utf16_units\":33698}",
+        "stderr": "",
+        "process_wall_seconds": 0.140597167017404,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "php",
+          "input_checksum": "ca147e3acaa5b9cd",
+          "iterations": 1,
+          "language_count": 65,
+          "nanoseconds_per_operation": 123647292,
+          "relevance": 498,
+          "result_checksum": "59ec73d5d639a339",
+          "scenario": "cold",
+          "schema_version": 1,
+          "semantic_checksum": "b418be4f4ae8d2dd",
+          "token_count": 859,
+          "total_elapsed_seconds": 0.123647292,
+          "utf16_units": 33698,
+          "value": 123647292.0,
+          "value_unit": "ns/op"
+        }
+      },
+      "candidate": {
+        "command": [
+          "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+          "--auto-bench",
+          "cold",
+          "1",
+          "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":128927500,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.1289275,\"utf16_units\":33698}",
+        "stderr": "",
+        "process_wall_seconds": 0.14652000000933185,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "php",
+          "input_checksum": "ca147e3acaa5b9cd",
+          "iterations": 1,
+          "language_count": 65,
+          "nanoseconds_per_operation": 128927500,
+          "relevance": 498,
+          "result_checksum": "59ec73d5d639a339",
+          "scenario": "cold",
+          "schema_version": 1,
+          "semantic_checksum": "b418be4f4ae8d2dd",
+          "token_count": 859,
+          "total_elapsed_seconds": 0.1289275,
+          "utf16_units": 33698,
+          "value": 128927500.0,
+          "value_unit": "ns/op"
+        }
+      }
+    },
+    "warm": {
+      "process_order": [
+        "candidate",
+        "baseline"
+      ],
+      "candidate": {
+        "command": [
+          "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+          "--auto-bench",
+          "warm",
+          "10",
+          "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":106831175.2,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.068311752,\"utf16_units\":33698}",
+        "stderr": "",
+        "process_wall_seconds": 1.2109475409961306,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "php",
+          "input_checksum": "ca147e3acaa5b9cd",
+          "iterations": 10,
+          "language_count": 65,
+          "nanoseconds_per_operation": 106831175.2,
+          "relevance": 498,
+          "result_checksum": "59ec73d5d639a339",
+          "scenario": "warm",
+          "schema_version": 1,
+          "semantic_checksum": "1ca04362a77f4bbc",
+          "token_count": 859,
+          "total_elapsed_seconds": 1.068311752,
+          "utf16_units": 33698,
+          "value": 106831175.2,
+          "value_unit": "ns/op"
+        }
+      },
+      "baseline": {
+        "command": [
+          "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+          "--auto-bench",
+          "warm",
+          "10",
+          "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+        ],
+        "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107924458.19999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0792445819999998,\"utf16_units\":33698}",
+        "stderr": "",
+        "process_wall_seconds": 1.2250800000037998,
+        "record": {
+          "benchmark": "async-auto-detect",
+          "detected_language": "php",
+          "input_checksum": "ca147e3acaa5b9cd",
+          "iterations": 10,
+          "language_count": 65,
+          "nanoseconds_per_operation": 107924458.19999999,
+          "relevance": 498,
+          "result_checksum": "59ec73d5d639a339",
+          "scenario": "warm",
+          "schema_version": 1,
+          "semantic_checksum": "1ca04362a77f4bbc",
+          "token_count": 859,
+          "total_elapsed_seconds": 1.0792445819999998,
+          "utf16_units": 33698,
+          "value": 107924458.19999999,
+          "value_unit": "ns/op"
+        }
+      }
+    }
+  },
+  "scenarios": {
+    "cold": {
+      "iterations": 1,
+      "value_unit": "ns/op",
+      "samples": [
+        {
+          "pair_index": 0,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":117212208,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.117212208,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1336612090235576,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 117212208,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.117212208,
+              "utf16_units": 33698,
+              "value": 117212208.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":123034458,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.123034458,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13985162501921877,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 123034458,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.123034458,
+              "utf16_units": 33698,
+              "value": 123034458.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 1,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":122004708,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.122004708,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13906591600971296,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 122004708,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.122004708,
+              "utf16_units": 33698,
+              "value": 122004708.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":119339500,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.1193395,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1360789579921402,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 119339500,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.1193395,
+              "utf16_units": 33698,
+              "value": 119339500.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 2,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":122043042,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.122043042,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1395046670222655,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 122043042,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.122043042,
+              "utf16_units": 33698,
+              "value": 122043042.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":126011084,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.126011084,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.14317966694943607,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 126011084,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.126011084,
+              "utf16_units": 33698,
+              "value": 126011084.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 3,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":117429333,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.117429333,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13467079098336399,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 117429333,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.117429333,
+              "utf16_units": 33698,
+              "value": 117429333.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":121344875,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.121344875,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1378812919720076,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 121344875,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.121344875,
+              "utf16_units": 33698,
+              "value": 121344875.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 4,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":117523167,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.117523167,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1348452499951236,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 117523167,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.117523167,
+              "utf16_units": 33698,
+              "value": 117523167.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":114244041,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.114244041,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.130677416047547,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 114244041,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.114244041,
+              "utf16_units": 33698,
+              "value": 114244041.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 5,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":115744750,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.11574475,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13109829201130196,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 115744750,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.11574475,
+              "utf16_units": 33698,
+              "value": 115744750.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":120904750,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.12090475,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.138977958005853,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 120904750,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.12090475,
+              "utf16_units": 33698,
+              "value": 120904750.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 6,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":128049333.99999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.128049334,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1451192080276087,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 128049333.99999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.128049334,
+              "utf16_units": 33698,
+              "value": 128049333.99999999,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":118681083,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.118681083,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13643008301733062,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 118681083,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.118681083,
+              "utf16_units": 33698,
+              "value": 118681083.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 7,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":134257542,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.134257542,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.14981899998383597,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 134257542,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.134257542,
+              "utf16_units": 33698,
+              "value": 134257542.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":150316625,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.150316625,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.16679841600125656,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 150316625,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.150316625,
+              "utf16_units": 33698,
+              "value": 150316625.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 8,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":134373750,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.13437375,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.15152562502771616,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 134373750,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.13437375,
+              "utf16_units": 33698,
+              "value": 134373750.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":121554667,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.121554667,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13922287500463426,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 121554667,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.121554667,
+              "utf16_units": 33698,
+              "value": 121554667.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 9,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":121092625,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.121092625,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13779058400541544,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 121092625,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.121092625,
+              "utf16_units": 33698,
+              "value": 121092625.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":120361250,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.12036125,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1359950000187382,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 120361250,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.12036125,
+              "utf16_units": 33698,
+              "value": 120361250.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 10,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":133245000,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.133245,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.14870354201411828,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 133245000,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.133245,
+              "utf16_units": 33698,
+              "value": 133245000.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":117256458,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.117256458,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1337339169695042,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 117256458,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.117256458,
+              "utf16_units": 33698,
+              "value": 117256458.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 11,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":115150750,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.11515075,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13245662505505607,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 115150750,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.11515075,
+              "utf16_units": 33698,
+              "value": 115150750.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":120093541,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.120093541,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13790854101534933,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 120093541,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.120093541,
+              "utf16_units": 33698,
+              "value": 120093541.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 12,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":114647750,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.11464775,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13180683297105134,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 114647750,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.11464775,
+              "utf16_units": 33698,
+              "value": 114647750.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":120601334,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.120601334,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1376032080152072,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 120601334,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.120601334,
+              "utf16_units": 33698,
+              "value": 120601334.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 13,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":124772458,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.124772458,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.14203304098919034,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 124772458,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.124772458,
+              "utf16_units": 33698,
+              "value": 124772458.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":122400958,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.122400958,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13914366700919345,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 122400958,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.122400958,
+              "utf16_units": 33698,
+              "value": 122400958.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 14,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":122574042,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.122574042,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.1404569169972092,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 122574042,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.122574042,
+              "utf16_units": 33698,
+              "value": 122574042.0,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "cold",
+              "1",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":1,\"language_count\":65,\"nanoseconds_per_operation\":120644125,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"cold\",\"schema_version\":1,\"semantic_checksum\":\"b418be4f4ae8d2dd\",\"token_count\":859,\"total_elapsed_seconds\":0.120644125,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 0.13850720901973546,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 1,
+              "language_count": 65,
+              "nanoseconds_per_operation": 120644125,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "cold",
+              "schema_version": 1,
+              "semantic_checksum": "b418be4f4ae8d2dd",
+              "token_count": 859,
+              "total_elapsed_seconds": 0.120644125,
+              "utf16_units": 33698,
+              "value": 120644125.0,
+              "value_unit": "ns/op"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "baseline_median_ns_per_operation": 121344875.0,
+        "candidate_median_ns_per_operation": 120644125.0,
+        "paired_geometric_mean_ratio_candidate_over_baseline": 0.973606259945804,
+        "ratio_95_percent_ci": [
+          0.9429190330680666,
+          1.005292200244758
+        ],
+        "percent_change": -2.6393740054196035,
+        "percent_change_95_percent_ci": [
+          -5.708096693193343,
+          0.5292200244757961
+        ],
+        "direction": "neutral",
+        "candidate_better_pairs": 9,
+        "log_ratio_mean": -0.026748307639880366,
+        "log_ratio_standard_error": 0.014932279086292329,
+        "student_t_critical_df14_975": 2.1447866879169273
+      }
+    },
+    "warm": {
+      "iterations": 10,
+      "value_unit": "ns/op",
+      "samples": [
+        {
+          "pair_index": 0,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":105782070.7,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.057820707,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2017534589977004,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 105782070.7,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.057820707,
+              "utf16_units": 33698,
+              "value": 105782070.7,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":106099737.40000004,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0609973740000003,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.1936494170222431,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 106099737.40000004,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0609973740000003,
+              "utf16_units": 33698,
+              "value": 106099737.40000004,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 1,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":105118829.29999998,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0511882929999998,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2034060829901136,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 105118829.29999998,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0511882929999998,
+              "utf16_units": 33698,
+              "value": 105118829.29999998,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":109017179.2,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.090171792,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2285603749915026,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 109017179.2,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.090171792,
+              "utf16_units": 33698,
+              "value": 109017179.2,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 2,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":109398487.49999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0939848749999999,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2263750419951975,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 109398487.49999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0939848749999999,
+              "utf16_units": 33698,
+              "value": 109398487.49999999,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107813325,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.07813325,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.213068832992576,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 107813325,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.07813325,
+              "utf16_units": 33698,
+              "value": 107813325.0,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 3,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107329429.10000001,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.073294291,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2280397500144318,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 107329429.10000001,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.073294291,
+              "utf16_units": 33698,
+              "value": 107329429.10000001,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":109086012.49999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0908601249999998,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2390759579720907,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 109086012.49999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0908601249999998,
+              "utf16_units": 33698,
+              "value": 109086012.49999999,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 4,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":108174187.39999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.081741874,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2187639590119943,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 108174187.39999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.081741874,
+              "utf16_units": 33698,
+              "value": 108174187.39999999,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":105150420.8,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0515042079999999,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.1900542090297677,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 105150420.8,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0515042079999999,
+              "utf16_units": 33698,
+              "value": 105150420.8,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 5,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":106613708.2,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.066137082,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.217747166985646,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 106613708.2,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.066137082,
+              "utf16_units": 33698,
+              "value": 106613708.2,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":105614537.60000001,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0561453760000001,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.1950704169576056,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 105614537.60000001,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0561453760000001,
+              "utf16_units": 33698,
+              "value": 105614537.60000001,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 6,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107765708.30000001,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.077657083,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.23026566603221,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 107765708.30000001,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.077657083,
+              "utf16_units": 33698,
+              "value": 107765708.30000001,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":114206512.30000001,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.142065123,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2815804170095362,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 114206512.30000001,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.142065123,
+              "utf16_units": 33698,
+              "value": 114206512.30000001,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 7,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":110054970.89999998,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.1005497089999998,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.24135850003222,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 110054970.89999998,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.1005497089999998,
+              "utf16_units": 33698,
+              "value": 110054970.89999998,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":108444987.69999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.084449877,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.226407875015866,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 108444987.69999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.084449877,
+              "utf16_units": 33698,
+              "value": 108444987.69999999,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 8,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":105677341.5,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0567734149999999,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2037835830124095,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 105677341.5,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0567734149999999,
+              "utf16_units": 33698,
+              "value": 105677341.5,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":109380029.1,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.093800291,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2336702499887906,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 109380029.1,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.093800291,
+              "utf16_units": 33698,
+              "value": 109380029.1,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 9,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":108117183.19999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0811718319999999,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.217535333998967,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 108117183.19999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0811718319999999,
+              "utf16_units": 33698,
+              "value": 108117183.19999999,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":108647116.6,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.086471166,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.222379875020124,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 108647116.6,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.086471166,
+              "utf16_units": 33698,
+              "value": 108647116.6,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 10,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":110258137.49999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.102581375,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2448187089757994,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 110258137.49999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.102581375,
+              "utf16_units": 33698,
+              "value": 110258137.49999999,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":108902199.9,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.089021999,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2297467500320636,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 108902199.9,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.089021999,
+              "utf16_units": 33698,
+              "value": 108902199.9,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 11,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107768416.6,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.077684166,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2389562500175089,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 107768416.6,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.077684166,
+              "utf16_units": 33698,
+              "value": 107768416.6,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107203787.39999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0720378739999998,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2095444590086117,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 107203787.39999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0720378739999998,
+              "utf16_units": 33698,
+              "value": 107203787.39999999,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 12,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":162723062.50000003,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.6272306250000002,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.7690512910485268,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 162723062.50000003,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.6272306250000002,
+              "utf16_units": 33698,
+              "value": 162723062.50000003,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107109195.69999999,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.071091957,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2299296249984764,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 107109195.69999999,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.071091957,
+              "utf16_units": 33698,
+              "value": 107109195.69999999,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 13,
+          "process_order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":106096341.60000001,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.060963416,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2014995419885963,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 106096341.60000001,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.060963416,
+              "utf16_units": 33698,
+              "value": 106096341.60000001,
+              "value_unit": "ns/op"
+            }
+          },
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":108902187.5,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.089021875,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2382138340035453,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 108902187.5,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.089021875,
+              "utf16_units": 33698,
+              "value": 108902187.5,
+              "value_unit": "ns/op"
+            }
+          }
+        },
+        {
+          "pair_index": 14,
+          "process_order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate": {
+            "command": [
+              "/private/tmp/highlight-auto-window-2p-20260710-artifacts/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":107968620.9,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.0796862090000001,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2276640419731848,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 107968620.9,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.0796862090000001,
+              "utf16_units": 33698,
+              "value": 107968620.9,
+              "value_unit": "ns/op"
+            }
+          },
+          "baseline": {
+            "command": [
+              "/private/tmp/highlight-production-window-p-frozen.WkQdVe/highlight-bench",
+              "--auto-bench",
+              "warm",
+              "10",
+              "/Users/octree/Developer/Eversight/Highlight/Sources/HighlightKit/Core/HighlightEngine.swift"
+            ],
+            "stdout": "{\"benchmark\":\"async-auto-detect\",\"detected_language\":\"php\",\"input_checksum\":\"ca147e3acaa5b9cd\",\"iterations\":10,\"language_count\":65,\"nanoseconds_per_operation\":108544245.60000001,\"relevance\":498,\"result_checksum\":\"59ec73d5d639a339\",\"scenario\":\"warm\",\"schema_version\":1,\"semantic_checksum\":\"1ca04362a77f4bbc\",\"token_count\":859,\"total_elapsed_seconds\":1.085442456,\"utf16_units\":33698}",
+            "stderr": "",
+            "process_wall_seconds": 1.2208953329827636,
+            "record": {
+              "benchmark": "async-auto-detect",
+              "detected_language": "php",
+              "input_checksum": "ca147e3acaa5b9cd",
+              "iterations": 10,
+              "language_count": 65,
+              "nanoseconds_per_operation": 108544245.60000001,
+              "relevance": 498,
+              "result_checksum": "59ec73d5d639a339",
+              "scenario": "warm",
+              "schema_version": 1,
+              "semantic_checksum": "1ca04362a77f4bbc",
+              "token_count": 859,
+              "total_elapsed_seconds": 1.085442456,
+              "utf16_units": 33698,
+              "value": 108544245.60000001,
+              "value_unit": "ns/op"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "baseline_median_ns_per_operation": 107768416.6,
+        "candidate_median_ns_per_operation": 108444987.69999999,
+        "paired_geometric_mean_ratio_candidate_over_baseline": 1.028872496996265,
+        "ratio_95_percent_ci": [
+          0.9677681152656751,
+          1.0938349780047512
+        ],
+        "percent_change": 2.887249699626504,
+        "percent_change_95_percent_ci": [
+          -3.2231884734324923,
+          9.383497800475116
+        ],
+        "direction": "neutral",
+        "candidate_better_pairs": 7,
+        "log_ratio_mean": 0.028463539549859786,
+        "log_ratio_standard_error": 0.028546573252479644,
+        "student_t_critical_df14_975": 2.1447866879169273
+      }
+    }
+  },
+  "hashes_after": {
+    "baseline": "8b0325421f09ba30dac3005cc7ff3b85cd53aae48073691c03f0132c51a061ab",
+    "candidate": "f06b614baa266eb656e96638c71196678e133542d30ebec2771c5ef1a5d06531",
+    "input": "d986fd1809b41a63bcd1761474c787402fdfd3b426796f9d9558ef43f84e8ff4"
+  },
+  "hashes_stable": true,
+  "completed_at_utc": "2026-07-10T12:55:40.009495+00:00"
+}

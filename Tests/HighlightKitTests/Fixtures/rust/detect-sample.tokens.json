@@ -1,0 +1,195 @@
+{
+ "language": "rust",
+ "relevance": 25,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 16,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 17,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 5,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 4,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 86,
+   "length": 2,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 98,
+   "length": 5,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 110,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 113,
+   "length": 4,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 122,
+   "length": 2,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 125,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 130,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 148,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 170,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 207,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 251,
+   "length": 12,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 286,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 290,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 297,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 356,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 361,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 364,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 371,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "language": "scheme",
+ "relevance": 7,
+ "tokens": [
+  {
+   "start": 1,
+   "length": 6,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 2,
+   "scopes": [
+    "symbol"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,209 @@
+{
+ "language": "kotlin",
+ "relevance": 22,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 1,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 1,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 30,
+   "length": 1,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 45,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 1,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 54,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 2,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 1,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 72,
+   "length": 2,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 4,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 81,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 87,
+   "length": 2,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 96,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 102,
+   "length": 2,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 107,
+   "length": 1,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 115,
+   "length": 2,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 120,
+   "length": 1,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 123,
+   "length": 1,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 125,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 131,
+   "length": 2,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 136,
+   "length": 1,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 138,
+   "length": 1,
+   "scopes": [
+    "type"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "language": "powershell",
+ "relevance": 4,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 11,
+   "length": 18,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 30,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 16,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 20,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 117,
+   "length": 20,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 138,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  }
+ ]
+}

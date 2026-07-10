@@ -1,0 +1,27 @@
+{
+ "language": "lisp",
+ "relevance": 5,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 93,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 95,
+   "length": 21,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 121,
+   "length": 1,
+   "scopes": [
+    "name"
+   ]
+  }
+ ]
+}

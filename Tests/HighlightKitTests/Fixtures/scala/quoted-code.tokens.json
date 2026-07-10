@@ -1,0 +1,57 @@
+{
+ "language": "scala",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 3,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 1,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 33,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

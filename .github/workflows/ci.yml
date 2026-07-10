@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: swift test (macOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_26.app || sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+      - name: Swift version
+        run: swift --version
+      - name: Build (release, warnings are errors)
+        run: swift build -c release -Xswiftc -warnings-as-errors
+      - name: Test
+        run: swift test
+      # The fidelity suite inside `swift test` asserts all 375
+      # token-exact highlight.js fixtures, so reference parity is
+      # CI-enforced, and the differential prefilter suites fuzz every
+      # hand-written fast path against live ICU.
+
+  build-platforms:
+    name: Build iOS / watchOS
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "generic/platform=iOS Simulator"
+          - "generic/platform=watchOS Simulator"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          xcodebuild -scheme HighlightKit \
+            -destination "${{ matrix.destination }}" \
+            -derivedDataPath .dd build
+
+  docs:
+    name: DocC build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_26.app || sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+      - name: Build documentation
+        run: |
+          xcodebuild docbuild -scheme HighlightKit \
+            -destination "generic/platform=macOS" -derivedDataPath .dd

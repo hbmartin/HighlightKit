@@ -1,0 +1,134 @@
+{
+ "language": "ruby",
+ "relevance": 22,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 18,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 36,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 31,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 55,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 166,
+   "length": 20,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 197,
+   "length": 42,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 241,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 245,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 259,
+   "length": 24,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 283,
+   "length": 6,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 289,
+   "length": 21,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 311,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 316,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 320,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 334,
+   "length": 23,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 357,
+   "length": 6,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 363,
+   "length": 20,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 384,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

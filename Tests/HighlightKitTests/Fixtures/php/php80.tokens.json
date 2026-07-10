@@ -1,0 +1,149 @@
+{
+ "language": "php",
+ "relevance": 21,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 4,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 31,
+   "length": 11,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 48,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 71,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 79,
+   "length": 11,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 102,
+   "length": 13,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 122,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 128,
+   "length": 11,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 145,
+   "length": 4,
+   "scopes": [
+    "class",
+    "keyword"
+   ]
+  },
+  {
+   "start": 149,
+   "length": 1,
+   "scopes": [
+    "class"
+   ]
+  },
+  {
+   "start": 150,
+   "length": 3,
+   "scopes": [
+    "class",
+    "title"
+   ]
+  },
+  {
+   "start": 153,
+   "length": 2,
+   "scopes": [
+    "class"
+   ]
+  },
+  {
+   "start": 155,
+   "length": 6,
+   "scopes": [
+    "class",
+    "title"
+   ]
+  },
+  {
+   "start": 161,
+   "length": 1,
+   "scopes": [
+    "class"
+   ]
+  },
+  {
+   "start": 168,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 180,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

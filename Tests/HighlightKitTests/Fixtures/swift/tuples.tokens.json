@@ -1,0 +1,244 @@
+{
+ "language": "swift",
+ "relevance": 16,
+ "tokens": [
+  {
+   "start": 1,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 5,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 50,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 5,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 77,
+   "length": 1,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 82,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 93,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 3,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 108,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 112,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 113,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 117,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 121,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 128,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 135,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 141,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 145,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 150,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 161,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 172,
+   "length": 4,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 178,
+   "length": 12,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 197,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 208,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 219,
+   "length": 4,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 231,
+   "length": 7,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 246,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 253,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 288,
+   "length": 10,
+   "scopes": [
+    "regexp"
+   ]
+  }
+ ]
+}

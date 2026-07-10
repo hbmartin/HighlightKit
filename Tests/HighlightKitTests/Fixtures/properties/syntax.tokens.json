@@ -1,0 +1,209 @@
+{
+ "language": "properties",
+ "relevance": 41,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 9,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 10,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 9,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 48,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 52,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 62,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 70,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 76,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 98,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 14,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 119,
+   "length": 12,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 132,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 136,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 105,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 246,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 252,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 258,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 264,
+   "length": 13,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 278,
+   "length": 64,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 343,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 349,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

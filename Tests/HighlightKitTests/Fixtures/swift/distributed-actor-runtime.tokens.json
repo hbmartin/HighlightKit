@@ -1,0 +1,62 @@
+{
+ "language": "swift",
+ "relevance": 7,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 11,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 11,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 46,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "language": "bash",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 32,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 54,
+   "length": 34,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 142,
+   "length": 30,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

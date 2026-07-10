@@ -1,0 +1,146 @@
+{
+ "language": "diff",
+ "relevance": 47,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 23,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 67,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 92,
+   "length": 38,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 131,
+   "length": 38,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 170,
+   "length": 15,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 238,
+   "length": 15,
+   "scopes": [
+    "deletion"
+   ]
+  },
+  {
+   "start": 254,
+   "length": 4,
+   "scopes": [
+    "deletion"
+   ]
+  },
+  {
+   "start": 259,
+   "length": 17,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 355,
+   "length": 31,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 387,
+   "length": 31,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 419,
+   "length": 15,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 435,
+   "length": 12,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 448,
+   "length": 12,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 461,
+   "length": 22,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 484,
+   "length": 19,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 504,
+   "length": 25,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 530,
+   "length": 23,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 554,
+   "length": 11,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 567,
+   "length": 26,
+   "scopes": [
+    "addition"
+   ]
+  },
+  {
+   "start": 594,
+   "length": 10,
+   "scopes": [
+    "addition"
+   ]
+  }
+ ]
+}

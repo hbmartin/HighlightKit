@@ -1,0 +1,209 @@
+{
+ "language": "yaml",
+ "relevance": 18,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 5,
+   "length": 16,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 13,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 46,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 56,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 72,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 95,
+   "length": 13,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 114,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 119,
+   "length": 25,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 145,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 150,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 155,
+   "length": 9,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 165,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 170,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 175,
+   "length": 15,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 191,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 196,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 201,
+   "length": 10,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 212,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 218,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 222,
+   "length": 34,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 257,
+   "length": 8,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 266,
+   "length": 5,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

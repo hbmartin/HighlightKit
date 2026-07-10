@@ -1,0 +1,48 @@
+{
+ "language": "vim",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 9,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 10,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 20,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 9,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 39,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 49,
+   "length": 32,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

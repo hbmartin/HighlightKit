@@ -1,0 +1,34 @@
+{
+ "language": "java",
+ "relevance": 2,
+ "tokens": [
+  {
+   "start": 1,
+   "length": 59,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 85,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 96,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

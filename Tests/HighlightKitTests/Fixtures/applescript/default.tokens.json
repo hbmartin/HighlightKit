@@ -1,0 +1,189 @@
+{
+ "language": "applescript",
+ "relevance": 20,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 12,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 46,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 59,
+   "length": 14,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 74,
+   "length": 13,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 92,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 105,
+   "length": 4,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 114,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 121,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 125,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 144,
+   "length": 18,
+   "scopes": [
+    "comment",
+    "comment"
+   ]
+  },
+  {
+   "start": 162,
+   "length": 3,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 166,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 188,
+   "length": 10,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 204,
+   "length": 2,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 210,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 214,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 217,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 235,
+   "length": 15,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 251,
+   "length": 19,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

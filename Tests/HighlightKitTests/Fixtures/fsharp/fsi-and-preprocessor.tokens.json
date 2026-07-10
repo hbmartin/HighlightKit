@@ -1,0 +1,300 @@
+{
+ "language": "fsharp",
+ "relevance": 49,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 6,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 6,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 7,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 46,
+   "length": 3,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 56,
+   "length": 31,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 96,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 99,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 108,
+   "length": 66,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 185,
+   "length": 42,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 236,
+   "length": 19,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 257,
+   "length": 2,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 260,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 303,
+   "length": 45,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 349,
+   "length": 2,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 352,
+   "length": 20,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 395,
+   "length": 57,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 453,
+   "length": 2,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 456,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 499,
+   "length": 48,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 548,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 554,
+   "length": 9,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 564,
+   "length": 3,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 594,
+   "length": 55,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 650,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 657,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 661,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 662,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 696,
+   "length": 23,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 720,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 766,
+   "length": 15,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 782,
+   "length": 2,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 785,
+   "length": 26,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 828,
+   "length": 51,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 880,
+   "length": 2,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 883,
+   "length": 19,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 926,
+   "length": 60,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 987,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  }
+ ]
+}

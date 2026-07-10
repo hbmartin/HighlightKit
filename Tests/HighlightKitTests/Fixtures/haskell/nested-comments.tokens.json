@@ -1,0 +1,28 @@
+{
+ "language": "haskell",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 13,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 12,
+   "scopes": [
+    "comment",
+    "comment"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

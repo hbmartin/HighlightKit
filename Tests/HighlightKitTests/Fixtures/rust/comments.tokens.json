@@ -1,0 +1,45 @@
+{
+ "language": "rust",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 12,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 10,
+   "scopes": [
+    "comment",
+    "comment"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 11,
+   "scopes": [
+    "comment",
+    "comment",
+    "comment"
+   ]
+  },
+  {
+   "start": 33,
+   "length": 3,
+   "scopes": [
+    "comment",
+    "comment"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 3,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

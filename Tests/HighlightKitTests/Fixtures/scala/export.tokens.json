@@ -1,0 +1,20 @@
+{
+ "language": "scala",
+ "relevance": 2,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

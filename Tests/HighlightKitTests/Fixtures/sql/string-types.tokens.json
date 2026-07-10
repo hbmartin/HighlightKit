@@ -1,0 +1,55 @@
+{
+ "language": "sql",
+ "relevance": 10,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 50,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 64,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 78,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 91,
+   "length": 22,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 114,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

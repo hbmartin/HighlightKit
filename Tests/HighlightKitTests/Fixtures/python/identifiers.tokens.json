@@ -1,0 +1,139 @@
+{
+ "language": "python",
+ "relevance": 13,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 4,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 13,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 53,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 59,
+   "length": 15,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 8,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 93,
+   "length": 4,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 108,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 122,
+   "length": 6,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 4,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 144,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 150,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 156,
+   "length": 13,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 175,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

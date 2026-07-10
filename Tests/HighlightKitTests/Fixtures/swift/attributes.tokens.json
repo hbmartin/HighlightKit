@@ -1,0 +1,223 @@
+{
+ "language": "swift",
+ "relevance": 28,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 18,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 11,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 16,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 12,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 87,
+   "length": 8,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 110,
+   "length": 14,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 125,
+   "length": 10,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 136,
+   "length": 24,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 162,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 168,
+   "length": 12,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 181,
+   "length": 16,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 198,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 208,
+   "length": 15,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 243,
+   "length": 35,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 279,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 285,
+   "length": 12,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 298,
+   "length": 7,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 306,
+   "length": 7,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 321,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 329,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 335,
+   "length": 9,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 349,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 355,
+   "length": 12,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 368,
+   "length": 7,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 376,
+   "length": 7,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 391,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 399,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 405,
+   "length": 9,
+   "scopes": [
+    "title.class"
+   ]
+  }
+ ]
+}

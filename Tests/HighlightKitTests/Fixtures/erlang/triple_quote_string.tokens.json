@@ -1,0 +1,96 @@
+{
+ "language": "erlang",
+ "relevance": 12,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 2,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 20,
+   "length": 218,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 275,
+   "length": 14,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 289,
+   "length": 2,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 291,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 299,
+   "length": 119,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 421,
+   "length": 11,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 432,
+   "length": 2,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 434,
+   "length": 3,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 442,
+   "length": 24,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "language": "java",
+ "relevance": 2,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 4,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 46,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

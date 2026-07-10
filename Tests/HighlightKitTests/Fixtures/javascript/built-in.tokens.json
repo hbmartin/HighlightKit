@@ -1,0 +1,76 @@
+{
+ "language": "javascript",
+ "relevance": 9,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 8,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 48,
+   "length": 9,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 59,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 71,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 4,
+   "scopes": [
+    "title.class"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,318 @@
+{
+ "language": "delphi",
+ "relevance": 60,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "title"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 23,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 39,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 56,
+   "length": 9,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 6,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 72,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 74,
+   "length": 7,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 82,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 86,
+   "length": 7,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 95,
+   "length": 9,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 105,
+   "length": 8,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 113,
+   "length": 13,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 126,
+   "length": 3,
+   "scopes": [
+    "function",
+    "params",
+    "keyword"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 14,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 143,
+   "length": 6,
+   "scopes": [
+    "function",
+    "params",
+    "keyword"
+   ]
+  },
+  {
+   "start": 149,
+   "length": 1,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 150,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 152,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 170,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 176,
+   "length": 10,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 187,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 229,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 235,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 247,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 280,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 298,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 316,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 323,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 447,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 482,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 519,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 551,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 587,
+   "length": 9,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 612,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 634,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 679,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 683,
+   "length": 5,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 689,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 693,
+   "length": 10,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

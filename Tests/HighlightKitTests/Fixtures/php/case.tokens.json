@@ -1,0 +1,90 @@
+{
+ "language": "php",
+ "relevance": 12,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 5,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 50,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  }
+ ]
+}

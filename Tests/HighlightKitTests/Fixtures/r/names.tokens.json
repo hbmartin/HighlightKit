@@ -1,0 +1,517 @@
+{
+ "language": "r",
+ "relevance": 77,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 13,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 59,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 62,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 70,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 82,
+   "length": 1,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 83,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 85,
+   "length": 1,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 86,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 1,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 96,
+   "length": 16,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 114,
+   "length": 2,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 116,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 11,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 131,
+   "length": 8,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 139,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 141,
+   "length": 13,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 154,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 156,
+   "length": 11,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 167,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 169,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 173,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 175,
+   "length": 3,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 178,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 180,
+   "length": 3,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 185,
+   "length": 10,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 197,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 205,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 207,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 212,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 214,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 220,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 222,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 225,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 227,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 229,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 231,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 233,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 235,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 239,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 241,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 245,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 247,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 254,
+   "length": 14,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 275,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 282,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 289,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 297,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 299,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 305,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 314,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 324,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 334,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 342,
+   "length": 21,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 365,
+   "length": 6,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 371,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 373,
+   "length": 6,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 379,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 381,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 386,
+   "length": 30,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 422,
+   "length": 1,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 429,
+   "length": 20,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 501,
+   "length": 31,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 534,
+   "length": 42,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

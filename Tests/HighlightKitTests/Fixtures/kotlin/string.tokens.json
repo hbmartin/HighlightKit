@@ -1,0 +1,190 @@
+{
+ "language": "kotlin",
+ "relevance": 14,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 9,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 39,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 45,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 49,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 52,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 56,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 64,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst",
+    "string",
+    "variable"
+   ]
+  },
+  {
+   "start": 68,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 69,
+   "length": 7,
+   "scopes": [
+    "string",
+    "subst",
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 76,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 77,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 79,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 83,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 15,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 110,
+   "length": 14,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

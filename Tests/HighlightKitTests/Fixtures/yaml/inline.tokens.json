@@ -1,0 +1,111 @@
+{
+ "language": "yaml",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 11,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 40,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 53,
+   "length": 7,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 4,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 70,
+   "length": 11,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

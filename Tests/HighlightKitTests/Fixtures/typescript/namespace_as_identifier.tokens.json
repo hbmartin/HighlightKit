@@ -1,0 +1,48 @@
+{
+ "language": "typescript",
+ "relevance": 5,
+ "tokens": [
+  {
+   "start": 12,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 47,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 93,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  }
+ ]
+}

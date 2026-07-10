@@ -1,0 +1,276 @@
+{
+ "language": "csharp",
+ "relevance": 26,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 11,
+   "length": 14,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 30,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 52,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 5,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 68,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 71,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 72,
+   "length": 12,
+   "scopes": [
+    "string",
+    "subst",
+    "comment"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 86,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 101,
+   "length": 14,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 115,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 117,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 121,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 132,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 135,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 143,
+   "length": 3,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 146,
+   "length": 6,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 152,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst",
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 160,
+   "length": 4,
+   "scopes": [
+    "string",
+    "subst",
+    "string"
+   ]
+  },
+  {
+   "start": 164,
+   "length": 1,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 165,
+   "length": 12,
+   "scopes": [
+    "string",
+    "subst",
+    "comment"
+   ]
+  },
+  {
+   "start": 177,
+   "length": 2,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 179,
+   "length": 1,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

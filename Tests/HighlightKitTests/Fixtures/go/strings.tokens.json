@@ -1,0 +1,72 @@
+{
+ "language": "go",
+ "relevance": 12,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 4,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 5,
+   "length": 4,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 2,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 43,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

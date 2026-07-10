@@ -1,0 +1,69 @@
+{
+ "language": "ruby",
+ "relevance": 4,
+ "tokens": [
+  {
+   "start": 1,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 15,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 3,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 59,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 4,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 81,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

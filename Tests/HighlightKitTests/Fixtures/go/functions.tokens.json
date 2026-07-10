@@ -1,0 +1,225 @@
+{
+ "language": "go",
+ "relevance": 17,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 4,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 5,
+   "length": 4,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 2,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 4,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 17,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 4,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 1,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 23,
+   "length": 5,
+   "scopes": [
+    "function",
+    "params",
+    "type"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 15,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 53,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 6,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 64,
+   "length": 4,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 68,
+   "length": 1,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 69,
+   "length": 5,
+   "scopes": [
+    "function",
+    "params",
+    "type"
+   ]
+  },
+  {
+   "start": 74,
+   "length": 2,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 76,
+   "length": 6,
+   "scopes": [
+    "function",
+    "params",
+    "type"
+   ]
+  },
+  {
+   "start": 82,
+   "length": 1,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 85,
+   "length": 4,
+   "scopes": [
+    "function",
+    "keyword"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 4,
+   "scopes": [
+    "function",
+    "title"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 1,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 95,
+   "length": 3,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 98,
+   "length": 5,
+   "scopes": [
+    "function",
+    "params",
+    "type"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 1,
+   "scopes": [
+    "function",
+    "params"
+   ]
+  },
+  {
+   "start": 105,
+   "length": 5,
+   "scopes": [
+    "type"
+   ]
+  },
+  {
+   "start": 115,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "language": "bash",
+ "relevance": 5,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 2,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 3,
+   "length": 4,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 9,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 17,
+   "length": 8,
+   "scopes": [
+    "variable",
+    "variable"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 1,
+   "scopes": [
+    "variable"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "language": "clojure",
+ "relevance": 4,
+ "tokens": [
+  {
+   "start": 1,
+   "length": 7,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 79,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 91,
+   "length": 21,
+   "scopes": [
+    "name"
+   ]
+  },
+  {
+   "start": 113,
+   "length": 31,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

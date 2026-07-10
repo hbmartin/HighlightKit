@@ -1,0 +1,104 @@
+{
+ "language": "css",
+ "relevance": 14,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 11,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 17,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 5,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 10,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 92,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 99,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 111,
+   "length": 16,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 134,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 141,
+   "length": 9,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 155,
+   "length": 13,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 175,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  }
+ ]
+}

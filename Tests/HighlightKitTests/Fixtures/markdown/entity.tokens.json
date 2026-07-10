@@ -1,0 +1,76 @@
+{
+ "language": "markdown",
+ "relevance": 10,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 8,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 7,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 5,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 69,
+   "length": 6,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 76,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 100,
+   "length": 8,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 6,
+   "scopes": [
+    "literal"
+   ]
+  }
+ ]
+}

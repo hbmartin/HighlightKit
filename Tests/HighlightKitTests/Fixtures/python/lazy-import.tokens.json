@@ -1,0 +1,27 @@
+{
+ "language": "python",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 5,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 30,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "language": "shell",
+ "relevance": 2,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 8,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 8,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  }
+ ]
+}

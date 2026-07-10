@@ -1,0 +1,134 @@
+{
+ "language": "java",
+ "relevance": 17,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 15,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 21,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 14,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 53,
+   "length": 6,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 28,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 19,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 116,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 122,
+   "length": 19,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 147,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 153,
+   "length": 7,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 165,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 170,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 173,
+   "length": 1,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 174,
+   "length": 27,
+   "scopes": [
+    "params",
+    "meta"
+   ]
+  },
+  {
+   "start": 201,
+   "length": 1,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 202,
+   "length": 3,
+   "scopes": [
+    "params",
+    "type"
+   ]
+  },
+  {
+   "start": 205,
+   "length": 5,
+   "scopes": [
+    "params"
+   ]
+  }
+ ]
+}

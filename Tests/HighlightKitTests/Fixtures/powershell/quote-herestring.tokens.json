@@ -1,0 +1,50 @@
+{
+ "language": "powershell",
+ "relevance": 3,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 32,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 7,
+   "scopes": [
+    "string",
+    "variable"
+   ]
+  },
+  {
+   "start": 39,
+   "length": 40,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 32,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 165,
+   "length": 7,
+   "scopes": [
+    "string",
+    "variable"
+   ]
+  },
+  {
+   "start": 172,
+   "length": 109,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

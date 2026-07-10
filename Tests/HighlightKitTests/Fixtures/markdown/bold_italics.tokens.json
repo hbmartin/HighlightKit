@@ -1,0 +1,390 @@
+{
+ "language": "markdown",
+ "relevance": 30,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 8,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 8,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 8,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 8,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 4,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 40,
+   "length": 12,
+   "scopes": [
+    "emphasis",
+    "strong"
+   ]
+  },
+  {
+   "start": 52,
+   "length": 1,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 54,
+   "length": 7,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 13,
+   "scopes": [
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 74,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 77,
+   "length": 7,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 13,
+   "scopes": [
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 97,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 100,
+   "length": 11,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 111,
+   "length": 1,
+   "scopes": [
+    "strong",
+    "tag"
+   ]
+  },
+  {
+   "start": 112,
+   "length": 2,
+   "scopes": [
+    "strong",
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 114,
+   "length": 2,
+   "scopes": [
+    "strong",
+    "tag"
+   ]
+  },
+  {
+   "start": 116,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 119,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 121,
+   "length": 2,
+   "scopes": [
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 123,
+   "length": 4,
+   "scopes": [
+    "strong",
+    "emphasis",
+    "string"
+   ]
+  },
+  {
+   "start": 127,
+   "length": 2,
+   "scopes": [
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 18,
+   "scopes": [
+    "strong",
+    "emphasis",
+    "link"
+   ]
+  },
+  {
+   "start": 147,
+   "length": 2,
+   "scopes": [
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 149,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 153,
+   "length": 9,
+   "scopes": [
+    "quote"
+   ]
+  },
+  {
+   "start": 162,
+   "length": 7,
+   "scopes": [
+    "quote",
+    "strong"
+   ]
+  },
+  {
+   "start": 169,
+   "length": 13,
+   "scopes": [
+    "quote",
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 182,
+   "length": 2,
+   "scopes": [
+    "quote",
+    "strong"
+   ]
+  },
+  {
+   "start": 185,
+   "length": 2,
+   "scopes": [
+    "quote"
+   ]
+  },
+  {
+   "start": 187,
+   "length": 2,
+   "scopes": [
+    "quote",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 189,
+   "length": 4,
+   "scopes": [
+    "quote",
+    "emphasis",
+    "string"
+   ]
+  },
+  {
+   "start": 193,
+   "length": 2,
+   "scopes": [
+    "quote",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 195,
+   "length": 18,
+   "scopes": [
+    "quote",
+    "emphasis",
+    "link"
+   ]
+  },
+  {
+   "start": 213,
+   "length": 2,
+   "scopes": [
+    "quote",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 219,
+   "length": 32,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 254,
+   "length": 13,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 269,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 283,
+   "length": 13,
+   "scopes": [
+    "emphasis"
+   ]
+  },
+  {
+   "start": 297,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 311,
+   "length": 13,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 326,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 328,
+   "length": 25,
+   "scopes": [
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 353,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 356,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 358,
+   "length": 25,
+   "scopes": [
+    "strong",
+    "emphasis"
+   ]
+  },
+  {
+   "start": 383,
+   "length": 2,
+   "scopes": [
+    "strong"
+   ]
+  },
+  {
+   "start": 415,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 489,
+   "length": 30,
+   "scopes": [
+    "quote"
+   ]
+  },
+  {
+   "start": 520,
+   "length": 7,
+   "scopes": [
+    "quote"
+   ]
+  },
+  {
+   "start": 528,
+   "length": 9,
+   "scopes": [
+    "quote"
+   ]
+  }
+ ]
+}

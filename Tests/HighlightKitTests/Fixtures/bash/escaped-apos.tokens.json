@@ -1,0 +1,20 @@
+{
+ "language": "bash",
+ "relevance": 4,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 36,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 37,
+   "length": 4,
+   "scopes": [
+    "built_in"
+   ]
+  }
+ ]
+}

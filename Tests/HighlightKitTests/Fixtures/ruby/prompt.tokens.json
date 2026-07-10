@@ -1,0 +1,468 @@
+{
+ "language": "ruby",
+ "relevance": 94,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 14,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 37,
+   "length": 14,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 52,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 14,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 77,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 83,
+   "length": 14,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 100,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 108,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 115,
+   "length": 19,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 135,
+   "length": 12,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 149,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 158,
+   "length": 10,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 173,
+   "length": 8,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 185,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 190,
+   "length": 7,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 201,
+   "length": 9,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 258,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 414,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 418,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 428,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 442,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 490,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 538,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 541,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 544,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 549,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 552,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 555,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 562,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 565,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 570,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 573,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 578,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 581,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 588,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 594,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 618,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 621,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 638,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 644,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 651,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 670,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 674,
+   "length": 2,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 677,
+   "length": 1,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 680,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 701,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 712,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 718,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 721,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 740,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 744,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 761,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 768,
+   "length": 3,
+   "scopes": [
+    "symbol"
+   ]
+  },
+  {
+   "start": 772,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 789,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 800,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 810,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 827,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 838,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 854,
+   "length": 16,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 871,
+   "length": 6,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 882,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 889,
+   "length": 10,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

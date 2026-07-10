@@ -1,0 +1,237 @@
+{
+ "language": "javascript",
+ "relevance": 16,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 14,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 10,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 40,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 50,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 6,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 19,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 99,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 106,
+   "length": 7,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 121,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 127,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 148,
+   "length": 11,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 165,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 181,
+   "length": 22,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 210,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 215,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 223,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 227,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 242,
+   "length": 6,
+   "scopes": [
+    "property"
+   ]
+  },
+  {
+   "start": 261,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 265,
+   "length": 14,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 296,
+   "length": 9,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 313,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 320,
+   "length": 11,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 339,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 351,
+   "length": 9,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 366,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 370,
+   "length": 5,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 377,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 388,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 404,
+   "length": 7,
+   "scopes": [
+    "variable.language"
+   ]
+  },
+  {
+   "start": 412,
+   "length": 3,
+   "scopes": [
+    "title.function"
+   ]
+  }
+ ]
+}

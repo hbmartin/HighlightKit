@@ -1,0 +1,86 @@
+{
+ "language": "fsharp",
+ "relevance": 9,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 59,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 7,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 68,
+   "length": 6,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 74,
+   "length": 5,
+   "scopes": [
+    "meta",
+    "string"
+   ]
+  },
+  {
+   "start": 79,
+   "length": 7,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 86,
+   "length": 1,
+   "scopes": [
+    "meta",
+    "number"
+   ]
+  },
+  {
+   "start": 87,
+   "length": 2,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 1,
+   "scopes": [
+    "meta",
+    "number"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 3,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 1,
+   "scopes": [
+    "operator"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,138 @@
+{
+ "language": "xml",
+ "relevance": 9,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 1,
+   "length": 6,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 2,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 16,
+   "length": 6,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 6,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 31,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 38,
+   "length": 2,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 40,
+   "length": 6,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 46,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 48,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 49,
+   "length": 6,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 55,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 59,
+   "length": 2,
+   "scopes": [
+    "tag"
+   ]
+  },
+  {
+   "start": 61,
+   "length": 6,
+   "scopes": [
+    "tag",
+    "name"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 1,
+   "scopes": [
+    "tag"
+   ]
+  }
+ ]
+}

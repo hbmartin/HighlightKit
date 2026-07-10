@@ -1,0 +1,90 @@
+{
+ "language": "javascript",
+ "relevance": 4,
+ "tokens": [
+  {
+   "start": 4,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 10,
+   "length": 14,
+   "scopes": [
+    "variable.constant"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 7,
+   "scopes": [
+    "variable.constant"
+   ]
+  },
+  {
+   "start": 58,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 72,
+   "length": 7,
+   "scopes": [
+    "variable.constant"
+   ]
+  },
+  {
+   "start": 89,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 2,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 105,
+   "length": 7,
+   "scopes": [
+    "variable.constant"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

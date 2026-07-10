@@ -1,0 +1,43 @@
+{
+ "language": "kotlin",
+ "relevance": 8,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 32,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 48,
+   "scopes": [
+    "comment",
+    "comment"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 74,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 154,
+   "length": 58,
+   "scopes": [
+    "comment",
+    "comment"
+   ]
+  },
+  {
+   "start": 212,
+   "length": 26,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

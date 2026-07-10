@@ -1,0 +1,34 @@
+{
+ "language": "dos",
+ "relevance": 22,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 11,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 13,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 4,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 45,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  }
+ ]
+}

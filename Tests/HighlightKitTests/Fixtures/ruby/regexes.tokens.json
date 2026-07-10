@@ -1,0 +1,41 @@
+{
+ "language": "ruby",
+ "relevance": 5,
+ "tokens": [
+  {
+   "start": 7,
+   "length": 11,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 16,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 50,
+   "length": 12,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 70,
+   "length": 12,
+   "scopes": [
+    "regexp"
+   ]
+  },
+  {
+   "start": 90,
+   "length": 16,
+   "scopes": [
+    "regexp"
+   ]
+  }
+ ]
+}

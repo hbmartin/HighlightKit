@@ -1,0 +1,104 @@
+{
+ "language": "erlang",
+ "relevance": 0,
+ "tokens": [
+  {
+   "start": 10,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 9,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 52,
+   "length": 6,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 4,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 83,
+   "length": 23,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 118,
+   "length": 6,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 164,
+   "length": 7,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 181,
+   "length": 6,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 204,
+   "length": 16,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 229,
+   "length": 5,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 250,
+   "length": 13,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 270,
+   "length": 8,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 292,
+   "length": 17,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

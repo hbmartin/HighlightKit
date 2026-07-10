@@ -1,0 +1,79 @@
+{
+ "language": "python",
+ "relevance": 7,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 1,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 3,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 3,
+   "scopes": [
+    "params",
+    "built_in"
+   ]
+  },
+  {
+   "start": 12,
+   "length": 8,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 20,
+   "length": 4,
+   "scopes": [
+    "params",
+    "built_in"
+   ]
+  },
+  {
+   "start": 24,
+   "length": 3,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 4,
+   "scopes": [
+    "params",
+    "literal"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  },
+  {
+   "start": 46,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  }
+ ]
+}

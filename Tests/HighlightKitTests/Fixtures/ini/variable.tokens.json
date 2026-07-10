@@ -1,0 +1,34 @@
+{
+ "language": "ini",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 12,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 15,
+   "length": 19,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 5,
+   "scopes": [
+    "variable"
+   ]
+  }
+ ]
+}

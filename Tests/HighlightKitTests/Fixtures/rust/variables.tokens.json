@@ -1,0 +1,69 @@
+{
+ "language": "rust",
+ "relevance": 4,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 4,
+   "length": 3,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 13,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 17,
+   "length": 3,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 26,
+   "length": 8,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 40,
+   "length": 5,
+   "scopes": [
+    "variable"
+   ]
+  }
+ ]
+}

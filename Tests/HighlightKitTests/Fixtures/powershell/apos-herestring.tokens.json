@@ -1,0 +1,20 @@
+{
+ "language": "powershell",
+ "relevance": 1,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 79,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 133,
+   "length": 148,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "language": "javascript",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 19,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 3,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 29,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  }
+ ]
+}

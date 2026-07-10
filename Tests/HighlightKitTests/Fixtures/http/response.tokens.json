@@ -1,0 +1,160 @@
+{
+ "language": "http",
+ "relevance": 23,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 3,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 11,
+   "length": 8,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 45,
+   "length": 12,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 4,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 120,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 127,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 159,
+   "length": 13,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 172,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 198,
+   "length": 6,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 204,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 210,
+   "length": 14,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 224,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 230,
+   "length": 16,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 246,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 250,
+   "length": 15,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 265,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  },
+  {
+   "start": 278,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 285,
+   "length": 2,
+   "scopes": [
+    "punctuation"
+   ]
+  }
+ ]
+}

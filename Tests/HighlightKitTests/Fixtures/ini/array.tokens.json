@@ -1,0 +1,62 @@
+{
+ "language": "ini",
+ "relevance": 9,
+ "tokens": [
+  {
+   "start": 1,
+   "length": 3,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 11,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 34,
+   "length": 29,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 69,
+   "length": 29,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 30,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 2,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 148,
+   "length": 4,
+   "scopes": [
+    "literal"
+   ]
+  }
+ ]
+}

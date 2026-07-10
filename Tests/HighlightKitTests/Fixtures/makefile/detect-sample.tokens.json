@@ -1,0 +1,70 @@
+{
+ "language": "makefile",
+ "relevance": 11,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 10,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 11,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 71,
+   "length": 6,
+   "scopes": [
+    "meta",
+    "keyword"
+   ]
+  },
+  {
+   "start": 77,
+   "length": 12,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 91,
+   "length": 5,
+   "scopes": [
+    "section"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 27,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 144,
+   "length": 11,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 157,
+   "length": 6,
+   "scopes": [
+    "section"
+   ]
+  },
+  {
+   "start": 172,
+   "length": 11,
+   "scopes": [
+    "variable"
+   ]
+  }
+ ]
+}

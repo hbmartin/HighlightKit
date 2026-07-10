@@ -1,0 +1,115 @@
+{
+ "language": "typescript",
+ "relevance": 7,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 15,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 21,
+   "length": 14,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 44,
+   "length": 12,
+   "scopes": [
+    "title.class.inherited"
+   ]
+  },
+  {
+   "start": 64,
+   "length": 11,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 76,
+   "length": 6,
+   "scopes": [
+    "params",
+    "attr"
+   ]
+  },
+  {
+   "start": 82,
+   "length": 2,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 20,
+   "scopes": [
+    "params",
+    "title.class"
+   ]
+  },
+  {
+   "start": 111,
+   "length": 54,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 165,
+   "length": 6,
+   "scopes": [
+    "comment",
+    "doctag"
+   ]
+  },
+  {
+   "start": 171,
+   "length": 1,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 172,
+   "length": 6,
+   "scopes": [
+    "comment",
+    "variable"
+   ]
+  },
+  {
+   "start": 178,
+   "length": 27,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

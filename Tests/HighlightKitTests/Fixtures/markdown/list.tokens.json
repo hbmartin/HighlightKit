@@ -1,0 +1,41 @@
+{
+ "language": "markdown",
+ "relevance": 5,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 17,
+   "length": 1,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 35,
+   "length": 3,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 5,
+   "scopes": [
+    "bullet"
+   ]
+  },
+  {
+   "start": 72,
+   "length": 5,
+   "scopes": [
+    "bullet"
+   ]
+  }
+ ]
+}

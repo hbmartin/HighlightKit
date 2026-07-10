@@ -1,0 +1,76 @@
+{
+ "language": "shell",
+ "relevance": 9,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 2,
+   "length": 4,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 7,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 111,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 144,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 146,
+   "length": 4,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 151,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 156,
+   "length": 2,
+   "scopes": [
+    "meta.prompt"
+   ]
+  },
+  {
+   "start": 158,
+   "length": 6,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

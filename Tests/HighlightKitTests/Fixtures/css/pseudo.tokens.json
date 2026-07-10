@@ -1,0 +1,90 @@
+{
+ "language": "css",
+ "relevance": 12,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 5,
+   "length": 7,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 14,
+   "length": 5,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 19,
+   "length": 6,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 30,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 45,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 5,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 65,
+   "length": 8,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 5,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 80,
+   "length": 7,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 92,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 107,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  }
+ ]
+}

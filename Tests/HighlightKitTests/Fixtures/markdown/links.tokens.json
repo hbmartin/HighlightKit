@@ -1,0 +1,48 @@
+{
+ "language": "markdown",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 4,
+   "length": 19,
+   "scopes": [
+    "link"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 19,
+   "scopes": [
+    "link"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 3,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 56,
+   "length": 19,
+   "scopes": [
+    "link"
+   ]
+  },
+  {
+   "start": 78,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 84,
+   "length": 19,
+   "scopes": [
+    "link"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,211 @@
+{
+ "language": "typescript",
+ "relevance": 20,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 6,
+   "length": 7,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 18,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 25,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 7,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 41,
+   "length": 6,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 51,
+   "length": 11,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 63,
+   "length": 4,
+   "scopes": [
+    "params",
+    "attr"
+   ]
+  },
+  {
+   "start": 67,
+   "length": 2,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 69,
+   "length": 6,
+   "scopes": [
+    "params",
+    "built_in"
+   ]
+  },
+  {
+   "start": 83,
+   "length": 4,
+   "scopes": [
+    "variable.language"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 7,
+   "scopes": [
+    "property"
+   ]
+  },
+  {
+   "start": 110,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 122,
+   "length": 7,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 130,
+   "length": 4,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 137,
+   "length": 6,
+   "scopes": [
+    "variable.language"
+   ]
+  },
+  {
+   "start": 144,
+   "length": 8,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 157,
+   "length": 6,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 164,
+   "length": 9,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 174,
+   "length": 11,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 186,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 194,
+   "length": 5,
+   "scopes": [
+    "title.class"
+   ]
+  },
+  {
+   "start": 206,
+   "length": 10,
+   "scopes": [
+    "attr"
+   ]
+  },
+  {
+   "start": 218,
+   "length": 3,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 229,
+   "length": 7,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 249,
+   "length": 6,
+   "scopes": [
+    "built_in"
+   ]
+  },
+  {
+   "start": 265,
+   "length": 7,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 273,
+   "length": 5,
+   "scopes": [
+    "function"
+   ]
+  },
+  {
+   "start": 285,
+   "length": 19,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

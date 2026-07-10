@@ -1,0 +1,70 @@
+{
+ "language": "javascript",
+ "relevance": 6,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 9,
+   "length": 17,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 28,
+   "length": 8,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 36,
+   "length": 7,
+   "scopes": [
+    "params",
+    "string"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 8,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 57,
+   "length": 8,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 66,
+   "length": 17,
+   "scopes": [
+    "title.function"
+   ]
+  },
+  {
+   "start": 85,
+   "length": 13,
+   "scopes": [
+    "params"
+   ]
+  },
+  {
+   "start": 104,
+   "length": 6,
+   "scopes": [
+    "comment"
+   ]
+  }
+ ]
+}

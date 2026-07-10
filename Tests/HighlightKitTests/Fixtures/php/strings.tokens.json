@@ -1,0 +1,192 @@
+{
+ "language": "php",
+ "relevance": 28,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 5,
+   "scopes": [
+    "meta"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 24,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 33,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 39,
+   "length": 45,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 88,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 7,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 101,
+   "length": 15,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 116,
+   "length": 13,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 129,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 137,
+   "length": 2,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 143,
+   "length": 4,
+   "scopes": [
+    "keyword"
+   ]
+  },
+  {
+   "start": 149,
+   "length": 17,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 166,
+   "length": 15,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 181,
+   "length": 13,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 194,
+   "length": 8,
+   "scopes": [
+    "string",
+    "subst"
+   ]
+  },
+  {
+   "start": 202,
+   "length": 5,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 211,
+   "length": 17,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 230,
+   "length": 8,
+   "scopes": [
+    "title.function.invoke"
+   ]
+  },
+  {
+   "start": 239,
+   "length": 38,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 281,
+   "length": 8,
+   "scopes": [
+    "title.function.invoke"
+   ]
+  },
+  {
+   "start": 290,
+   "length": 44,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 338,
+   "length": 16,
+   "scopes": [
+    "comment"
+   ]
+  },
+  {
+   "start": 356,
+   "length": 4,
+   "scopes": [
+    "variable"
+   ]
+  },
+  {
+   "start": 363,
+   "length": 62,
+   "scopes": [
+    "string"
+   ]
+  },
+  {
+   "start": 428,
+   "length": 8,
+   "scopes": [
+    "title.function.invoke"
+   ]
+  },
+  {
+   "start": 437,
+   "length": 66,
+   "scopes": [
+    "string"
+   ]
+  }
+ ]
+}

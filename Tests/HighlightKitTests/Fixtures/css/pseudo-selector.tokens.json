@@ -1,0 +1,188 @@
+{
+ "language": "css",
+ "relevance": 25,
+ "tokens": [
+  {
+   "start": 0,
+   "length": 2,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 2,
+   "length": 4,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 7,
+   "length": 4,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 15,
+   "length": 2,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 17,
+   "length": 4,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 22,
+   "length": 4,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 27,
+   "length": 4,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 32,
+   "length": 6,
+   "scopes": [
+    "selector-class"
+   ]
+  },
+  {
+   "start": 43,
+   "length": 12,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 60,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 69,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 75,
+   "length": 14,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 94,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 103,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 109,
+   "length": 11,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 125,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 134,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 140,
+   "length": 13,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 158,
+   "length": 7,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 167,
+   "length": 1,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 173,
+   "length": 1,
+   "scopes": [
+    "selector-tag"
+   ]
+  },
+  {
+   "start": 174,
+   "length": 14,
+   "scopes": [
+    "selector-pseudo"
+   ]
+  },
+  {
+   "start": 193,
+   "length": 9,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 204,
+   "length": 6,
+   "scopes": [
+    "number"
+   ]
+  },
+  {
+   "start": 214,
+   "length": 11,
+   "scopes": [
+    "attribute"
+   ]
+  },
+  {
+   "start": 235,
+   "length": 5,
+   "scopes": [
+    "attribute"
+   ]
+  }
+ ]
+}

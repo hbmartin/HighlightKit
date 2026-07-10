@@ -291,14 +291,13 @@ extension LanguageCatalog {
             ],
             relevance: 0
         )
+        let genericArgumentsContains: [Mode] = comments + keywordModes + attributes
+            + [operatorGuard, type]
         let genericArguments = Mode(
             begin: "<",
             end: ">",
             keywords: keywords,
-            contains: comments + keywordModes + attributes + [
-                operatorGuard,
-                type,
-            ]
+            contains: genericArgumentsContains
         )
         type.contains?.append(genericArguments)
 
@@ -310,21 +309,18 @@ extension LanguageCatalog {
             relevance: 0
         )
         // Matches tuples as well as the parameter list of a function type.
+        let tupleContains: [Mode] = [Mode.selfReference, tupleElementName]
+            + comments
+            + [regexp]
+            + keywordModes + builtIns + operators
+            + [number, string]
+            + identifiers + attributes
+            + [type]
         let tuple = Mode(
             begin: #"\("#,
             end: #"\)"#,
             keywords: keywords,
-            contains: [
-                Mode.selfReference,
-                tupleElementName,
-            ] + comments + [
-                regexp,
-            ] + keywordModes + builtIns + operators + [
-                number,
-                string,
-            ] + identifiers + attributes + [
-                type,
-            ],
+            contains: tupleContains,
             relevance: 0
         )
 
@@ -343,20 +339,17 @@ extension LanguageCatalog {
             ],
             relevance: 0
         )
+        let functionParametersContains: [Mode] = [functionParameterName]
+            + comments + keywordModes + operators
+            + [number, string]
+            + attributes
+            + [type, tuple]
         let functionParameters = Mode(
             begin: #"\("#,
             end: #"\)"#,
             keywords: keywords,
             illegal: [#"["']"#],
-            contains: [
-                functionParameterName,
-            ] + comments + keywordModes + operators + [
-                number,
-                string,
-            ] + attributes + [
-                type,
-                tuple,
-            ],
+            contains: functionParametersContains,
             endsParent: true
         )
         // https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362
@@ -435,6 +428,22 @@ extension LanguageCatalog {
             ]
         )
 
+        let typeDeclarationInheritedContains: [Mode] = [
+            Mode(
+                scope: "title.class.inherited",
+                match: .re(KwsSwift.typeIdentifier)
+            ),
+        ] + keywordModes
+        let typeDeclarationInherited = Mode(
+            begin: ":",
+            end: #"\{"#,
+            keywords: keywords,
+            contains: typeDeclarationInheritedContains,
+            relevance: 0
+        )
+        let typeDeclarationContains: [Mode] = [genericParameters]
+            + keywordModes
+            + [typeDeclarationInherited]
         let typeDeclaration = Mode(
             begin: [
                 "(struct|protocol|class|extension|enum|actor)",
@@ -444,22 +453,7 @@ extension LanguageCatalog {
             ],
             beginScope: [1: "keyword", 3: "title.class"],
             keywords: keywords,
-            contains: [
-                genericParameters,
-            ] + keywordModes + [
-                Mode(
-                    begin: ":",
-                    end: #"\{"#,
-                    keywords: keywords,
-                    contains: [
-                        Mode(
-                            scope: "title.class.inherited",
-                            match: .re(KwsSwift.typeIdentifier)
-                        ),
-                    ] + keywordModes,
-                    relevance: 0
-                ),
-            ]
+            contains: typeDeclarationContains
         )
 
         // Add supported submodes to string interpolation.
@@ -467,10 +461,9 @@ extension LanguageCatalog {
             guard let interpol = variant.contains?.first(where: { $0.label == "interpol" }) else { continue }
             // TODO: Interpolation can contain any expression, so there's room for improvement here.
             interpol.keywords = keywords
-            let submodes = keywordModes + builtIns + operators + [
-                number,
-                string,
-            ] + identifiers
+            let submodes: [Mode] = keywordModes + builtIns + operators
+                + [number, string]
+                + identifiers
             interpol.contains = submodes + [
                 Mode(
                     begin: #"\("#,
@@ -480,32 +473,32 @@ extension LanguageCatalog {
             ]
         }
 
+        let rootContains: [Mode] = comments
+            + [
+                functionOrMacro,
+                initSubscript,
+                classFuncDeclaration,
+                classVarDeclaration,
+                typeDeclaration,
+                operatorDeclaration,
+                precedencegroupDeclaration,
+                Mode(
+                    beginKeywords: "import",
+                    end: "$",
+                    contains: comments,
+                    relevance: 0
+                ),
+                regexp,
+            ]
+            + keywordModes + builtIns + operators
+            + [number, string]
+            + identifiers + attributes
+            + [type, tuple]
         return LanguageDefinition(
             name: "swift",
             root: Mode(
                 keywords: keywords,
-                contains: comments + [
-                    functionOrMacro,
-                    initSubscript,
-                    classFuncDeclaration,
-                    classVarDeclaration,
-                    typeDeclaration,
-                    operatorDeclaration,
-                    precedencegroupDeclaration,
-                    Mode(
-                        beginKeywords: "import",
-                        end: "$",
-                        contains: comments,
-                        relevance: 0
-                    ),
-                    regexp,
-                ] + keywordModes + builtIns + operators + [
-                    number,
-                    string,
-                ] + identifiers + attributes + [
-                    type,
-                    tuple,
-                ]
+                contains: rootContains
             )
         )
     }

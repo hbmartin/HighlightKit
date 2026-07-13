@@ -45,8 +45,9 @@ extension ScopeRef: ExpressibleByDictionaryLiteral {
 /// Group numbers are relative to the mode's own pattern.
 public struct CallbackMatch {
     let source: NSString
-    /// nil for synthesized zero-width matches, which have no groups.
-    let result: NSTextCheckingResult?
+    /// Capture groups; synthesized matches describe theirs inline and
+    /// carry no `NSTextCheckingResult`.
+    let groups: MatchGroups
     let matchRange: NSRange
 
     /// The full text being highlighted (zero-copy; UTF-16 indexed).
@@ -61,14 +62,7 @@ public struct CallbackMatch {
     /// groups answer nil — JavaScript's `match[N]` is undefined there,
     /// where `NSTextCheckingResult.range(at:)` would raise.
     public subscript(group: Int) -> String? {
-        let r: NSRange
-        if group == 0 {
-            r = matchRange
-        } else if group > 0, let result, group < result.numberOfRanges {
-            r = result.range(at: group)
-        } else {
-            return nil
-        }
+        let r = groups.range(at: group, in: matchRange)
         guard r.location != NSNotFound else { return nil }
         return source.substring(with: r)
     }

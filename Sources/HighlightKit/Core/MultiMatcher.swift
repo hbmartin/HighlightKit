@@ -473,12 +473,58 @@ final class CompiledRule: @unchecked Sendable {
     }
 }
 
+/// Capture-group carrier for one match. ICU-produced matches retain their
+/// `NSTextCheckingResult`; hand-synthesized matches describe their groups
+/// inline instead of allocating one — an `NSTextCheckingResult` (plus a
+/// range buffer for multi-group shapes) is a heap object per match, and
+/// the parse loop only rarely asks for groups.
+enum MatchGroups {
+    /// No capture groups beyond the full match.
+    case none
+    /// Group 1 spans the first `length` units of the match; every other
+    /// group did not participate. Both synthesized group shapes — the
+    /// `(\s*)\(` params lead-in (group 1 = all but the paren) and the
+    /// value-starter operator table (group 1 = the operator) — have this
+    /// form.
+    case group1(length: Int)
+    /// ICU result carrying real capture-group ranges.
+    case icu(NSTextCheckingResult)
+
+    /// The (mode-relative) capture-group range within `matchRange`,
+    /// with JavaScript `match[N]` semantics: out-of-range and
+    /// non-participating groups both answer "no range" (JS `undefined`),
+    /// where `NSTextCheckingResult.range(at:)` would raise on the former.
+    func range(at group: Int, in matchRange: NSRange) -> NSRange {
+        if group == 0 { return matchRange }
+        guard group > 0 else { return NSRange(location: NSNotFound, length: 0) }
+        switch self {
+        case .none:
+            return NSRange(location: NSNotFound, length: 0)
+        case .group1(let length):
+            return group == 1
+                ? NSRange(location: matchRange.location, length: length)
+                : NSRange(location: NSNotFound, length: 0)
+        case .icu(let result):
+            guard group < result.numberOfRanges else {
+                return NSRange(location: NSNotFound, length: 0)
+            }
+            return result.range(at: group)
+        }
+    }
+}
+
+/// One cached match: its range plus capture groups. The range comes from
+/// the cache's parallel arrays, so consulting a rule's next match costs
+/// no Objective-C dispatch.
+struct CachedMatch {
+    let range: NSRange
+    let groups: MatchGroups
+}
+
 /// The result of running a matcher: which rule fired and where.
 struct MultiMatch {
     let range: NSRange
-    /// nil for synthesized zero-width matches (the `\B|\b` terminator),
-    /// which carry no capture groups.
-    let result: NSTextCheckingResult?
+    let groups: MatchGroups
     let rule: CompiledRule
     /// Index of the fired rule relative to the first rule that was
     /// considered (JS `position`).
@@ -487,17 +533,11 @@ struct MultiMatch {
     var index: Int { range.location }
 
     func groupRange(_ group: Int) -> NSRange {
-        if group == 0 { return range }
-        // Out-of-range group: JavaScript's `match[N]` is undefined there,
-        // where NSTextCheckingResult would raise — clamp to "no match".
-        guard group > 0, let result, group < result.numberOfRanges else {
-            return NSRange(location: NSNotFound, length: 0)
-        }
-        return result.range(at: group)
+        groups.range(at: group, in: range)
     }
 
     func callbackMatch(in source: NSString) -> CallbackMatch {
-        CallbackMatch(source: source, result: result, matchRange: range)
+        CallbackMatch(source: source, groups: groups, matchRange: range)
     }
 }
 
@@ -536,7 +576,7 @@ final class RuleMatchCache {
 
     /// Per-rule lazily materialized match sequence.
     private final class Entry {
-        var results: [NSTextCheckingResult] = []
+        var groups: [MatchGroups] = []
         var starts: [Int] = []
         var ends: [Int] = []
         /// Index of the first list element not yet passed by queries.
@@ -593,7 +633,7 @@ final class RuleMatchCache {
         in source: String,
         length: Int,
         from location: Int
-    ) -> NSTextCheckingResult? {
+    ) -> CachedMatch? {
         // Once any cancellable scan observes cancellation, do not start ICU
         // or another hand-written prefilter for later rules. The owning
         // parser discards the candidate at the end of this matcher step.
@@ -638,7 +678,12 @@ final class RuleMatchCache {
                     // start here
                     return oneOffSearch(rule, in: source, length: length, from: location)
                 }
-                return entry.results[entry.cursor]
+                let cursor = entry.cursor
+                let start = entry.starts[cursor]
+                return CachedMatch(
+                    range: NSRange(location: start, length: entry.ends[cursor] - start),
+                    groups: entry.groups[cursor]
+                )
             }
 
             // past every cached match
@@ -824,19 +869,17 @@ final class RuleMatchCache {
             range: NSRange(location: entry.resumeFrom, length: length - entry.resumeFrom)
         ) { match, _, stop in
             guard let match else { return }
-            entry.results.append(match)
-            entry.starts.append(match.range.location)
-            entry.ends.append(match.range.location + match.range.length)
+            self.append(entry, match)
             collected += 1
             if collected >= Self.windowSize {
                 sawStop = true
                 stop.pointee = true
             }
         }
-        if sawStop, let last = entry.results.last {
-            // resume after the last match, stepping over zero-width ones
-            entry.resumeFrom = max(last.range.location + last.range.length, last.range.location + 1)
-        } else {
+        // `append` already resumed past the last match (stepping over
+        // zero-width ones); a window that ended early has no further
+        // matches.
+        if !sawStop {
             entry.exhausted = true
         }
     }
@@ -874,9 +917,7 @@ final class RuleMatchCache {
                 callbacksUntilCancellationCheck = Self.cancellationProgressCheckStride
             }
             guard let match else { return }
-            entry.results.append(match)
-            entry.starts.append(match.range.location)
-            entry.ends.append(match.range.location + match.range.length)
+            self.append(entry, match)
             collected += 1
             if collected >= Self.windowSize {
                 sawWindowStop = true
@@ -889,12 +930,8 @@ final class RuleMatchCache {
             // engine observes the task's cancellation flag.
             wasCancelled = true
             entry.exhausted = true
-        } else if sawWindowStop, let last = entry.results.last {
-            entry.resumeFrom = max(
-                last.range.location + last.range.length,
-                last.range.location + 1
-            )
-        } else {
+        } else if !sawWindowStop {
+            // `append` already resumed past the last match.
             entry.exhausted = true
         }
     }
@@ -1219,10 +1256,8 @@ final class RuleMatchCache {
                           rule, in: source, length: length, at: start
                       )
                 else { continue }
-                entry.results.append(match)
-                entry.starts.append(match.range.location)
-                entry.ends.append(match.range.location + match.range.length)
-                cursor = match.range.location + match.range.length
+                append(entry, match)
+                cursor = entry.ends[entry.ends.count - 1]
             }
             if stopIfCancelled(entry) { return }
         }
@@ -1230,16 +1265,26 @@ final class RuleMatchCache {
         entry.exhausted = true
     }
 
-    /// Appends one match to the entry and advances its resume point.
+    /// Appends one ICU match to the entry and advances its resume point.
     @inline(__always)
     private func append(_ entry: Entry, _ result: NSTextCheckingResult) {
-        entry.results.append(result)
-        entry.starts.append(result.range.location)
-        entry.ends.append(result.range.location + result.range.length)
-        entry.resumeFrom = max(
-            result.range.location + result.range.length,
-            result.range.location + 1
-        )
+        let range = result.range
+        entry.groups.append(.icu(result))
+        entry.starts.append(range.location)
+        entry.ends.append(range.location + range.length)
+        entry.resumeFrom = max(range.location + range.length, range.location + 1)
+    }
+
+    /// Appends one synthesized match — no `NSTextCheckingResult` is
+    /// allocated; the capture groups are described inline.
+    @inline(__always)
+    private func appendSynthesized(
+        _ entry: Entry, range: NSRange, groups: MatchGroups
+    ) {
+        entry.groups.append(groups)
+        entry.starts.append(range.location)
+        entry.ends.append(range.location + range.length)
+        entry.resumeFrom = max(range.location + range.length, range.location + 1)
     }
 
     /// Word-then-`(` rules: every match is a word run reaching a `(`
@@ -1400,16 +1445,11 @@ final class RuleMatchCache {
                     return
                 }
                 start = max(start, lowerBound) // a run suffix still matches `\s*`
-                var ranges = [
-                    NSRange(location: start, length: position + 1 - start),
-                    NSRange(location: start, length: position - start),
-                ]
-                let result = ranges.withUnsafeMutableBufferPointer { buffer in
-                    NSTextCheckingResult.regularExpressionCheckingResult(
-                        ranges: buffer.baseAddress!, count: 2, regularExpression: rule.regex
-                    )
-                }
-                append(entry, result)
+                appendSynthesized(
+                    entry,
+                    range: NSRange(location: start, length: position + 1 - start),
+                    groups: .group1(length: position - start)
+                )
                 return
             }
             if stopIfCancelled(entry) { return }
@@ -1463,11 +1503,11 @@ final class RuleMatchCache {
                             continue scan
                         }
                     }
-                    var range = NSRange(location: position, length: literal.count)
-                    let result = NSTextCheckingResult.regularExpressionCheckingResult(
-                        ranges: &range, count: 1, regularExpression: rule.regex
+                    appendSynthesized(
+                        entry,
+                        range: NSRange(location: position, length: literal.count),
+                        groups: .none
                     )
-                    append(entry, result)
                     return
                 }
                 position += 1
@@ -1512,17 +1552,11 @@ final class RuleMatchCache {
                             entry.exhausted = true
                             return
                         }
-                        var ranges = [
-                            NSRange(location: position, length: end - position),
-                            NSRange(location: position, length: literal.count),
-                            NSRange(location: NSNotFound, length: 0),
-                        ]
-                        let result = ranges.withUnsafeMutableBufferPointer { buffer in
-                            NSTextCheckingResult.regularExpressionCheckingResult(
-                                ranges: buffer.baseAddress!, count: 3, regularExpression: rule.regex
-                            )
-                        }
-                        append(entry, result)
+                        appendSynthesized(
+                            entry,
+                            range: NSRange(location: position, length: end - position),
+                            groups: .group1(length: literal.count)
+                        )
                         return
                     }
                 }
@@ -1623,26 +1657,17 @@ final class RuleMatchCache {
                     : .unicode
                 switch outcome {
                 case .match(let end):
-                    var range = NSRange(location: position, length: end - position)
-                    let result = NSTextCheckingResult.regularExpressionCheckingResult(
-                        ranges: &range, count: 1, regularExpression: rule.regex
+                    appendSynthesized(
+                        entry,
+                        range: NSRange(location: position, length: end - position),
+                        groups: .none
                     )
-                    entry.results.append(result)
-                    entry.starts.append(range.location)
-                    entry.ends.append(range.location + range.length)
-                    entry.resumeFrom = max(range.location + range.length, range.location + 1)
                     return
                 case .unicode:
                     if let match = anchoredAttempt(
                         rule, in: source, length: length, at: position
                     ) {
-                        entry.results.append(match)
-                        entry.starts.append(match.range.location)
-                        entry.ends.append(match.range.location + match.range.length)
-                        entry.resumeFrom = max(
-                            match.range.location + match.range.length,
-                            match.range.location + 1
-                        )
+                        append(entry, match)
                         return
                     }
                 case .none:
@@ -2069,13 +2094,7 @@ final class RuleMatchCache {
                     if let match = anchoredAttempt(
                         rule, in: source, length: length, at: attemptAt
                     ) {
-                        entry.results.append(match)
-                        entry.starts.append(match.range.location)
-                        entry.ends.append(match.range.location + match.range.length)
-                        entry.resumeFrom = max(
-                            match.range.location + match.range.length,
-                            match.range.location + 1
-                        )
+                        append(entry, match)
                         return
                     }
                 }
@@ -2091,7 +2110,8 @@ final class RuleMatchCache {
         in source: String,
         length: Int,
         from location: Int
-    ) -> NSTextCheckingResult? {
+    ) -> CachedMatch? {
+        let found: NSTextCheckingResult?
         if length - location >= Self.cancellationProgressMinimumLength,
            let cancellationProbe {
             var result: NSTextCheckingResult?
@@ -2121,13 +2141,15 @@ final class RuleMatchCache {
                     stop.pointee = true
                 }
             }
-            return result
+            found = result
+        } else {
+            found = rule.regex.firstMatch(
+                in: source,
+                options: [.withTransparentBounds, .withoutAnchoringBounds],
+                range: NSRange(location: location, length: length - location)
+            )
         }
-        return rule.regex.firstMatch(
-            in: source,
-            options: [.withTransparentBounds, .withoutAnchoringBounds],
-            range: NSRange(location: location, length: length - location)
-        )
+        return found.map { CachedMatch(range: $0.range, groups: .icu($0)) }
     }
 }
 
@@ -2159,13 +2181,15 @@ final class CompiledMatcher: Sendable {
         length: Int,
         cache: RuleMatchCache
     ) -> MultiMatch? {
-        var best: (ruleIndex: Int, match: NSTextCheckingResult?, range: NSRange)?
+        var best: (ruleIndex: Int, match: CachedMatch)?
         for index in startIndex..<rules.count {
             let rule = rules[index]
             if rule.alwaysMatchesEmpty {
                 // `\B|\b` matches empty everywhere — no ICU, no allocation
                 if location <= length {
-                    best = (index, nil, NSRange(location: location, length: 0))
+                    best = (index, CachedMatch(
+                        range: NSRange(location: location, length: 0), groups: .none
+                    ))
                     break // matches at `location`; later rules only tie
                 }
                 continue
@@ -2173,17 +2197,19 @@ final class CompiledMatcher: Sendable {
             guard let match = cache.firstMatch(for: rule, in: source, length: length, from: location) else {
                 continue
             }
-            let matchRange = match.range
-            if best == nil || matchRange.location < best!.range.location {
-                best = (index, match, matchRange)
+            if best == nil || match.range.location < best!.match.range.location {
+                best = (index, match)
             }
-            if matchRange.location == location {
+            if match.range.location == location {
                 // nothing can start earlier, and later rules only tie
                 break
             }
         }
         return best.map {
-            MultiMatch(range: $0.range, result: $0.match, rule: rules[$0.ruleIndex], position: $0.ruleIndex - startIndex)
+            MultiMatch(
+                range: $0.match.range, groups: $0.match.groups,
+                rule: rules[$0.ruleIndex], position: $0.ruleIndex - startIndex
+            )
         }
     }
 

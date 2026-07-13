@@ -592,12 +592,27 @@ struct CoreCoverageCompletionTests {
     @Test func synthesizedCallbackMatchRejectsNonzeroCaptureGroups() {
         let match = CallbackMatch(
             source: "x" as NSString,
-            result: nil,
+            groups: .none,
             matchRange: NSRange(location: 0, length: 1)
         )
 
         #expect(match[0] == "x")
         #expect(match[1] == nil)
+        #expect(match[-1] == nil)
+    }
+
+    @Test func group1CallbackMatchExposesExactlyItsLeadingGroup() {
+        // The value-starter shape: full match "==  ", group 1 = "==".
+        let match = CallbackMatch(
+            source: "a ==  b" as NSString,
+            groups: .group1(length: 2),
+            matchRange: NSRange(location: 2, length: 4)
+        )
+
+        #expect(match[0] == "==  ")
+        #expect(match[1] == "==")
+        #expect(match[2] == nil) // non-participating, like ICU's group 2
+        #expect(match[3] == nil) // out of range clamps, like JS match[N]
     }
 
     @Test func variantMergeCarriesEveryRuntimeControlField() throws {
@@ -801,11 +816,27 @@ struct CoreCoverageCompletionTests {
         let rule = try compiledRule("x")
         let match = MultiMatch(
             range: NSRange(location: 3, length: 2),
-            result: nil,
+            groups: .none,
             rule: rule,
             position: 0
         )
         #expect(match.groupRange(0) == NSRange(location: 3, length: 2))
+        #expect(match.groupRange(1).location == NSNotFound)
+        #expect(match.groupRange(-1).location == NSNotFound)
+    }
+
+    @Test func multiMatchGroup1ShapeAnswersOnlyItsLeadingGroup() throws {
+        let rule = try compiledRule("x")
+        let match = MultiMatch(
+            range: NSRange(location: 3, length: 4),
+            groups: .group1(length: 2),
+            rule: rule,
+            position: 0
+        )
+        #expect(match.groupRange(0) == NSRange(location: 3, length: 4))
+        #expect(match.groupRange(1) == NSRange(location: 3, length: 2))
+        #expect(match.groupRange(2).location == NSNotFound)
+        #expect(match.groupRange(-1).location == NSNotFound)
     }
 
     @Test func unicodeSecondParameterFallsBackToTheRegexEngine() throws {

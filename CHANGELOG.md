@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Engine: cached matches carry their capture groups inline
+  (`.none`/`.group1`/`.icu`) instead of allocating an
+  `NSTextCheckingResult` (plus a range buffer) per hand-synthesized
+  match, and rule consultations read cached ranges without
+  Objective-C dispatch. Measured (15-pair paired A/B, 95% CI excluding
+  zero): JavaScript +4.78%, TypeScript +3.78%, real-Swift +1.82%, SQL
+  +0.87% throughput; JavaScript incremental latency −1.58%. No behavior
+  change; group semantics remain JavaScript `match[N]`-exact.
+
 ## 0.1.0 — 2026-07-10
 
 Initial release.

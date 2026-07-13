@@ -14,6 +14,16 @@ struct SwiftPrefilterTests {
         init(_ result: NSTextCheckingResult) {
             self.ranges = (0..<result.numberOfRanges).map(result.range(at:))
         }
+
+        /// Resolves the cache's match through the same group accessor the
+        /// engine uses, over ICU's full group count — synthesized and
+        /// ICU-produced matches must be indistinguishable, including
+        /// non-participating groups.
+        init(_ match: CachedMatch, groupCount: Int) {
+            self.ranges = (0..<groupCount).map {
+                match.groups.range(at: $0, in: match.range)
+            }
+        }
     }
 
     /// The grammar-side pattern set must map to the intended prefilters
@@ -137,10 +147,11 @@ struct SwiftPrefilterTests {
             }
         }
         let cache = RuleMatchCache(slotCount: 1, units: units)
+        let groupCount = rule.regex.numberOfCaptureGroups + 1
         var actual: [MatchSignature] = []
         var position = 0
         while let match = cache.firstMatch(for: rule, in: input, length: ns.length, from: position) {
-            actual.append(MatchSignature(match))
+            actual.append(MatchSignature(match, groupCount: groupCount))
             position = max(match.range.location + match.range.length, match.range.location + 1)
         }
         var expected: [MatchSignature] = []
@@ -184,6 +195,7 @@ struct SwiftPrefilterTests {
                 }
             }
             let cache = RuleMatchCache(slotCount: 1, units: units)
+            let groupCount = rule.regex.numberOfCaptureGroups + 1
             for location in locations {
                 let actual = cache.firstMatch(
                     for: rule, in: input, length: ns.length, from: location
@@ -193,7 +205,10 @@ struct SwiftPrefilterTests {
                     options: [.withTransparentBounds, .withoutAnchoringBounds],
                     range: NSRange(location: location, length: ns.length - location)
                 )
-                #expect(actual.map(MatchSignature.init) == expected.map(MatchSignature.init))
+                #expect(
+                    actual.map { MatchSignature($0, groupCount: groupCount) }
+                        == expected.map(MatchSignature.init)
+                )
             }
         }
     }

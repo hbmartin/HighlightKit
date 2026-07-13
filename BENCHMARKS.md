@@ -22,15 +22,16 @@ swift build -c release
 |---|---|---|
 | JSON | JS sample | 2.08 |
 | SQL | JS sample | 2.01 |
-| Swift | real Swift source | 1.84 |
+| Swift | real Swift source | 1.97 |
 | Swift | JS sample | 1.09 |
 | TypeScript | JS sample | 0.81 |
 | JavaScript | JS sample | 1.12 |
 
-JavaScript, TypeScript, SQL, and real-Swift rows are final-v3 candidate medians
-from the primary production campaign; JSON and Swift-on-JS are representative
-warm snapshots from the same optimization series. Values are rounded to two
-decimals. Use paired A/B data, not cross-row arithmetic, to evaluate a change.
+JavaScript, TypeScript, SQL, and real-Swift rows are candidate medians from
+the latest production campaign (inline match-group representation); JSON and
+Swift-on-JS are representative warm snapshots from the same optimization
+series. Values are rounded to two decimals. Use paired A/B data, not cross-row
+arithmetic, to evaluate a change.
 
 Throughput is grammar-bound, not input-bound: it scales with how many
 rules the grammar races at each position and how match-dense the input

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Engine: bare `\s+` rules synthesize ASCII whitespace runs directly and
+  defer to ICU whenever a non-ASCII unit could participate (`\s` is
+  Unicode-aware). Measured (15-pair paired A/B): JavaScript incremental
+  latency −1.37% (95% CI excluding zero, 15/15 pairs); no regressions.
 - Engine: keyword lookups probe a flat UTF-16 table straight from the
   input buffer — no per-word substring, `String` allocation, or Unicode
   hashing — and relevance-saturation counters are dense per-language

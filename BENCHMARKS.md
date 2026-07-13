@@ -43,7 +43,7 @@ grammar; simple grammars run several times faster.
 
 | Scenario | Result |
 |---|---|
-| One line, continuation-threaded (JS, avg 62-unit lines) | **36 µs** |
+| One line, continuation-threaded (JS, avg 62-unit lines) | **35 µs** |
 | Blank line floor (JSON grammar → Swift grammar) | 5–17 µs |
 | Auto-detect, 65 languages, warm, concurrent | **3.3 ms** (6.5× vs sequential) |
 | Auto-detect, cold (compiles all 65 grammars) | ~24 ms |

@@ -98,6 +98,12 @@ final class CompiledRule: @unchecked Sendable {
         /// simply outside both classes. No ICU fallback exists on this
         /// path; ICU still answers overlap and pre-scan queries.
         case asciiIdentifier
+        /// A bare `\s+` rule: ASCII whitespace runs are synthesized
+        /// directly. `\s` is Unicode-aware, so any ≥ 0x80 unit seen while
+        /// searching (it could itself be whitespace — U+00A0, NEL U+0085)
+        /// or ending a run (it could extend `\s+`) defers the window to
+        /// ICU enumeration.
+        case whitespaceRun
         /// The ECMAScript arrow-function lead-in
         /// `(\(params…\)|ident)\s*=>` — the profile's single hottest rule
         /// (nested-paren backtracking at every `(` in the file). Every
@@ -399,6 +405,11 @@ final class CompiledRule: @unchecked Sendable {
         // ASCII scan cannot see.
         if !caseInsensitive, pattern == Ecmascript.identRe {
             return .asciiIdentifier
+        }
+        // Bare whitespace runs. Case has no meaning for `\s`, and the
+        // pattern carries no anchors, so no option gates apply.
+        if pattern == #"\s+"# {
+            return .whitespaceRun
         }
         // The arrow-function lead-in — matches are pinned to `=>`.
         if pattern == #"(\([^()]*(\([^()]*(\([^()]*\)[^()]*)*\)[^()]*)*\)|[a-zA-Z_]\w*)\s*=>"# {
@@ -799,6 +810,9 @@ final class RuleMatchCache {
             return
         case .asciiIdentifier:
             extendAsciiIdentifier(entry, length: length)
+            return
+        case .whitespaceRun:
+            extendWhitespaceRuns(entry, rule: rule, in: source, length: length)
             return
         case .identBeforeColon:
             extendViaCandidates(entry, rule: rule, in: source, length: length) { position in
@@ -1481,6 +1495,56 @@ final class RuleMatchCache {
             if stopIfCancelled(entry) { return }
         }
         entry.exhausted = true
+    }
+
+    /// A bare `\s+` rule. On units below 0x80, ICU's `\s` is exactly
+    /// TAB–CR (0x09–0x0D) plus space (0x20) — pinned differentially —
+    /// so ASCII runs are synthesized without ICU. Any ≥ 0x80 unit seen
+    /// while searching or ending a run defers the window to enumeration
+    /// (`\s` matches U+0085, U+00A0, U+1680, U+2000–U+200A, U+2028/29,
+    /// U+202F, U+205F, U+3000).
+    private func extendWhitespaceRuns(
+        _ entry: Entry, rule: CompiledRule, in source: String, length: Int
+    ) {
+        var position = entry.resumeFrom
+        while position < length {
+            let chunkEnd = scanChunkEnd(from: position, length: length)
+            while position < chunkEnd {
+                let u = units[position]
+                if u >= 0x80 {
+                    // could itself be Unicode whitespace — ICU decides
+                    extendViaEnumeration(entry, rule: rule, in: source, length: length)
+                    return
+                }
+                guard Self.isWhitespaceASCII(u) else {
+                    position += 1
+                    continue
+                }
+                var end = position + 1
+                while end < length, Self.isWhitespaceASCII(units[end]) {
+                    end += 1
+                }
+                if end < length, units[end] >= 0x80 {
+                    // a Unicode space could extend the run
+                    extendViaEnumeration(entry, rule: rule, in: source, length: length)
+                    return
+                }
+                appendSynthesized(
+                    entry,
+                    range: NSRange(location: position, length: end - position),
+                    groups: .none
+                )
+                return
+            }
+            if stopIfCancelled(entry) { return }
+        }
+        entry.exhausted = true
+    }
+
+    /// ASCII `\s` — `[\t\n\v\f\r ]` (0x09–0x0D and 0x20).
+    @inline(__always)
+    private static func isWhitespaceASCII(_ u: UInt16) -> Bool {
+        u == 0x20 || (u >= 0x09 && u <= 0x0D)
     }
 
     /// Literally `(\s*)\(`: every `(` is a match whose group 1 is the

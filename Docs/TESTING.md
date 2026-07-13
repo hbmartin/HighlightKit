@@ -84,6 +84,29 @@ uncovered regions are those same invariants plus nondeterministic task-
 cancellation scheduling windows. We report the raw rate rather than deleting
 defensive checks or adding production hooks merely to print 100.00%.
 
+A follow-up audit on 2026-07-13 (Swift 6.3.2, 257 tests / 30 suites, after
+the steps 28–33 engine campaigns roughly doubled the hand-written scanning
+surface) measured `Sources/HighlightKit` excluding `Languages/`:
+
+| Metric | Covered | Raw llvm-cov rate |
+|---|---:|---:|
+| Lines | 5,179 / 5,362 | 96.59% |
+| Functions / instantiations | 489 / 498 | 98.19% |
+| Regions | 2,149 / 2,274 | 94.50% |
+
+The `AsyncScanCoverageTests` suite added in this audit drives every
+prefilter's chunked async scan variant differentially against raw ICU with a
+never-true probe, under deterministic mid-scan cancellation, and through the
+three ≥1 MiB `.reportProgress` sites. The residue is, by inspection: probe-true
+branches inside specific chunked backward walks (reaching them requires a
+probe that flips during one particular stride of one particular scan — a
+timing-window test that would pin magic call counts, the same
+nondeterministic-cancellation category as the 2026-07-10 audit), the
+structurally identical stride-reset clones of covered cancellation shapes,
+and the previously documented retained safety contracts. The differential
+suites — not the coverage counter — remain the correctness mechanism for the
+hand-written scanning paths.
+
 ## Differential fuzzing against highlight.js
 
 Beyond the corpus fixtures, `Scripts/difftest.py` tokenizes seeded random and

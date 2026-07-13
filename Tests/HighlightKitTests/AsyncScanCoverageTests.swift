@@ -171,4 +171,76 @@ struct AsyncScanCoverageTests {
             ) == nil)
         }
     }
+
+    /// The cancellable anchored attempt runs when a candidate sits at
+    /// least one mebi-unit from the end. A number candidate at position
+    /// zero of a huge digit run drives its pre-probe, its mid-scan
+    /// probe, and its successful-result branch.
+    @Test func megabyteAnchoredAttemptHonorsCancellation() throws {
+        let digits = String(repeating: "9", count: 1_100_000)
+        let ns = digits as NSString
+        let pattern = #"\b(0|[1-9](_?[0-9])*|0[0-7]*[89][0-9]*)n\b"#
+        // Pre-probe cancellation (first probe call is inside the attempt).
+        for cancelAt in [1, 2] {
+            let calls = Mutex(0)
+            let (cache, _) = makeCache(digits) {
+                calls.withLock { count in
+                    count += 1
+                    return count >= cancelAt
+                }
+            }
+            let rule = try CompiledRule(
+                pattern: pattern, kind: .end, options: [], language: "test", slot: 0
+            )
+            #expect(cache.firstMatch(for: rule, in: digits, length: ns.length, from: 0) == nil)
+        }
+        // No cancellation: the anchored attempt completes (here: no match,
+        // since the run never ends in `n`), and a matching rule succeeds.
+        let (calm, _) = makeCache(digits) { false }
+        let bigInt = try CompiledRule(
+            pattern: pattern, kind: .end, options: [], language: "test", slot: 0
+        )
+        #expect(calm.firstMatch(for: bigInt, in: digits, length: ns.length, from: 0) == nil)
+        #expect(!calm.wasCancelled)
+    }
+
+    /// Synchronous edge shapes the differential suites had not reached:
+    /// the whitespace-backward `.unicode` bail behind `(\s*)\(`, arrow
+    /// walks over balanced-paren groups and digit-led identifier runs,
+    /// and prose candidates truncated at end of input.
+    @Test func syncEdgeShapesMatchICU() throws {
+        let shapes: [(pattern: String, inputs: [String])] = [
+            (#"(\s*)\("#, ["a\u{00A0}  (b)", "\u{00A0}("]),
+            (#"(\([^()]*(\([^()]*(\([^()]*\)[^()]*)*\)[^()]*)*\)|[a-zA-Z_]\w*)\s*=>"#,
+             ["(a(b)c) => d", "((())) =>", "9abc => d", "99 => x", "((a) =>"]),
+            (CommonModes.proseSequencePattern,
+             [" so it is", " so it", " it", " a. ", " word-word word's a"]),
+        ]
+        for (pattern, inputs) in shapes {
+            let rule = try CompiledRule(
+                pattern: pattern, kind: .end, options: [.anchorsMatchLines],
+                language: "test", slot: 0
+            )
+            for input in inputs {
+                let (cache, ns) = makeCache(input) { false }
+                var actual: [NSRange] = []
+                var position = 0
+                while let match = cache.firstMatch(
+                    for: rule, in: input, length: ns.length, from: position
+                ) {
+                    actual.append(match.range)
+                    position = max(match.range.location + match.range.length, match.range.location + 1)
+                }
+                var expected: [NSRange] = []
+                rule.regex.enumerateMatches(
+                    in: input,
+                    options: [.withTransparentBounds, .withoutAnchoringBounds],
+                    range: NSRange(location: 0, length: ns.length)
+                ) { match, _, _ in
+                    if let match { expected.append(match.range) }
+                }
+                #expect(actual == expected, Comment(rawValue: "\(pattern) on \(input.debugDescription)"))
+            }
+        }
+    }
 }

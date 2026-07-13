@@ -92,6 +92,12 @@ final class CompiledRule: @unchecked Sendable {
         /// attempts this at every identifier in the file; colons are far
         /// rarer than identifiers.
         case identBeforeColon
+        /// The bare ECMAScript identifier `[A-Za-z$_][0-9A-Za-z$_]*`,
+        /// case-sensitive rules only: both classes are pure ASCII, so
+        /// the raw UTF-16 scan *is* the regex — a non-ASCII unit is
+        /// simply outside both classes. No ICU fallback exists on this
+        /// path; ICU still answers overlap and pre-scan queries.
+        case asciiIdentifier
         /// The ECMAScript arrow-function lead-in
         /// `(\(params…\)|ident)\s*=>` — the profile's single hottest rule
         /// (nested-paren backtracking at every `(` in the file). Every
@@ -384,8 +390,15 @@ final class CompiledRule: @unchecked Sendable {
             }
         }
         // `ident(?=:)` — matches are pinned to a colon after the run.
-        if pattern == "[A-Za-z$_][0-9A-Za-z$_]*(?=:)" {
+        if pattern == Ecmascript.identRe + "(?=:)" {
             return .identBeforeColon
+        }
+        // The bare identifier — exact in ASCII, no confirmation needed.
+        // Case-sensitive only: ICU's caseInsensitive folds *input* units
+        // (e.g. U+212A KELVIN SIGN → `k` matches `[a-z]`), which a raw
+        // ASCII scan cannot see.
+        if !caseInsensitive, pattern == Ecmascript.identRe {
+            return .asciiIdentifier
         }
         // The arrow-function lead-in — matches are pinned to `=>`.
         if pattern == #"(\([^()]*(\([^()]*(\([^()]*\)[^()]*)*\)[^()]*)*\)|[a-zA-Z_]\w*)\s*=>"# {
@@ -781,6 +794,9 @@ final class RuleMatchCache {
                 return self.proseCandidate(at: position, length: length)
                     ? position : nil
             }
+            return
+        case .asciiIdentifier:
+            extendAsciiIdentifier(entry, length: length)
             return
         case .identBeforeColon:
             extendViaCandidates(entry, rule: rule, in: source, length: length) { position in
@@ -1426,6 +1442,39 @@ final class RuleMatchCache {
                     }
                 }
                 position += 1
+            }
+            if stopIfCancelled(entry) { return }
+        }
+        entry.exhausted = true
+    }
+
+    /// The bare ECMAScript identifier `[A-Za-z$_][0-9A-Za-z$_]*`. Both
+    /// classes are pure ASCII and the pattern has no assertions, so the
+    /// raw UTF-16 scan decides every position exactly: a non-ASCII unit
+    /// is outside both classes and either skips a start or ends a run.
+    /// The run extension deliberately crosses chunk boundaries — a
+    /// pathological single identifier spanning the whole input costs one
+    /// tight ASCII walk (~1 ns/unit), far below the cancellation
+    /// latencies the chunking exists to bound.
+    private func extendAsciiIdentifier(_ entry: Entry, length: Int) {
+        var position = entry.resumeFrom
+        while position < length {
+            let chunkEnd = scanChunkEnd(from: position, length: length)
+            while position < chunkEnd {
+                guard Self.isIdentStart(units[position]) else {
+                    position += 1
+                    continue
+                }
+                var end = position + 1
+                while end < length, Self.isIdentBody(units[end]) {
+                    end += 1
+                }
+                appendSynthesized(
+                    entry,
+                    range: NSRange(location: position, length: end - position),
+                    groups: .none
+                )
+                return
             }
             if stopIfCancelled(entry) { return }
         }

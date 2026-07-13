@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Engine: the bare ECMAScript identifier rule is matched by an exact
+  raw UTF-16 scan (its character classes are pure ASCII), eliminating
+  whole-window ICU enumeration of every identifier. Case-insensitive
+  rules keep ICU (its case folding reaches non-ASCII input units).
+  Measured (15-pair paired A/B, 95% CI excluding zero): JavaScript
+  +2.83%, TypeScript +1.99% throughput, JavaScript incremental −0.73%;
+  non-ECMAScript controls neutral.
 - Engine: the literal-table prefilters (Swift punctuated keywords,
   ECMAScript value starters) dispatch through a 128-slot directly-indexed
   bucket array instead of hashing a `Dictionary` at every input position.

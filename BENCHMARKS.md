@@ -21,14 +21,14 @@ swift build -c release
 | Grammar | Input | MU/s |
 |---|---|---|
 | JSON | JS sample | 2.08 |
-| SQL | JS sample | 2.01 |
-| Swift | real Swift source | 2.11 |
+| SQL | JS sample | 2.02 |
+| Swift | real Swift source | 2.12 |
 | Swift | JS sample | 1.09 |
-| TypeScript | JS sample | 0.82 |
-| JavaScript | JS sample | 1.15 |
+| TypeScript | JS sample | 0.84 |
+| JavaScript | JS sample | 1.18 |
 
 JavaScript, TypeScript, SQL, and real-Swift rows are candidate medians from
-the latest production campaign (direct-index literal-table dispatch); JSON and
+the latest production campaign (exact ASCII identifier scan); JSON and
 Swift-on-JS are representative warm snapshots from the same optimization
 series. Values are rounded to two decimals. Use paired A/B data, not cross-row
 arithmetic, to evaluate a change.

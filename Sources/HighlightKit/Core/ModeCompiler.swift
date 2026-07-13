@@ -35,7 +35,8 @@ enum ModeCompiler {
                 disableAutodetect: definition.disableAutodetect,
                 supersetOf: definition.supersetOf,
                 root: root,
-                ruleSlotCount: context.nextRuleSlot
+                ruleSlotCount: context.nextRuleSlot,
+                keywordHitCounterCount: context.keywordHitIndices.count
             )
         } catch {
             // A throwing child can already have registered a cyclic compiled
@@ -56,6 +57,9 @@ enum ModeCompiler {
         var compiled: [ObjectIdentifier: CompiledMode] = [:]
         /// Allocates per-language cache slots for matcher rules.
         var nextRuleSlot = 0
+        /// One dense relevance-saturation counter per word text across
+        /// all modes — highlight.js counts hits per word per run.
+        var keywordHitIndices: [String: Int32] = [:]
 
         var regexOptions: NSRegularExpression.Options {
             var options: NSRegularExpression.Options = [.anchorsMatchLines]
@@ -139,7 +143,11 @@ enum ModeCompiler {
         cmode.internalBeforeBegin = mode.internalBeforeBegin
 
         if let keywords = mode.keywords {
-            cmode.keywords = KeywordCompiler.compile(keywords, caseInsensitive: context.caseInsensitive)
+            cmode.keywords = KeywordCompiler.compile(
+                keywords,
+                caseInsensitive: context.caseInsensitive,
+                hitIndices: &context.keywordHitIndices
+            )
             cmode.keywordPatternRe = try context.regex(keywords.pattern ?? KeywordCompiler.defaultPattern)
         }
 

@@ -109,6 +109,7 @@ struct HighlightEngine {
             engine: self,
             source: contiguous,
             sourceString: contiguous as String,
+            units: units,
             language: language,
             ignoreIllegals: ignoreIllegals,
             initialMode: initialMode,
@@ -133,6 +134,10 @@ struct HighlightEngine {
         /// The same text as `source`, bridged once — reused for every
         /// `NSRegularExpression` call so no per-call conversion happens.
         let sourceString: String
+        /// The raw UTF-16 units of `source` (shared with `ruleCache`) —
+        /// keyword lookups probe these directly, with no per-word
+        /// substring or `String` allocation.
+        let units: [UInt16]
         let language: CompiledLanguage
         let ignoreIllegals: Bool
         /// Mode in which this invocation started. Unlike `top`, this does
@@ -159,8 +164,9 @@ struct HighlightEngine {
         /// matches highlight.js within a pass; closed-host entries are
         /// pruned before an incremental continuation is returned.
         var subContinuations: [String: ResumeState] = [:]
-        /// Per-run keyword hit counts (relevance saturation).
-        var keywordHits: [String: Int] = [:]
+        /// Per-run keyword hit counts (relevance saturation), indexed by
+        /// the language's dense per-word counter ids.
+        var keywordHits: [UInt8] = []
         /// Per-run callback data, keyed by mode activation (frame) identity.
         var responseData: [ObjectIdentifier: [String: String]] = [:]
         /// Guards the zero-width begin/end deadlock.
@@ -209,32 +215,65 @@ struct HighlightEngine {
             // like the standalone substring highlight.js scans.
             pattern.enumerateMatches(in: sourceString, options: [], range: buffer) { match, _, _ in
                 guard let match else { return }
-                let wordRange = match.range
-                var word = source.substring(with: wordRange)
-                if caseInsensitive { word = word.lowercased() }
-                if let data = keywords[word] {
-                    // flush text preceding the keyword
-                    emitter.addText(length: wordRange.location - lastEnd)
-
-                    if data.relevance != 0 {
-                        let hits = keywordHits[word] ?? 0
-                        if hits < HighlightEngine.maxKeywordHits {
-                            keywordHits[word] = hits + 1
-                            relevance += data.relevance
-                        }
-                    }
-                    if data.scope.hasPrefix("_") {
-                        // relevance-only keyword; no scope applied
-                        emitter.addText(length: wordRange.length)
-                    } else {
-                        emitter.addKeyword(length: wordRange.length, scope: language.aliasedScope(data.scope))
-                    }
-                } else {
-                    emitter.addText(length: wordRange.location - lastEnd + wordRange.length)
-                }
-                lastEnd = wordRange.location + wordRange.length
+                handleKeyword(
+                    match.range,
+                    keywords: keywords,
+                    caseInsensitive: caseInsensitive,
+                    lastEnd: &lastEnd
+                )
             }
             emitter.addText(length: buffer.location + buffer.length - lastEnd)
+        }
+
+        /// One keyword-pattern match: look the word up straight in the
+        /// UTF-16 buffer (a case-insensitive word containing a non-ASCII
+        /// unit takes the `String` path — full Unicode folding), emit the
+        /// preceding text, and apply scope and saturating relevance.
+        @inline(__always)
+        private mutating func handleKeyword(
+            _ wordRange: NSRange,
+            keywords: CompiledKeywords,
+            caseInsensitive: Bool,
+            lastEnd: inout Int
+        ) {
+            let data: CompiledKeywords.Entry?
+            if caseInsensitive {
+                switch keywords.lookupFoldingASCII(
+                    in: units, location: wordRange.location, length: wordRange.length
+                ) {
+                case .found(let entry): data = entry
+                case .missing: data = nil
+                case .nonASCII:
+                    data = keywords[source.substring(with: wordRange).lowercased()]
+                }
+            } else {
+                data = keywords.lookup(
+                    in: units, location: wordRange.location, length: wordRange.length
+                )
+            }
+            guard let data else {
+                emitter.addText(length: wordRange.location - lastEnd + wordRange.length)
+                lastEnd = wordRange.location + wordRange.length
+                return
+            }
+            // flush text preceding the keyword
+            emitter.addText(length: wordRange.location - lastEnd)
+
+            // hitIndex ≥ 0 exactly when relevance ≠ 0 (see KeywordCompiler)
+            if data.hitIndex >= 0 {
+                let index = Int(data.hitIndex)
+                if keywordHits[index] < HighlightEngine.maxKeywordHits {
+                    keywordHits[index] += 1
+                    relevance += data.relevance
+                }
+            }
+            if data.scope.hasPrefix("_") {
+                // relevance-only keyword; no scope applied
+                emitter.addText(length: wordRange.length)
+            } else {
+                emitter.addKeyword(length: wordRange.length, scope: language.aliasedScope(data.scope))
+            }
+            lastEnd = wordRange.location + wordRange.length
         }
 
         /// Async-only counterpart to ``processKeywords()``. ICU progress
@@ -267,32 +306,12 @@ struct HighlightEngine {
                         RuleMatchCache.cancellationProgressCheckStride
                 }
                 guard let match else { return }
-                let wordRange = match.range
-                var word = source.substring(with: wordRange)
-                if caseInsensitive { word = word.lowercased() }
-                if let data = keywords[word] {
-                    emitter.addText(length: wordRange.location - lastEnd)
-                    if data.relevance != 0 {
-                        let hits = keywordHits[word] ?? 0
-                        if hits < HighlightEngine.maxKeywordHits {
-                            keywordHits[word] = hits + 1
-                            relevance += data.relevance
-                        }
-                    }
-                    if data.scope.hasPrefix("_") {
-                        emitter.addText(length: wordRange.length)
-                    } else {
-                        emitter.addKeyword(
-                            length: wordRange.length,
-                            scope: language.aliasedScope(data.scope)
-                        )
-                    }
-                } else {
-                    emitter.addText(
-                        length: wordRange.location - lastEnd + wordRange.length
-                    )
-                }
-                lastEnd = wordRange.location + wordRange.length
+                handleKeyword(
+                    match.range,
+                    keywords: keywords,
+                    caseInsensitive: caseInsensitive,
+                    lastEnd: &lastEnd
+                )
             }
             if !cancelled {
                 emitter.addText(length: buffer.location + buffer.length - lastEnd)

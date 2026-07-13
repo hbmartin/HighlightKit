@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Engine: keyword lookups probe a flat UTF-16 table straight from the
+  input buffer — no per-word substring, `String` allocation, or Unicode
+  hashing — and relevance-saturation counters are dense per-language
+  arrays instead of a second `String`-keyed dictionary. Case-insensitive
+  words containing non-ASCII units keep the full Unicode-folding path.
+  Measured (15-pair paired A/B, 95% CI excluding zero): SQL +2.26%,
+  real-Swift +1.14%, TypeScript +1.00%, JavaScript +0.93% throughput;
+  controls neutral.
 - Engine: the bare ECMAScript identifier rule is matched by an exact
   raw UTF-16 scan (its character classes are pure ASCII), eliminating
   whole-window ICU enumeration of every identifier. Case-insensitive

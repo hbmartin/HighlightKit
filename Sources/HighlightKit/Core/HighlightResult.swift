@@ -100,16 +100,17 @@ final class ResumeState: Sendable {
     /// Immutable callback-data snapshots keyed by mode-frame identity —
     /// carries e.g. nested `endSameAsBegin` delimiters independently.
     let responseData: [ObjectIdentifier: [String: String]]
-    /// Per-run keyword hit counts, so relevance saturation is continuous
+    /// Per-run keyword hit counts (indexed by the owner generation's
+    /// dense per-word counter ids), so relevance saturation is continuous
     /// across a line-by-line pass.
-    let keywordHits: [String: Int]
+    let keywordHits: [UInt8]
 
     init(
         owner: CompiledLanguage,
         topFrame: ModeFrame,
         subContinuations: [String: ResumeState],
         responseData: [ObjectIdentifier: [String: String]],
-        keywordHits: [String: Int]
+        keywordHits: [UInt8]
     ) {
         self.owner = owner
         self.topFrame = topFrame
@@ -125,7 +126,9 @@ final class ResumeState: Sendable {
             topFrame: ModeFrame(mode: language.root, parent: nil),
             subContinuations: [:],
             responseData: [:],
-            keywordHits: [:]
+            keywordHits: Array(
+                repeating: 0, count: language.keywordHitCounterCount
+            )
         )
     }
 }

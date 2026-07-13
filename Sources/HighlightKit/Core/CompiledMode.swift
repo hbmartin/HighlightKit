@@ -103,6 +103,9 @@ final class CompiledLanguage: @unchecked Sendable {
     /// Number of matcher-rule cache slots the engine must allocate per
     /// run (see ``RuleMatchCache``).
     let ruleSlotCount: Int
+    /// Number of keyword relevance-saturation counters a run allocates
+    /// (one per relevance-carrying word text; see ``CompiledKeywords``).
+    let keywordHitCounterCount: Int
 
     init(
         name: String,
@@ -111,7 +114,8 @@ final class CompiledLanguage: @unchecked Sendable {
         disableAutodetect: Bool,
         supersetOf: String?,
         root: CompiledMode,
-        ruleSlotCount: Int
+        ruleSlotCount: Int,
+        keywordHitCounterCount: Int
     ) {
         self.name = name
         self.caseInsensitive = caseInsensitive
@@ -120,6 +124,7 @@ final class CompiledLanguage: @unchecked Sendable {
         self.supersetOf = supersetOf
         self.root = root
         self.ruleSlotCount = ruleSlotCount
+        self.keywordHitCounterCount = keywordHitCounterCount
     }
 
     func aliasedScope(_ scope: String) -> String {

@@ -43,7 +43,10 @@ struct HelperCoverageTests {
 
     @Test func keywordsExpressibleByArrayLiteral() {
         let keywords: Keywords = ["for", "while", "do"]
-        let compiled = KeywordCompiler.compile(keywords, caseInsensitive: false)
+        var hitIndices: [String: Int32] = [:]
+        let compiled = KeywordCompiler.compile(
+            keywords, caseInsensitive: false, hitIndices: &hitIndices
+        )
         #expect(compiled["for"]?.scope == "keyword")
         #expect(compiled["while"] != nil)
         #expect(compiled["do"] != nil)

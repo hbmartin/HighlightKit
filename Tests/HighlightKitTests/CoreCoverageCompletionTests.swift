@@ -391,7 +391,7 @@ struct CoreCoverageCompletionTests {
             topFrame: base.topFrame,
             subContinuations: base.subContinuations,
             responseData: base.responseData,
-            keywordHits: ["changed": 1]
+            keywordHits: [1]
         )
         let sameKeyLeft = Continuation(
             state: ResumeState(

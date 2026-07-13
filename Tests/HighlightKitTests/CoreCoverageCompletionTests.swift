@@ -793,6 +793,14 @@ struct CoreCoverageCompletionTests {
         #expect(CompiledRule.KeywordTable(sources: [#"\bword\\b"#]) == nil)
     }
 
+    @Test func nonASCIIFirstUnitsFailTableConstructionClosed() {
+        // Direct-index dispatch covers ASCII first units only; anything
+        // else must reject the table so the rule keeps ICU enumeration.
+        #expect(CompiledRule.OperatorTable(alternation: "é|==") == nil)
+        #expect(CompiledRule.OperatorTable(alternation: "😀") == nil)
+        #expect(CompiledRule.OperatorTable(alternation: "==|!=") != nil)
+    }
+
     @Test func malformedDoctagShapeFallsBackToICU() throws {
         let pattern = #"[ ]*(?=(TODO|T0DO):)"#
         let rule = try compiledRule(pattern)

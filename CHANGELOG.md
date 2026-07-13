@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Engine: the literal-table prefilters (Swift punctuated keywords,
+  ECMAScript value starters) dispatch through a 128-slot directly-indexed
+  bucket array instead of hashing a `Dictionary` at every input position.
+  Measured (15-pair paired A/B, 95% CI excluding zero): real-Swift
+  throughput +6.13%, JavaScript +1.48%; all controls neutral. Construction
+  fails closed on non-ASCII first units, so rule semantics are unchanged.
 - Engine: cached matches carry their capture groups inline
   (`.none`/`.group1`/`.icu`) instead of allocating an
   `NSTextCheckingResult` (plus a range buffer) per hand-synthesized

@@ -159,17 +159,27 @@ final class CompiledRule: @unchecked Sendable {
     /// within a bucket preserves the pattern's alternation order — ICU
     /// picks the first listed alternative that matches, not the longest.
     struct OperatorTable {
-        let byFirstUnit: [UInt16: [[UInt16]]]
+        /// Buckets indexed directly by first UTF-16 unit. The scan probes
+        /// this at every input position, so dispatch is one bounds-checked
+        /// array load, not a `Dictionary` hash. Construction fails closed
+        /// on a non-ASCII first unit (the rule then keeps plain ICU
+        /// enumeration).
+        let byFirstUnit: [[[UInt16]]]
+        static let dispatchWidth = 128
 
         /// Parses an escaped literal alternation (`!|!=|\*|\||…`).
         /// Returns nil if anything but escaped/plain literals appears.
         init?(alternation: String) {
-            var buckets: [UInt16: [[UInt16]]] = [:]
+            var buckets: [[[UInt16]]] = Array(
+                repeating: [], count: Self.dispatchWidth
+            )
             var current: [UInt16] = []
             var iterator = alternation.unicodeScalars.makeIterator()
             func flush() -> Bool {
-                guard let first = current.first else { return false }
-                buckets[first, default: []].append(current)
+                guard let first = current.first,
+                      first < UInt16(Self.dispatchWidth)
+                else { return false }
+                buckets[Int(first)].append(current)
                 current = []
                 return true
             }
@@ -202,7 +212,11 @@ final class CompiledRule: @unchecked Sendable {
     /// would create the boundary `\B` forbids. At end of input both
     /// assertions hold.
     struct KeywordTable {
-        let byFirstUnit: [UInt16: [[UInt16]]]
+        /// Buckets indexed directly by first UTF-16 unit — same
+        /// per-position dispatch rationale as ``OperatorTable/byFirstUnit``.
+        /// `parse` already guarantees an ASCII word first unit; the width
+        /// guard keeps the array bound structural rather than assumed.
+        let byFirstUnit: [[[UInt16]]]
 
         /// Derives the table from the keyword sources — each must be
         /// exactly `\b<escaped-literal>` followed by `\b` or `\B`
@@ -210,10 +224,14 @@ final class CompiledRule: @unchecked Sendable {
         /// Returns nil for any other shape, so the scan's two ASCII
         /// reductions stay structurally guaranteed rather than assumed.
         init?(sources: [String]) {
-            var buckets: [UInt16: [[UInt16]]] = [:]
+            var buckets: [[[UInt16]]] = Array(
+                repeating: [], count: OperatorTable.dispatchWidth
+            )
             for source in sources {
-                guard let literal = Self.parse(source) else { return nil }
-                buckets[literal[0], default: []].append(literal)
+                guard let literal = Self.parse(source),
+                      literal[0] < UInt16(OperatorTable.dispatchWidth)
+                else { return nil }
+                buckets[Int(literal[0])].append(literal)
             }
             self.byFirstUnit = buckets
         }
@@ -1473,7 +1491,10 @@ final class RuleMatchCache {
         while position < length {
             let chunkEnd = scanChunkEnd(from: position, length: length)
             scan: while position < chunkEnd {
-                guard let bucket = table.byFirstUnit[units[position]],
+                let u = units[position]
+                guard u < UInt16(CompiledRule.OperatorTable.dispatchWidth),
+                      case let bucket = table.byFirstUnit[Int(u)],
+                      !bucket.isEmpty,
                       position == 0 || !Self.isWordASCII(units[position - 1])
                 else {
                     position += 1
@@ -1535,7 +1556,8 @@ final class RuleMatchCache {
             let chunkEnd = scanChunkEnd(from: position, length: length)
             while position < chunkEnd {
                 let u = units[position]
-                if let bucket = table.byFirstUnit[u] {
+                if u < UInt16(CompiledRule.OperatorTable.dispatchWidth) {
+                    let bucket = table.byFirstUnit[Int(u)]
                     for literal in bucket where hasLiteral(literal, at: position) {
                         let end: Int
                         switch scanWhitespaceForward(

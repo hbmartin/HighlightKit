@@ -167,7 +167,7 @@ struct SwiftPrefilterTests {
 
     @Test func valueStarterCapturesMatchICU() throws {
         let table = try #require(CompiledRule.OperatorTable(alternation: CommonModes.reStartersRe))
-        let operators = table.byFirstUnit.values
+        let operators = table.byFirstUnit
             .flatMap(\.self)
             .map { String(decoding: $0, as: UTF16.self) }
         let input = (operators + ["case", "return", "throw"])

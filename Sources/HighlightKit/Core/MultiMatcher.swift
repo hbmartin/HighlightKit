@@ -693,7 +693,9 @@ final class RuleMatchCache {
 
         while true {
             // advance the cursor to the first cached match at/after
-            // `location` (queries are almost always monotonic)
+            // `location` (queries are almost always monotonic). Mutating
+            // the class property directly measures faster than a
+            // local-plus-write-back (step 32, rejected: −1.4% JS).
             while entry.cursor < entry.starts.count, entry.starts[entry.cursor] < location {
                 entry.cursor += 1
             }

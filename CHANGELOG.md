@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Fixed: grammar compilation leaked raw-mode reference cycles that
+  variant expansion had detached from the grammar root (self-recursive
+  variant-carrying modes, e.g. Scheme's nested lists — ~90 KB leaked per
+  cold 65-language auto-detection). Teardown now reaches every mode
+  considered for expansion explicitly; a weak-reference regression test
+  pins the exact shape.
 - Engine: bare `\s+` rules synthesize ASCII whitespace runs directly and
   defer to ICU whenever a non-ASCII unit could participate (`\s` is
   Unicode-aware). Measured (15-pair paired A/B): JavaScript incremental
@@ -14,6 +20,11 @@
   Measured (15-pair paired A/B, 95% CI excluding zero): SQL +2.26%,
   real-Swift +1.14%, TypeScript +1.00%, JavaScript +0.93% throughput;
   controls neutral.
+  Behavior note for custom grammars: case-sensitive keyword matching is
+  now UTF-16 code-unit exact, matching highlight.js's JavaScript object
+  lookup. Previously, Swift `String` canonical equivalence let an NFC
+  keyword match NFD input — an accidental divergence from upstream. All
+  bundled grammars use ASCII keywords and are unaffected.
 - Engine: the bare ECMAScript identifier rule is matched by an exact
   raw UTF-16 scan (its character classes are pure ASCII), eliminating
   whole-window ICU enumeration of every identifier. Case-insensitive

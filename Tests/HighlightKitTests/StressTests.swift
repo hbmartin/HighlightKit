@@ -18,6 +18,54 @@ struct StressTests {
         return Int(info.phys_footprint)
     }
 
+    /// Variant expansion replaces raw modes with clones and
+    /// parent-dependent modes with copies, detaching the originals from
+    /// the root before compilation's deferred teardown runs. Every such
+    /// original — including reference cycles it anchors, the shape that
+    /// leaked ~90 KB per cold auto-detection — must still be released
+    /// once compilation returns.
+    @Test func compilationReleasesDetachedRawModes() throws {
+        weak var variantCarrier: Mode?
+        weak var variantDonor: Mode?
+        weak var cycleMember: Mode?
+        weak var parentDependent: Mode?
+
+        do {
+            // The leaking shape: a self-recursive, variant-carrying mode
+            // (Scheme's nested-list pattern). Expansion replaces the
+            // carrier with clones EVERYWHERE — including inside the
+            // clones' own rewritten `contains` — so the original's
+            // self-cycle detaches from the root entirely; only the
+            // recorded candidate list lets teardown reach it.
+            let donor = Mode(scope: "one", begin: "1")
+            let inner = Mode(begin: "a")
+            let carrier = Mode(begin: "base", variants: [donor])
+            carrier.contains = [inner, carrier]
+            inner.contains = [carrier]
+            // `endsWithParent` forces the copy path; the original detaches.
+            let dependent = Mode(begin: "d", endsWithParent: true)
+            variantCarrier = carrier
+            variantDonor = donor
+            cycleMember = inner
+            parentDependent = dependent
+
+            let compiled = try ModeCompiler.compile(
+                LanguageDefinition(
+                    name: "raw-teardown",
+                    root: Mode(contains: [carrier, dependent])
+                )
+            )
+            // The compiled grammar must still work (clones carry the
+            // grammar; originals are only build-time scaffolding).
+            _ = compiled
+        }
+
+        #expect(variantCarrier == nil)
+        #expect(variantDonor == nil)
+        #expect(cycleMember == nil)
+        #expect(parentDependent == nil)
+    }
+
     /// Repeated highlighting must not accumulate memory: all per-run
     /// state (match caches, emitters, frames) dies with the run; only
     /// compiled grammars persist, and those are warmed before measuring.

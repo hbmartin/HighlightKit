@@ -15,7 +15,18 @@ enum ModeCompiler {
         // throws. Always sever those private build-time edges. The partial
         // compiled graph needs separate cleanup because no
         // `CompiledLanguage` owner exists on the failure path.
-        defer { tearDownRawTree(definition.root) }
+        //
+        // Teardown cannot assume root reachability: variant expansion
+        // replaces children with clones and parent-dependent modes with
+        // copies, detaching the originals (and any cycles they anchor)
+        // from the root before this defer runs. Every mode considered for
+        // expansion is therefore recorded in the context and torn down
+        // explicitly alongside the root's reachable set.
+        defer {
+            tearDownRawTree(
+                definition.root, detached: context.expansionCandidates
+            )
+        }
 
         do {
             if definition.root === Mode.selfReference
@@ -60,6 +71,11 @@ enum ModeCompiler {
         /// One dense relevance-saturation counter per word text across
         /// all modes — highlight.js counts hits per word per run.
         var keywordHitIndices: [String: Int32] = [:]
+        /// Every raw mode handed to `expandOrClone`. Expansion may replace
+        /// a mode in its parent's `contains` with clones or a copy,
+        /// detaching the original from the root — teardown must reach
+        /// those originals (and the cycles they anchor) explicitly.
+        var expansionCandidates: [Mode] = []
 
         var regexOptions: NSRegularExpression.Options {
             var options: NSRegularExpression.Options = [.anchorsMatchLines]
@@ -78,9 +94,10 @@ enum ModeCompiler {
 
     /// Severs all mode-to-mode references in a raw grammar tree so its
     /// cycles can't keep it alive after compilation.
-    private static func tearDownRawTree(_ root: Mode) {
+    private static func tearDownRawTree(_ root: Mode, detached: [Mode] = []) {
         var seen = Set<ObjectIdentifier>()
         var queue: [Mode] = [root]
+        queue.append(contentsOf: detached)
         while let mode = queue.popLast() {
             // This process-wide marker is shared by every grammar and is
             // compared only by identity. It must never be mutated by one
@@ -178,8 +195,12 @@ enum ModeCompiler {
 
         // -- children -------------------------------------------------------
         let rawContains = mode.contains ?? []
-        let expandedContains = rawContains.flatMap { child in
-            expandOrClone(child === Mode.selfReference ? mode : child)
+        var expandedContains: [Mode] = []
+        expandedContains.reserveCapacity(rawContains.count)
+        for child in rawContains {
+            expandedContains.append(contentsOf: expandOrClone(
+                child === Mode.selfReference ? mode : child, in: &context
+            ))
         }
         mode.contains = expandedContains
         for child in expandedContains {
@@ -396,8 +417,13 @@ enum ModeCompiler {
 
     /// Port of `expandOrCloneMode`: explodes `variants` into standalone
     /// modes and clones modes that depend on their parent so each use
-    /// site compiles independently.
-    private static func expandOrClone(_ mode: Mode) -> [Mode] {
+    /// site compiles independently. When the result does not contain
+    /// `mode` itself, the caller replaces `mode` in its parent — the
+    /// context records it so teardown still reaches it.
+    private static func expandOrClone(
+        _ mode: Mode, in context: inout Context
+    ) -> [Mode] {
+        context.expansionCandidates.append(mode)
         if let variants = mode.variants, mode.cachedVariants == nil {
             mode.cachedVariants = variants.map { variant in
                 merged(base: mode, variant: variant)

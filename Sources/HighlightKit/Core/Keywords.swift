@@ -240,7 +240,12 @@ enum KeywordCompiler {
         var compiled = [String: CompiledKeywords.Entry](
             minimumCapacity: keywords.groups.values.reduce(0) { $0 + $1.words.count }
         )
-        for (scope, group) in keywords.groups {
+        // Sorted so a word listed under two scope groups resolves
+        // deterministically. highlight.js resolves by object insertion
+        // order, which `Keywords.groups` (a Dictionary) cannot observe —
+        // see FIDELITY.md; no bundled grammar declares such a duplicate.
+        for scope in keywords.groups.keys.sorted() {
+            let group = keywords.groups[scope]!
             for entry in group.words {
                 var word = entry
                 var relevance: Double?

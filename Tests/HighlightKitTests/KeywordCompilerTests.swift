@@ -131,4 +131,32 @@ struct KeywordCompilerTests {
         #expect(compiled.lookup(in: units, location: 1, length: 3) == nil)
         #expect(compiled.lookup(in: units, location: 2, length: 4) == nil)
     }
+
+    /// Case-sensitive identity is UTF-16 code-unit exact — highlight.js's
+    /// JavaScript object-lookup semantics. Swift `String` canonical
+    /// equivalence (NFC key matching NFD input) was an accidental
+    /// divergence from upstream; pin the faithful behavior.
+    @Test func caseSensitiveKeywordsAreCodeUnitExact() {
+        let nfcKey = "caf\u{E9}"           // é precomposed
+        let nfdWord = "cafe\u{301}"        // e + combining acute
+        #expect(nfcKey == nfdWord)          // canonically equal Strings…
+        let compiled = Self.compile(Keywords(keyword: .init(words: [nfcKey])), caseInsensitive: false)
+        let nfd = Array(nfdWord.utf16)
+        // …but distinct code units must not match, exactly as in hljs.
+        #expect(compiled.lookup(in: nfd, location: 0, length: nfd.count) == nil)
+        let nfc = Array(nfcKey.utf16)
+        #expect(compiled.lookup(in: nfc, location: 0, length: nfc.count) != nil)
+    }
+
+    /// A word listed under two scope groups resolves deterministically
+    /// (sorted scope order — see FIDELITY.md on duplicate resolution).
+    @Test func duplicateWordAcrossGroupsResolvesDeterministically() {
+        for _ in 0..<8 {
+            let compiled = Self.compile(
+                Keywords(["keyword": "shared", "literal": "shared"]),
+                caseInsensitive: false
+            )
+            #expect(compiled["shared"]?.scope == "literal")
+        }
+    }
 }

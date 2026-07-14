@@ -94,6 +94,23 @@ cost" bar. If exact Unicode-adjacent fidelity is ever required, the
 transform is well-defined and can be added as a compile-time pass behind
 a flag; `Scripts/difftest.py --unicode` is the acceptance harness.
 
+## Known difference: keyword identity and group order (documented)
+
+Case-sensitive keyword matching is UTF-16 code-unit exact — the same
+identity highlight.js gets from JavaScript object lookup. (Before the
+UTF-16 keyword table, Swift `String` canonical equivalence accidentally
+let an NFC keyword match NFD input; that was the divergence, not the
+current behavior.) Bundled grammars use ASCII keywords and cannot
+observe the distinction.
+
+When one mode lists the *same word* under two scope groups,
+highlight.js resolves the duplicate by JavaScript object insertion
+order. `Keywords.groups` is a Swift `Dictionary`, so insertion order is
+not observable; compilation iterates groups in sorted scope-name order
+instead, making the winner deterministic but not insertion-ordered. No
+bundled grammar declares such a duplicate; custom grammars should not
+rely on duplicate resolution in either engine.
+
 ## Incremental (line-by-line) highlighting
 
 Whole-string highlighting is exact (above). The `Continuation` API also

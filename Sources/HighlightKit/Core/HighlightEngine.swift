@@ -32,6 +32,9 @@ struct HighlightEngine {
         self.cancellationProbe = cancellationProbe
     }
 
+    /// Relevance saturation per keyword text per run (highlight.js's
+    /// `MAX_KEYWORD_HITS`). Counters are stored as `UInt8`; the guard
+    /// below `UInt8.max` is what makes the unchecked `+= 1` safe.
     static let maxKeywordHits = 7
     static let cancellationCheckStride = 64
 

@@ -1,7 +1,19 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 2026-07-14
 
+- Fixed: a keyword listed under two scope groups of the same mode now
+  resolves to a deterministic winner (sorted scope order) instead of
+  varying with Swift `Dictionary` iteration order across processes.
+  highlight.js resolves such duplicates by object insertion order, which
+  the grammar model cannot observe — see FIDELITY.md. No bundled grammar
+  declares a duplicate.
+- Fixed: four matcher prefilters whose ASCII candidate scans cannot see
+  ICU case folding (identifier-before-colon, number literals, the Swift
+  uppercase lead-in, and word-before-paren) now decline case-insensitive
+  rules and fall back to raw ICU enumeration. All bundled grammars
+  declare these rules case-sensitively; this hardens the public
+  custom-grammar API only.
 - Fixed: grammar compilation leaked raw-mode reference cycles that
   variant expansion had detached from the grammar root (self-recursive
   variant-carrying modes, e.g. Scheme's nested lists — ~90 KB leaked per
@@ -46,6 +58,14 @@
   zero): JavaScript +4.78%, TypeScript +3.78%, real-Swift +1.82%, SQL
   +0.87% throughput; JavaScript incremental latency −1.58%. No behavior
   change; group semantics remain JavaScript `match[N]`-exact.
+
+## 0.1.1 — 2026-07-10
+
+- Fixed: hoisted the Swift grammar's long `[Mode] + [Mode] + …`
+  concatenation chains into explicitly-typed locals, keeping the
+  expressions under the compiler's type-check limit on the slower CI
+  toolchains (iOS/watchOS and DocC jobs). Pure refactor; token output
+  is unchanged.
 
 ## 0.1.0 — 2026-07-10
 

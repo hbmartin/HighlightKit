@@ -94,6 +94,20 @@ cost" bar. If exact Unicode-adjacent fidelity is ever required, the
 transform is well-defined and can be added as a compile-time pass behind
 a flag; `Scripts/difftest.py --unicode` is the acceptance harness.
 
+## Known difference: comment-prose gating under case-insensitive grammars
+
+ICU's `.caseInsensitive` folds *input* units into ASCII classes — U+017F
+LATIN SMALL LETTER LONG S matches `[a-z]`, U+212A KELVIN SIGN matches
+`k` — while JavaScript's non-`/u` `i` flag cannot canonicalize
+non-ASCII into ASCII. The comment-prose relevance rule's candidate gate
+scans ASCII only, so under a case-insensitive grammar an input like
+`/* beſt beſt beſt */` earns prose relevance from raw ICU but not from
+the gated scan — and not from upstream highlight.js either. The gate
+therefore stays ungated on case sensitivity: it follows the JavaScript
+semantics this port targets, at a documented divergence from what raw
+`NSRegularExpression` would report for that rule. The rule is
+relevance-only (scope-less), so token output is unaffected.
+
 ## Known difference: keyword identity and group order (documented)
 
 Case-sensitive keyword matching is UTF-16 code-unit exact — the same

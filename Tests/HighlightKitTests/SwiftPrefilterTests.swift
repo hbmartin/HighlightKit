@@ -69,6 +69,27 @@ struct SwiftPrefilterTests {
         #expect({ if case .none = value.prefilter { true } else { false } }())
         #expect(keyword.regex.firstMatch(in: "AS?", range: NSRange(location: 0, length: 3)) != nil)
         #expect(value.regex.firstMatch(in: "RETURN ", range: NSRange(location: 0, length: 7)) != nil)
+
+        // The ASCII candidate scans below cannot see ICU folding
+        // non-ASCII input units into their classes (U+017F → `s`,
+        // U+212A → `k`), so each gate must decline case-insensitive
+        // rules and leave them on raw ICU enumeration.
+        for pattern in [
+            Ecmascript.identRe + "(?=:)",
+            #"\b(0|[1-9](_?[0-9])*)n\b"#,
+            #"(?=\b[A-Z])"#,
+            KwsSwift.builtInCallPattern,
+            Ecmascript.functionCallPattern,
+        ] {
+            let rule = try CompiledRule(
+                pattern: pattern, kind: .end,
+                options: [.anchorsMatchLines, .caseInsensitive], language: "test", slot: 0
+            )
+            #expect(
+                { if case .none = rule.prefilter { true } else { false } }(),
+                Comment(rawValue: "case-insensitive rule kept a prefilter: \(pattern)")
+            )
+        }
     }
 
     @Test func literalTableParsersFailClosed() {

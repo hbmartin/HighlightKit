@@ -385,6 +385,12 @@ final class CompiledRule: @unchecked Sendable {
     }
 
     private static func analyzePrefilter(pattern: String, caseInsensitive: Bool) -> Prefilter {
+        // Deliberately ungated on case sensitivity: ICU's
+        // `.caseInsensitive` folds input units into ASCII classes
+        // (U+017F → `s`, U+212A → `k`) where JavaScript's non-`/u` `i`
+        // flag cannot, so the ASCII prose gate follows the upstream
+        // highlight.js semantics this port targets. The rule is
+        // relevance-only; see FIDELITY.md.
         if pattern == CommonModes.proseSequencePattern {
             return .commentProse
         }
@@ -396,7 +402,10 @@ final class CompiledRule: @unchecked Sendable {
             }
         }
         // `ident(?=:)` — matches are pinned to a colon after the run.
-        if pattern == Ecmascript.identRe + "(?=:)" {
+        // Case-sensitive only, like every gate below whose ASCII
+        // candidate scan cannot see ICU folding non-ASCII input units
+        // into its classes.
+        if !caseInsensitive, pattern == Ecmascript.identRe + "(?=:)" {
             return .identBeforeColon
         }
         // The bare identifier — exact in ASCII, no confirmation needed.
@@ -415,8 +424,9 @@ final class CompiledRule: @unchecked Sendable {
         if pattern == #"(\([^()]*(\([^()]*(\([^()]*\)[^()]*)*\)[^()]*)*\)|[a-zA-Z_]\w*)\s*=>"# {
             return .arrowFunction
         }
-        // Number literals — matches are pinned to digits.
-        if let shape = Self.numberLiteralPatterns[pattern] {
+        // Number literals — matches are pinned to digits. Case-sensitive
+        // only: the bigInt/exponent tails check literal `n`/`e` units.
+        if !caseInsensitive, let shape = Self.numberLiteralPatterns[pattern] {
             return .numberLiteral(shape)
         }
         // Swift identifier-anchored rules — matches begin at an
@@ -431,7 +441,9 @@ final class CompiledRule: @unchecked Sendable {
             return .identifierHeadStart(.parameterNameLookahead)
         }
         // The Swift type lead-in — zero-width at `\b[A-Z]`.
-        if pattern == #"(?=\b[A-Z])"# {
+        // Case-sensitive only: under ICU folding `[A-Z]` also matches
+        // lowercase (and fold-capable non-ASCII) input.
+        if !caseInsensitive, pattern == #"(?=\b[A-Z])"# {
             return .uppercaseBoundary
         }
         // The Swift punctuated-keyword alternation — ordered literals
@@ -451,12 +463,14 @@ final class CompiledRule: @unchecked Sendable {
             return .valueStarters(table)
         }
         // Word-then-`(` rules — matches are pinned to parens.
-        if pattern == KwsSwift.builtInCallPattern {
+        // Case-sensitive only: the first-unit set and the backward word
+        // walk are ASCII and cannot see folded input units.
+        if !caseInsensitive, pattern == KwsSwift.builtInCallPattern {
             return .wordBeforeParen(
                 firstUnits: KwsSwift.builtInFirstUnits, spacesBeforeParen: false
             )
         }
-        if pattern == Ecmascript.functionCallPattern {
+        if !caseInsensitive, pattern == Ecmascript.functionCallPattern {
             return .wordBeforeParen(firstUnits: nil, spacesBeforeParen: true)
         }
         // Swift protocol composition — matches are pinned to `&`.
@@ -1322,6 +1336,12 @@ final class RuleMatchCache {
         entry.groups.append(.icu(result))
         entry.starts.append(range.location)
         entry.ends.append(range.location + range.length)
+        // After a zero-width match, resume one UTF-16 *unit* later —
+        // JavaScript's `lastIndex++` — where ICU's own enumeration steps
+        // one code *point*. They differ only when a zero-width rule
+        // matches immediately before the low surrogate of an astral
+        // pair; the unit step is the JS-faithful one. Same formula in
+        // `appendSynthesized`.
         entry.resumeFrom = max(range.location + range.length, range.location + 1)
     }
 

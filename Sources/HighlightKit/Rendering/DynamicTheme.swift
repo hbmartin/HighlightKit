@@ -30,7 +30,8 @@ extension HighlightColor {
 extension HighlightTheme {
     /// Combines a light and a dark theme into one whose colors adapt to
     /// the system appearance dynamically (see
-    /// ``HighlightColor/adaptive(light:dark:)``).
+    /// `HighlightColor.adaptive(light:dark:)` — DocC cannot link through
+    /// the platform-color typealias).
     ///
     /// Non-color style traits (bold/italic) and the font come from the
     /// light theme.

@@ -32,6 +32,7 @@ public enum LanguageCatalog {
         fortran,
         fsharp,
         go,
+        graphql,
         groovy,
         haskell,
         http,

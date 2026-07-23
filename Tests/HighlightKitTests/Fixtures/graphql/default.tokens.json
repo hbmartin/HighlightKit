@@ -1,0 +1,19 @@
+{
+  "language": "graphql",
+  "relevance": 1,
+  "tokens": [
+    { "start": 0, "length": 5, "scopes": ["keyword"] },
+    { "start": 10, "length": 1, "scopes": ["punctuation"] },
+    { "start": 11, "length": 3, "scopes": ["variable"] },
+    { "start": 18, "length": 2, "scopes": ["punctuation"] },
+    { "start": 21, "length": 1, "scopes": ["punctuation"] },
+    { "start": 29, "length": 1, "scopes": ["punctuation"] },
+    { "start": 30, "length": 2, "scopes": ["symbol"] },
+    { "start": 32, "length": 1, "scopes": ["punctuation"] },
+    { "start": 34, "length": 3, "scopes": ["variable"] },
+    { "start": 39, "length": 1, "scopes": ["punctuation"] },
+    { "start": 54, "length": 3, "scopes": ["punctuation"] },
+    { "start": 67, "length": 1, "scopes": ["punctuation"] },
+    { "start": 69, "length": 1, "scopes": ["punctuation"] }
+  ]
+}

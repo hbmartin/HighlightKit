@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Incremental: added actor-isolated `HighlightedDocument` with transactional
+  UTF-16 edits, line tokens, continuation checkpoints, suffix convergence,
+  preserved line endings, and capped visible-range snapshots.
 - Performance: added an explicit cost/count-bounded token-result LRU cache
   with canonical effective keys, negative entries, single-flight request
   coalescing, independent waiter cancellation, purge handling, and metrics.

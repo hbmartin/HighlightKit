@@ -680,7 +680,7 @@ func attributedRunCount(_ string: NSAttributedString) -> Int {
 }
 
 #if canImport(Darwin)
-func residentFootprintBytes() -> Int {
+func residentFootprintBytes() -> Int? {
     var info = task_vm_info_data_t()
     var count = mach_msg_type_number_t(
         MemoryLayout<task_vm_info_data_t>.size / MemoryLayout<natural_t>.size
@@ -690,10 +690,10 @@ func residentFootprintBytes() -> Int {
             task_info(mach_task_self_, task_flavor_t(TASK_VM_INFO), $0, &count)
         }
     }
-    return result == KERN_SUCCESS ? Int(info.phys_footprint) : 0
+    return result == KERN_SUCCESS ? Int(info.phys_footprint) : nil
 }
 #else
-func residentFootprintBytes() -> Int { 0 }
+func residentFootprintBytes() -> Int? { nil }
 #endif
 
 #if canImport(AppKit)
@@ -1026,10 +1026,19 @@ if arguments.count >= 3, arguments[1] == "--consumer-bench" {
         }
         let metrics = await cache.metrics
         let cachedTokens = complete.tokens.count * metrics.count
-        let cacheRetainedBytes = max(
-            0,
-            residentFootprintBytes() - cacheFootprintBefore
-        )
+        let cacheRetainedBytes: Int?
+        if let cacheFootprintBefore,
+           let cacheFootprintAfter = residentFootprintBytes() {
+            cacheRetainedBytes = max(0, cacheFootprintAfter - cacheFootprintBefore)
+        } else {
+            cacheRetainedBytes = nil
+        }
+        let cacheBytesPerUnit: Double?
+        if let cacheRetainedBytes, cachedTokens > 0 {
+            cacheBytesPerUnit = Double(cacheRetainedBytes) / Double(cachedTokens)
+        } else {
+            cacheBytesPerUnit = nil
+        }
         emitConsumerRecord(
             scenario: "retained-cache-results",
             iterations: iterations,
@@ -1038,9 +1047,7 @@ if arguments.count >= 3, arguments[1] == "--consumer-bench" {
             checksum: metrics.currentCost,
             tokenCount: cachedTokens,
             retainedBytes: cacheRetainedBytes,
-            bytesPerUnit: cachedTokens == 0
-                ? 0
-                : Double(cacheRetainedBytes) / Double(cachedTokens)
+            bytesPerUnit: cacheBytesPerUnit
         )
 
         let renderer = HighlightRenderer(theme: .githubDark)
@@ -1054,7 +1061,18 @@ if arguments.count >= 3, arguments[1] == "--consumer-bench" {
             runs += attributedRunCount(string)
             retained.append(string)
         }
-        let retainedBytes = max(0, residentFootprintBytes() - before)
+        let retainedBytes: Int?
+        if let before, let after = residentFootprintBytes() {
+            retainedBytes = max(0, after - before)
+        } else {
+            retainedBytes = nil
+        }
+        let bytesPerRun: Double?
+        if let retainedBytes, runs > 0 {
+            bytesPerRun = Double(retainedBytes) / Double(runs)
+        } else {
+            bytesPerRun = nil
+        }
         emitConsumerRecord(
             scenario: "retained-attributed-runs",
             iterations: iterations,
@@ -1064,7 +1082,7 @@ if arguments.count >= 3, arguments[1] == "--consumer-bench" {
             tokenCount: complete.tokens.count * retainedCount,
             attributedRunCount: runs,
             retainedBytes: retainedBytes,
-            bytesPerUnit: runs == 0 ? 0 : Double(retainedBytes) / Double(runs)
+            bytesPerUnit: bytesPerRun
         )
     }
 

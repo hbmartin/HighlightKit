@@ -243,9 +243,7 @@ public final class HighlightRenderer: @unchecked Sendable {
                 .foregroundColor: theme.foregroundColor,
             ]
         )
-        // The default mapping is clipped to the shared prefix and no
-        // cancellation probe is installed, so this apply cannot throw.
-        try! apply(result, to: text, options: options)
+        _ = try? apply(result, to: text, options: options)
         return text
     }
 

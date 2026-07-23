@@ -709,6 +709,8 @@ final class LanguageRegistry: Sendable {
             relevance: best.relevance,
             illegal: best.illegal,
             tokens: best.tokens,
+            sourceLength: best.sourceLength,
+            omittedTokenCount: best.omittedTokenCount,
             continuation: best.continuation,
             secondBest: secondBest
         )

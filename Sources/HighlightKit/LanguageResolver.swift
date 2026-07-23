@@ -64,6 +64,36 @@ extension Highlighter {
         return String(line.dropFirst(2))
     }
 
+    private static let envOptionsWithValues: Set<String> = [
+        "-u", "--unset", "-C", "--chdir", "-P", "-a", "--argv0"
+    ]
+    private static let envOptionValuePrefixes = [
+        "--unset=", "--chdir=", "--argv0="
+    ]
+
+    private static func envExecutableIndex(in parts: [String]) -> Int? {
+        var index = 1
+        while index < parts.count {
+            let part = parts[index]
+            switch part {
+            case "--":
+                index += 1
+                return index < parts.count ? index : nil
+            case "-S", "--split-string":
+                index += 1
+            case let option where envOptionsWithValues.contains(option):
+                index += 2
+            case let option where envOptionValuePrefixes.contains(where: option.hasPrefix):
+                index += 1
+            case let option where option.hasPrefix("-") || option.contains("="):
+                index += 1
+            default:
+                return index
+            }
+        }
+        return nil
+    }
+
     private static func normalizedInterpreter(_ command: String?) -> String? {
         guard let command else { return nil }
         var parts = command.split(whereSeparator: \Character.isWhitespace).map(String.init)
@@ -72,13 +102,8 @@ extension Highlighter {
         var index = 0
         let first = (parts[0] as NSString).lastPathComponent.lowercased()
         if first == "env" {
-            index = 1
-            while index < parts.count {
-                let part = parts[index]
-                if part == "-S" { index += 1; continue }
-                if part.hasPrefix("-") || part.contains("=") { index += 1; continue }
-                break
-            }
+            guard let envIndex = envExecutableIndex(in: parts) else { return nil }
+            index = envIndex
         }
         guard index < parts.count else { return nil }
         var executable = (parts[index] as NSString).lastPathComponent.lowercased()

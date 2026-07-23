@@ -25,6 +25,7 @@ struct LanguageResolverTests {
     @Test func directAndEnvShebangsResolve() async throws {
         #expect(try await Highlighter.shared.resolveLanguage(for: "#!/usr/bin/python3 -u\nprint(1)") == .named("python"))
         #expect(try await Highlighter.shared.resolveLanguage(for: "#!/usr/bin/env -S fish --no-config\necho hi") == .named("fish"))
+        #expect(try await Highlighter.shared.resolveLanguage(for: "#!/usr/bin/env -u PYTHONHOME python3\nprint(1)") == .named("python"))
         #expect(try await Highlighter.shared.resolveLanguage(for: "", interpreter: "/usr/bin/ruby") == .named("ruby"))
     }
 

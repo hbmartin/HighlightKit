@@ -43,7 +43,7 @@ Swift Package Manager. In `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/PhraseHQ/HighlightKit.git", branch: "main")
+    .package(url: "https://github.com/PhraseHQ/HighlightKit.git", exact: "0.3.0")
 ]
 ```
 

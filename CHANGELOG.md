@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Languages: added Elixir from the pinned highlight.js 11.11.1 grammar.
 - Build: moved the large Swift grammar factory behind an explicitly typed
   construction boundary and replaced its remaining long array expressions
   with incremental appends. This restores Swift 6.2.4/Xcode 26.3 builds

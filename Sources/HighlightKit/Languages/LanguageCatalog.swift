@@ -27,6 +27,7 @@ public enum LanguageCatalog {
         dockerfile,
         dos,
         elm,
+        elixir,
         erlang,
         fortran,
         fsharp,

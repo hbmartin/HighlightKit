@@ -144,6 +144,11 @@ final class LanguageRegistry: Sendable {
     private struct Registration: Sendable {
         let entry: Entry
         var compiled: CompiledLanguage?
+
+        var generation: GenerationSnapshot {
+            if let compiled { return .compiled(compiled) }
+            return .uncompiled(entry)
+        }
     }
 
     private struct State {
@@ -154,6 +159,18 @@ final class LanguageRegistry: Sendable {
         var fileExtensions: [String: [String]] = [:]
         var interpreters: [String: [String]] = [:]
         var revision: UInt64 = 0
+
+        /// Canonical-or-alias lookup. The alias path re-validates that the
+        /// aliased Entry is still the current canonical generation.
+        func currentRegistration(named name: String) -> Registration? {
+            if let canonical = entries[name] { return canonical }
+            if let alias = aliases[name],
+               let aliased = entries[alias.canonicalName],
+               aliased.entry === alias {
+                return aliased
+            }
+            return nil
+        }
 
         mutating func rebuildMetadataIndexes() {
             filenames.removeAll(keepingCapacity: true)
@@ -279,29 +296,27 @@ final class LanguageRegistry: Sendable {
         state.withLock { $0.interpreters[interpreter.lowercased()] ?? [] }
     }
 
-    private func entry(named name: String) -> Entry? {
-        if let exact = state.withLock({ state in
-            state.entries[name]?.entry ?? state.aliases[name]
-        }) {
-            return exact
-        }
-
-        // Canonical names and built-in aliases are already lowercase on
-        // virtually every hot call. Avoid allocating a lowercased String;
-        // only retry when ASCII uppercase or a non-ASCII scalar could
-        // actually change under Unicode case folding.
+    /// Canonical names and built-in aliases are already lowercase on
+    /// virtually every hot call. Avoid allocating a lowercased String;
+    /// only produce a folded retry name when ASCII uppercase or a non-ASCII
+    /// scalar could actually change under Unicode case folding.
+    private static func caseFoldedLookupName(_ name: String) -> String? {
         var mightNeedCaseFolding = false
         for byte in name.utf8 where (65...90).contains(byte) || byte >= 0x80 {
             mightNeedCaseFolding = true
             break
         }
         guard mightNeedCaseFolding else { return nil }
-
         let lowercased = name.lowercased()
-        guard lowercased != name else { return nil }
-        return state.withLock { state in
-            state.entries[lowercased]?.entry ?? state.aliases[lowercased]
+        return lowercased == name ? nil : lowercased
+    }
+
+    private func entry(named name: String) -> Entry? {
+        if let exact = state.withLock({ $0.currentRegistration(named: name)?.entry }) {
+            return exact
         }
+        guard let folded = Self.caseFoldedLookupName(name) else { return nil }
+        return state.withLock { $0.currentRegistration(named: folded)?.entry }
     }
 
     /// Resolves a name and its already-published compiled generation in one
@@ -310,52 +325,11 @@ final class LanguageRegistry: Sendable {
     private func resolvedGeneration(
         named name: String
     ) -> GenerationSnapshot? {
-        if let exact = state.withLock({ state -> GenerationSnapshot? in
-            let registration: Registration?
-            if let canonical = state.entries[name] {
-                registration = canonical
-            } else if let alias = state.aliases[name],
-                      let aliased = state.entries[alias.canonicalName],
-                      aliased.entry === alias {
-                registration = aliased
-            } else {
-                registration = nil
-            }
-            guard let registration else { return nil }
-            if let compiled = registration.compiled {
-                return .compiled(compiled)
-            }
-            return .uncompiled(registration.entry)
-        }) {
+        if let exact = state.withLock({ $0.currentRegistration(named: name)?.generation }) {
             return exact
         }
-
-        var mightNeedCaseFolding = false
-        for byte in name.utf8 where (65...90).contains(byte) || byte >= 0x80 {
-            mightNeedCaseFolding = true
-            break
-        }
-        guard mightNeedCaseFolding else { return nil }
-
-        let lowercased = name.lowercased()
-        guard lowercased != name else { return nil }
-        return state.withLock { state in
-            let registration: Registration?
-            if let canonical = state.entries[lowercased] {
-                registration = canonical
-            } else if let alias = state.aliases[lowercased],
-                      let aliased = state.entries[alias.canonicalName],
-                      aliased.entry === alias {
-                registration = aliased
-            } else {
-                registration = nil
-            }
-            guard let registration else { return nil }
-            if let compiled = registration.compiled {
-                return .compiled(compiled)
-            }
-            return .uncompiled(registration.entry)
-        }
+        guard let folded = Self.caseFoldedLookupName(name) else { return nil }
+        return state.withLock { $0.currentRegistration(named: folded)?.generation }
     }
 
     /// Publishes a successful cold compilation only if this Entry is still
@@ -380,53 +354,19 @@ final class LanguageRegistry: Sendable {
     private func detectionEntries(subset: [String]?) -> [GenerationSnapshot] {
         guard let subset else {
             return state.withLock { state in
-                state.sortedNames.compactMap { name in
-                    state.entries[name].map { registration in
-                        if let compiled = registration.compiled {
-                            return .compiled(compiled)
-                        }
-                        return .uncompiled(registration.entry)
-                    }
-                }
+                state.sortedNames.compactMap { state.entries[$0]?.generation }
             }
         }
 
-        let lookups = subset.map { name -> (exact: String, folded: String?) in
-            var mightNeedCaseFolding = false
-            for byte in name.utf8 where (65...90).contains(byte) || byte >= 0x80 {
-                mightNeedCaseFolding = true
-                break
-            }
-            guard mightNeedCaseFolding else { return (name, nil) }
-            let folded = name.lowercased()
-            return (name, folded == name ? nil : folded)
+        // Fold outside the lock; String allocation has no place under it.
+        let lookups = subset.map { name in
+            (exact: name, folded: Self.caseFoldedLookupName(name))
         }
         return state.withLock { state in
             lookups.compactMap { lookup in
-                let registration: Registration?
-                if let canonical = state.entries[lookup.exact] {
-                    registration = canonical
-                } else if let alias = state.aliases[lookup.exact],
-                          let aliased = state.entries[alias.canonicalName],
-                          aliased.entry === alias {
-                    registration = aliased
-                } else if let folded = lookup.folded,
-                          let canonical = state.entries[folded] {
-                    registration = canonical
-                } else if let folded = lookup.folded,
-                          let alias = state.aliases[folded],
-                          let aliased = state.entries[alias.canonicalName],
-                          aliased.entry === alias {
-                    registration = aliased
-                } else {
-                    registration = nil
-                }
-                return registration.map { registration in
-                    if let compiled = registration.compiled {
-                        return .compiled(compiled)
-                    }
-                    return .uncompiled(registration.entry)
-                }
+                let registration = state.currentRegistration(named: lookup.exact)
+                    ?? lookup.folded.flatMap { state.currentRegistration(named: $0) }
+                return registration?.generation
             }
         }
     }

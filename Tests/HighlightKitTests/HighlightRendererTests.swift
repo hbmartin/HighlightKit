@@ -71,6 +71,20 @@ struct HighlightRendererTests {
         #expect(destination.attribute(.foregroundColor, at: 8, effectiveRange: nil) != nil)
     }
 
+    @Test func mismatchedResultAndTextClampToTheSharedPrefix() throws {
+        let code = "let x = 1"
+        let result = try Highlighter.shared.highlight(code, selection: .named("swift"))
+        let renderer = HighlightRenderer(theme: .githubLight)
+
+        let shorter = renderer.attributedString(for: "let", result: result)
+        #expect(shorter.length == 3)
+        #expect(shorter.attribute(.foregroundColor, at: 0, effectiveRange: nil) != nil)
+
+        let longer = NSMutableAttributedString(string: code + " // trailing")
+        let summary = try renderer.apply(result, to: longer)
+        #expect(summary.appliedRuns > 0)
+    }
+
     @Test func invalidMappingsThrow() throws {
         let result = try Highlighter.shared.highlight("let x = 1", selection: .named("swift"))
         let text = NSMutableAttributedString(string: "short")

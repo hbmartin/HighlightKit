@@ -1,5 +1,5 @@
 import Foundation
-#if os(macOS)
+#if canImport(Darwin)
 import Dispatch
 #endif
 
@@ -80,9 +80,12 @@ public actor HighlightCache {
     private var entries: [HighlightCacheRequestKey: Entry] = [:]
     private var flights: [HighlightCacheRequestKey: Flight] = [:]
     private var clock: UInt64 = 0
+    /// Sum of `entries` costs, maintained incrementally so limit checks and
+    /// metrics never rescan the table.
+    private var trackedCost = 0
     private var statistics = HighlightCacheMetrics()
 
-#if os(macOS)
+#if canImport(Darwin)
     private var memoryPressureMonitor: MemoryPressureMonitor?
 #endif
 
@@ -98,7 +101,7 @@ public actor HighlightCache {
         self.costLimit = costLimit
         self.countLimit = countLimit
 
-#if os(macOS)
+#if canImport(Darwin)
         if automaticallyPurgesOnMemoryPressure {
             Task { [weak self] in
                 await self?.installMemoryPressureMonitor()
@@ -112,13 +115,14 @@ public actor HighlightCache {
     public var metrics: HighlightCacheMetrics {
         var snapshot = statistics
         snapshot.count = entries.count
-        snapshot.currentCost = entries.values.reduce(into: 0) { $0 += $1.cost }
+        snapshot.currentCost = trackedCost
         return snapshot
     }
 
     /// Removes all completed entries. In-flight requests remain active.
     public func purge() {
         entries.removeAll(keepingCapacity: true)
+        trackedCost = 0
         statistics.purges += 1
     }
 
@@ -252,21 +256,25 @@ public actor HighlightCache {
     ) {
         guard cost <= costLimit, countLimit != 0 else { return }
         clock &+= 1
-        entries[key] = Entry(value: value, cost: cost, lastAccess: clock)
+        if let previous = entries.updateValue(
+            Entry(value: value, cost: cost, lastAccess: clock),
+            forKey: key
+        ) {
+            trackedCost -= previous.cost
+        }
+        trackedCost += cost
         statistics.insertions += 1
         evictIfNeeded()
     }
 
     private func evictIfNeeded() {
-        func totalCost() -> Int {
-            entries.values.reduce(into: 0) { $0 += $1.cost }
-        }
-        while totalCost() > costLimit
+        while trackedCost > costLimit
             || countLimit.map({ entries.count > $0 }) == true {
             guard let victim = entries.min(by: {
                 $0.value.lastAccess < $1.value.lastAccess
-            })?.key else { break }
-            entries.removeValue(forKey: victim)
+            }) else { break }
+            entries.removeValue(forKey: victim.key)
+            trackedCost -= victim.value.cost
             statistics.evictions += 1
         }
     }
@@ -280,7 +288,7 @@ public actor HighlightCache {
         }
     }
 
-#if os(macOS)
+#if canImport(Darwin)
     private func installMemoryPressureMonitor() {
         guard memoryPressureMonitor == nil else { return }
         memoryPressureMonitor = MemoryPressureMonitor { [weak self] in
@@ -290,7 +298,7 @@ public actor HighlightCache {
 #endif
 }
 
-#if os(macOS)
+#if canImport(Darwin)
 private final class MemoryPressureMonitor: @unchecked Sendable {
     private let source: any DispatchSourceMemoryPressure
 

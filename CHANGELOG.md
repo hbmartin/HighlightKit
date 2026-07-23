@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- API: language descriptors now carry normalized extension, exact-filename,
+  and interpreter metadata. The async repository resolver handles overrides,
+  shebangs, compound extensions, and content-assisted ambiguous extensions.
 - Breaking: replaced nullable-language and silent-fallback entry points with
   throwing `LanguageSelection` APIs, cancellable async named highlighting,
   explicit parser options, and token budgets. Results now report UTF-16 source

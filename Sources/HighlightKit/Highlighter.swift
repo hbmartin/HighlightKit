@@ -18,6 +18,14 @@ public final class Highlighter: Sendable {
 
     public var languageNames: [String] { registry.languageNames }
 
+    /// Registered languages and their repository-oriented metadata.
+    public var languages: [LanguageInfo] { registry.languageInfos }
+
+    public func language(named name: String) -> LanguageInfo? {
+        guard let canonical = registry.canonicalName(for: name) else { return nil }
+        return languages.first { $0.name == canonical }
+    }
+
     public func hasLanguage(named name: String) -> Bool {
         registry.hasLanguage(named: name)
     }

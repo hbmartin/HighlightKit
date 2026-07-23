@@ -436,7 +436,8 @@ final class LanguageRegistry: Sendable {
         languageName: String,
         ignoreIllegals: Bool,
         continuation: Continuation? = nil,
-        ancestry: LanguageAncestry? = nil
+        ancestry: LanguageAncestry? = nil,
+        cancellationProbe: HighlightEngine.CancellationProbe? = nil
     ) throws -> HighlightResult {
         let language = try compiledLanguage(named: languageName)
         return try highlight(
@@ -444,7 +445,8 @@ final class LanguageRegistry: Sendable {
             language: language,
             ignoreIllegals: ignoreIllegals,
             continuation: continuation,
-            ancestry: ancestry
+            ancestry: ancestry,
+            cancellationProbe: cancellationProbe
         )
     }
 
@@ -476,14 +478,27 @@ final class LanguageRegistry: Sendable {
                 relevance: result.relevance,
                 illegal: false,
                 tokens: result.tokens,
+                sourceLength: code.utf16.count,
                 continuation: Continuation(state: result.resumeState)
             )
         } catch let error as HighlightEngine.EngineError {
             switch error {
             case .illegal:
-                return HighlightResult(language: language.name, relevance: 0, illegal: true, tokens: [])
+                return HighlightResult(
+                    language: language.name,
+                    relevance: 0,
+                    illegal: true,
+                    tokens: [],
+                    sourceLength: code.utf16.count
+                )
             case .potentialInfiniteLoop, .recursiveSubLanguage:
-                return HighlightResult(language: language.name, relevance: 0, illegal: false, tokens: [])
+                return HighlightResult(
+                    language: language.name,
+                    relevance: 0,
+                    illegal: false,
+                    tokens: [],
+                    sourceLength: code.utf16.count
+                )
             }
         }
     }

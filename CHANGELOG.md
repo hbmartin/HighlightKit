@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Breaking: replaced nullable-language and silent-fallback entry points with
+  throwing `LanguageSelection` APIs, cancellable async named highlighting,
+  explicit parser options, and token budgets. Results now report UTF-16 source
+  length and omitted-token counts.
 - Languages: added a first-party Fish grammar based on Fish source/docs at
   20569c4. It is excluded from unrestricted autodetection but remains
   available by name, extension, and shebang.

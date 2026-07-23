@@ -7,6 +7,48 @@ import Glibc
 import HighlightKit
 import Synchronization
 
+// Keep historical benchmark scenarios readable while exercising the new
+// source-breaking public API. These shims belong to the executable only.
+private extension Highlighter {
+    func benchmarkHighlight(
+        _ code: String,
+        as language: String,
+        ignoreIllegals: Bool = true,
+        continuation: Continuation? = nil
+    ) -> HighlightResult {
+        try! highlight(
+            code,
+            selection: .named(language),
+            options: HighlightOptions(ignoreIllegals: ignoreIllegals),
+            continuation: continuation
+        )
+    }
+
+    func benchmarkHighlightAuto(_ code: String, subset: [String]? = nil) -> HighlightResult {
+        try! highlight(
+            code,
+            selection: .automatic,
+            options: HighlightOptions(automaticSubset: subset)
+        )
+    }
+
+    func benchmarkHighlightAuto(_ code: String, subset: [String]? = nil) async -> HighlightResult {
+        try! await highlight(
+            code,
+            selection: .automatic,
+            options: HighlightOptions(automaticSubset: subset)
+        )
+    }
+
+    func benchmarkAttributedString(
+        for code: String,
+        language: String,
+        theme: HighlightTheme = .github
+    ) -> NSAttributedString {
+        try! attributedString(for: code, selection: .named(language), theme: theme)
+    }
+}
+
 // Standalone benchmark / leak-check host.
 //
 //   swift run -c release highlight-bench [runs] [language] [file]
@@ -206,7 +248,7 @@ func concurrentAutoResult(
     _ highlighter: Highlighter,
     code: String
 ) async -> HighlightResult {
-    await highlighter.highlightAuto(code)
+    await highlighter.benchmarkHighlightAuto(code)
 }
 
 struct AutoBenchmarkRecord: Encodable {
@@ -233,7 +275,7 @@ struct AutoBenchmarkRecord: Encodable {
 if arguments.count >= 4, arguments[1] == "--tokens" {
     let lang = arguments[2]
     let code = (try? String(contentsOfFile: arguments[3], encoding: .utf8)) ?? ""
-    let result = Highlighter.shared.highlight(code, as: lang, ignoreIllegals: true)
+    let result = Highlighter.shared.benchmarkHighlight(code, as: lang, ignoreIllegals: true)
     func jsonString(_ s: String) -> String {
         var out = "\""
         for scalar in s.unicodeScalars {
@@ -285,7 +327,9 @@ if arguments.count >= 2, arguments[1] == "--tokens-batch" {
             print("{\"error\":\"bad input\"}")
             continue
         }
-        let result = Highlighter.shared.highlight(input.code, as: input.lang, ignoreIllegals: true)
+        let result = Highlighter.shared.benchmarkHighlight(
+            input.code, as: input.lang, ignoreIllegals: true
+        )
         var toks: [String] = []
         for t in result.tokens {
             let scopes = t.scopes.map(jsonString).joined(separator: ",")
@@ -314,7 +358,11 @@ if arguments.count >= 2, arguments[1] == "--incremental-check" {
             print("{\"error\":\"bad input\"}"); continue
         }
         var whole: [Int: String] = [:]
-        scopeMap(Highlighter.shared.highlight(input.code, as: input.lang), base: 0, into: &whole)
+        scopeMap(
+            Highlighter.shared.benchmarkHighlight(input.code, as: input.lang),
+            base: 0,
+            into: &whole
+        )
         var incr: [Int: String] = [:]
         var cont: Continuation?
         var base = 0
@@ -326,7 +374,9 @@ if arguments.count >= 2, arguments[1] == "--incremental-check" {
             while end < ns.length, ns.character(at: end) != 10 { end += 1 }
             if end < ns.length { end += 1 } // include the \n
             let lineText = ns.substring(with: NSRange(location: start, length: end - start))
-            let r = Highlighter.shared.highlight(lineText, as: input.lang, continuation: cont)
+            let r = Highlighter.shared.benchmarkHighlight(
+                lineText, as: input.lang, continuation: cont
+            )
             cont = r.continuation
             scopeMap(r, base: base, into: &incr)
             base += (lineText as NSString).length
@@ -355,7 +405,7 @@ if arguments.count >= 4, arguments[1] == "--theme-bench" {
     let highlighter = Highlighter.shared
     // Warms grammar compilation for every scenario without touching a
     // theme. Cold theme timing therefore remains a true first access.
-    let result = highlighter.highlight(code, as: "swift")
+    let result = highlighter.benchmarkHighlight(code, as: "swift")
 
     let operation: () -> Int
     switch scenario {
@@ -366,7 +416,7 @@ if arguments.count >= 4, arguments[1] == "--theme-bench" {
     case "one-call":
         operation = {
             attributedChecksum(
-                highlighter.attributedString(for: code, language: "swift")
+                highlighter.benchmarkAttributedString(for: code, language: "swift")
             )
         }
     case "pure-render":
@@ -421,12 +471,12 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
             )
         }
         let highlighter = Highlighter(languages: [descriptor])
-        _ = highlighter.highlight("x", as: "rb")
+        _ = highlighter.benchmarkHighlight("x", as: "rb")
         var checksum = 0
         let seconds = benchmarkSeconds {
             for _ in 0..<iterations {
                 withBenchmarkAutoreleasePool {
-                    checksum &+= highlighter.highlight("x", as: "rb").tokens.count
+                    checksum &+= highlighter.benchmarkHighlight("x", as: "rb").tokens.count
                 }
             }
         }
@@ -449,14 +499,14 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
         }
         let highlighter = Highlighter(languages: descriptors)
         for index in 0..<languageCount {
-            _ = highlighter.highlight("", as: "auto-\(index)")
+            _ = highlighter.benchmarkHighlight("", as: "auto-\(index)")
         }
-        _ = highlighter.highlightAuto("x")
+        _ = highlighter.benchmarkHighlightAuto("x")
         var checksum = 0
         let seconds = benchmarkSeconds {
             for _ in 0..<iterations {
                 withBenchmarkAutoreleasePool {
-                    let result = highlighter.highlightAuto("x")
+                    let result = highlighter.benchmarkHighlightAuto("x")
                     checksum &+= result.tokens.count &+ Int(result.relevance)
                 }
             }
@@ -492,7 +542,7 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
                 for _ in 0..<taskCount {
                     group.addTask {
                         await barrier.wait()
-                        return highlighter.highlight(
+                        return highlighter.benchmarkHighlight(
                             "token127",
                             as: "contended"
                         ).tokens.count
@@ -524,7 +574,7 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
             )
         }
         let highlighter = Highlighter(languages: [descriptor])
-        _ = highlighter.highlight("x", as: "wc")
+        _ = highlighter.benchmarkHighlight("x", as: "wc")
 
         let barrier = RegistryStartBarrier(participantCount: taskCount)
         var checksum = 0
@@ -538,7 +588,7 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
                     var localChecksum = 0
                     for _ in 0..<localCount {
                         withBenchmarkAutoreleasePool {
-                            localChecksum &+= highlighter.highlight("x", as: "wc").tokens.count
+                            localChecksum &+= highlighter.benchmarkHighlight("x", as: "wc").tokens.count
                         }
                     }
                     return localChecksum
@@ -571,7 +621,7 @@ if arguments.count >= 3, arguments[1] == "--render" {
     let iters = Int(arguments[2]) ?? 100
     let lang = arguments.count > 3 ? arguments[3] : "javascript"
     let code = sampleJS
-    let result = Highlighter.shared.highlight(code, as: lang)
+    let result = Highlighter.shared.benchmarkHighlight(code, as: lang)
     let theme = HighlightTheme.githubDark
     _ = result.attributedString(for: code, theme: theme) // warm
     let start = ContinuousClock.now
@@ -720,20 +770,22 @@ if arguments.count >= 3, arguments[1] == "--auto" {
     var detected: String?
     let coldSeq = measure {
         let fresh = Highlighter()
-        detected = fresh.highlightAuto(code).language
+        detected = fresh.benchmarkHighlightAuto(code).language
     }
     let coldPar = await measureAsync {
         let fresh = Highlighter()
-        _ = await fresh.highlightAuto(code)
+        _ = await fresh.benchmarkHighlightAuto(code)
     }
-    _ = Highlighter.shared.highlightAuto(code) // warm the shared instance
+    _ = Highlighter.shared.benchmarkHighlightAuto(code) // warm the shared instance
     var warmSeq = 0.0
     var warmPar = 0.0
     for _ in 0..<iters {
-        warmSeq += measure { withBenchmarkAutoreleasePool { _ = Highlighter.shared.highlightAuto(code) } }
+        warmSeq += measure {
+            withBenchmarkAutoreleasePool { _ = Highlighter.shared.benchmarkHighlightAuto(code) }
+        }
     }
     for _ in 0..<iters {
-        warmPar += await measureAsync { _ = await Highlighter.shared.highlightAuto(code) }
+        warmPar += await measureAsync { _ = await Highlighter.shared.benchmarkHighlightAuto(code) }
     }
     let langCount = Highlighter.shared.languageNames.count
     print("auto-detect (\(units) units, \(langCount) languages) → \(detected ?? "nil")")
@@ -750,14 +802,16 @@ let language = arguments.count > 2 ? arguments[2] : "javascript"
 // — the block-editor workload, where per-call fixed cost dominates.
 if arguments.count > 3, arguments[3] == "--incremental" {
     let lines = sampleJS.split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
-    _ = Highlighter.shared.highlight(sampleJS, as: language) // warm compile
+    _ = Highlighter.shared.benchmarkHighlight(sampleJS, as: language) // warm compile
     let start = ContinuousClock.now
     var totalTokens = 0
     for _ in 0..<runs {
         var continuation: Continuation?
         for line in lines {
             withBenchmarkAutoreleasePool {
-                let r = Highlighter.shared.highlight(line + "\n", as: language, continuation: continuation)
+                let r = Highlighter.shared.benchmarkHighlight(
+                    line + "\n", as: language, continuation: continuation
+                )
                 continuation = r.continuation
                 totalTokens += r.tokens.count
             }
@@ -781,13 +835,13 @@ if arguments.count > 3 {
 let units = (code as NSString).length
 
 // warm-up (grammar compilation)
-_ = Highlighter.shared.highlight(code, as: language)
+_ = Highlighter.shared.benchmarkHighlight(code, as: language)
 
 let start = ContinuousClock.now
 var tokenCount = 0
 for _ in 0..<runs {
     withBenchmarkAutoreleasePool {
-        tokenCount = Highlighter.shared.highlight(code, as: language).tokens.count
+        tokenCount = Highlighter.shared.benchmarkHighlight(code, as: language).tokens.count
     }
 }
 let elapsed = ContinuousClock.now - start

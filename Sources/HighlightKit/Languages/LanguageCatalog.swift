@@ -77,5 +77,6 @@ public enum LanguageCatalog {
         vim,
         xml,
         yaml,
+        zig,
     ]
 }

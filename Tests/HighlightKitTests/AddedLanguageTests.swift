@@ -3,6 +3,20 @@ import Testing
 
 @Suite("Added language grammars")
 struct AddedLanguageTests {
+    @Test func zigHighlightsFunctionsBuiltinsAndOptionals() throws {
+        let code = "const maybe: ?u32 = null; pub fn main() void { const out = std.mem.Copy; return; }"
+        let result = try LanguageRegistry(languages: [LanguageCatalog.zig]).highlight(
+            code,
+            languageName: "zig",
+            ignoreIllegals: true,
+            continuation: nil
+        )
+        #expect(result.language == "zig")
+        #expect(result.tokens.contains { $0.scope == "function" })
+        #expect(result.tokens.contains { $0.scope == "optional" })
+        #expect(result.tokens.contains { $0.scope == "built_in" })
+    }
+
     @Test func terraformHighlightsBlocksInterpolationAndFunctions() throws {
         let code = #"resource "demo" "main" { value = "${merge(local.tags)}" }"#
         let result = try LanguageRegistry(languages: [LanguageCatalog.terraform]).highlight(

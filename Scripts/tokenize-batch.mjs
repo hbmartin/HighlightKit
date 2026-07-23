@@ -81,6 +81,11 @@ if (terraformRoot) {
   const terraform = require(path.join(terraformRoot, 'terraform.js'));
   HLJS.registerLanguage('terraform', terraform.definer);
 }
+const zigRoot = process.env.HIGHLIGHTJS_ZIG_DIR;
+if (zigRoot) {
+  const zig = require(path.join(zigRoot, 'src', 'index.js'));
+  HLJS.registerLanguage('zig', zig.zigLanguageSupport);
+}
 HLJS.configure({ __emitter: Emitter });
 
 const rl = readline.createInterface({ input: process.stdin });

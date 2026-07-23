@@ -22,3 +22,8 @@ The GitHub light/dark themes are ports of highlight.js's `github.css` and
 MIT License, Copyright (c) 2020 highlightjs-terraform. The bundled
 Terraform/HCL grammar is a Swift port of commit
 `eb1b9661e143a43dff6b58b391128ce5cdad31d4`.
+
+## highlightjs-zig
+
+MIT License, Copyright (c) 2020 gkotulski. The bundled Zig grammar is a
+Swift port of commit `6225ff9ed3ebf7e43b80a688a88fc135452beec2`.

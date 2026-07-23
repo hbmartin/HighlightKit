@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Languages: added Zig from highlightjs-zig at 6225ff9.
 - Languages: added Terraform/HCL from highlightjs-terraform at eb1b966.
 - Languages: added Protocol Buffers from the pinned highlight.js 11.11.1 grammar.
 - Languages: added GraphQL from the pinned highlight.js 11.11.1 grammar.

@@ -1,0 +1,10 @@
+syntax = "proto3";
+package demo;
+
+message User {
+  string name = 1;
+}
+
+service API {
+  rpc Get(User) returns (User);
+}

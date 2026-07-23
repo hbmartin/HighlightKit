@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(AppKit)
+import AppKit
+#endif
 #if canImport(Darwin)
 import Darwin
 #elseif canImport(Glibc)
@@ -6,6 +9,48 @@ import Glibc
 #endif
 import HighlightKit
 import Synchronization
+
+// Keep historical benchmark scenarios readable while exercising the new
+// source-breaking public API. These shims belong to the executable only.
+private extension Highlighter {
+    func benchmarkHighlight(
+        _ code: String,
+        as language: String,
+        ignoreIllegals: Bool = true,
+        continuation: Continuation? = nil
+    ) -> HighlightResult {
+        try! highlight(
+            code,
+            selection: .named(language),
+            options: HighlightOptions(ignoreIllegals: ignoreIllegals),
+            continuation: continuation
+        )
+    }
+
+    func benchmarkHighlightAuto(_ code: String, subset: [String]? = nil) -> HighlightResult {
+        try! highlight(
+            code,
+            selection: .automatic,
+            options: HighlightOptions(automaticSubset: subset)
+        )
+    }
+
+    func benchmarkHighlightAuto(_ code: String, subset: [String]? = nil) async -> HighlightResult {
+        try! await highlight(
+            code,
+            selection: .automatic,
+            options: HighlightOptions(automaticSubset: subset)
+        )
+    }
+
+    func benchmarkAttributedString(
+        for code: String,
+        language: String,
+        theme: HighlightTheme = .github
+    ) -> NSAttributedString {
+        try! attributedString(for: code, selection: .named(language), theme: theme)
+    }
+}
 
 // Standalone benchmark / leak-check host.
 //
@@ -125,6 +170,14 @@ func benchmarkSeconds(_ body: () -> Void) -> Double {
         + Double(elapsed.components.attoseconds) / 1e18
 }
 
+func benchmarkSeconds(_ body: () async -> Void) async -> Double {
+    let start = ContinuousClock.now
+    await body()
+    let elapsed = ContinuousClock.now - start
+    return Double(elapsed.components.seconds)
+        + Double(elapsed.components.attoseconds) / 1e18
+}
+
 /// Stable, process-independent FNV-1a used only to prove that two benchmark
 /// executables produced the same observable highlighting result. Swift's
 /// `Hasher` is intentionally randomized per process and is therefore not
@@ -206,7 +259,7 @@ func concurrentAutoResult(
     _ highlighter: Highlighter,
     code: String
 ) async -> HighlightResult {
-    await highlighter.highlightAuto(code)
+    await highlighter.benchmarkHighlightAuto(code)
 }
 
 struct AutoBenchmarkRecord: Encodable {
@@ -233,7 +286,7 @@ struct AutoBenchmarkRecord: Encodable {
 if arguments.count >= 4, arguments[1] == "--tokens" {
     let lang = arguments[2]
     let code = (try? String(contentsOfFile: arguments[3], encoding: .utf8)) ?? ""
-    let result = Highlighter.shared.highlight(code, as: lang, ignoreIllegals: true)
+    let result = Highlighter.shared.benchmarkHighlight(code, as: lang, ignoreIllegals: true)
     func jsonString(_ s: String) -> String {
         var out = "\""
         for scalar in s.unicodeScalars {
@@ -285,7 +338,9 @@ if arguments.count >= 2, arguments[1] == "--tokens-batch" {
             print("{\"error\":\"bad input\"}")
             continue
         }
-        let result = Highlighter.shared.highlight(input.code, as: input.lang, ignoreIllegals: true)
+        let result = Highlighter.shared.benchmarkHighlight(
+            input.code, as: input.lang, ignoreIllegals: true
+        )
         var toks: [String] = []
         for t in result.tokens {
             let scopes = t.scopes.map(jsonString).joined(separator: ",")
@@ -314,7 +369,11 @@ if arguments.count >= 2, arguments[1] == "--incremental-check" {
             print("{\"error\":\"bad input\"}"); continue
         }
         var whole: [Int: String] = [:]
-        scopeMap(Highlighter.shared.highlight(input.code, as: input.lang), base: 0, into: &whole)
+        scopeMap(
+            Highlighter.shared.benchmarkHighlight(input.code, as: input.lang),
+            base: 0,
+            into: &whole
+        )
         var incr: [Int: String] = [:]
         var cont: Continuation?
         var base = 0
@@ -326,7 +385,9 @@ if arguments.count >= 2, arguments[1] == "--incremental-check" {
             while end < ns.length, ns.character(at: end) != 10 { end += 1 }
             if end < ns.length { end += 1 } // include the \n
             let lineText = ns.substring(with: NSRange(location: start, length: end - start))
-            let r = Highlighter.shared.highlight(lineText, as: input.lang, continuation: cont)
+            let r = Highlighter.shared.benchmarkHighlight(
+                lineText, as: input.lang, continuation: cont
+            )
             cont = r.continuation
             scopeMap(r, base: base, into: &incr)
             base += (lineText as NSString).length
@@ -355,7 +416,7 @@ if arguments.count >= 4, arguments[1] == "--theme-bench" {
     let highlighter = Highlighter.shared
     // Warms grammar compilation for every scenario without touching a
     // theme. Cold theme timing therefore remains a true first access.
-    let result = highlighter.highlight(code, as: "swift")
+    let result = highlighter.benchmarkHighlight(code, as: "swift")
 
     let operation: () -> Int
     switch scenario {
@@ -366,7 +427,7 @@ if arguments.count >= 4, arguments[1] == "--theme-bench" {
     case "one-call":
         operation = {
             attributedChecksum(
-                highlighter.attributedString(for: code, language: "swift")
+                highlighter.benchmarkAttributedString(for: code, language: "swift")
             )
         }
     case "pure-render":
@@ -421,12 +482,12 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
             )
         }
         let highlighter = Highlighter(languages: [descriptor])
-        _ = highlighter.highlight("x", as: "rb")
+        _ = highlighter.benchmarkHighlight("x", as: "rb")
         var checksum = 0
         let seconds = benchmarkSeconds {
             for _ in 0..<iterations {
                 withBenchmarkAutoreleasePool {
-                    checksum &+= highlighter.highlight("x", as: "rb").tokens.count
+                    checksum &+= highlighter.benchmarkHighlight("x", as: "rb").tokens.count
                 }
             }
         }
@@ -449,14 +510,14 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
         }
         let highlighter = Highlighter(languages: descriptors)
         for index in 0..<languageCount {
-            _ = highlighter.highlight("", as: "auto-\(index)")
+            _ = highlighter.benchmarkHighlight("", as: "auto-\(index)")
         }
-        _ = highlighter.highlightAuto("x")
+        _ = highlighter.benchmarkHighlightAuto("x")
         var checksum = 0
         let seconds = benchmarkSeconds {
             for _ in 0..<iterations {
                 withBenchmarkAutoreleasePool {
-                    let result = highlighter.highlightAuto("x")
+                    let result = highlighter.benchmarkHighlightAuto("x")
                     checksum &+= result.tokens.count &+ Int(result.relevance)
                 }
             }
@@ -492,7 +553,7 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
                 for _ in 0..<taskCount {
                     group.addTask {
                         await barrier.wait()
-                        return highlighter.highlight(
+                        return highlighter.benchmarkHighlight(
                             "token127",
                             as: "contended"
                         ).tokens.count
@@ -524,7 +585,7 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
             )
         }
         let highlighter = Highlighter(languages: [descriptor])
-        _ = highlighter.highlight("x", as: "wc")
+        _ = highlighter.benchmarkHighlight("x", as: "wc")
 
         let barrier = RegistryStartBarrier(participantCount: taskCount)
         var checksum = 0
@@ -538,7 +599,7 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
                     var localChecksum = 0
                     for _ in 0..<localCount {
                         withBenchmarkAutoreleasePool {
-                            localChecksum &+= highlighter.highlight("x", as: "wc").tokens.count
+                            localChecksum &+= highlighter.benchmarkHighlight("x", as: "wc").tokens.count
                         }
                     }
                     return localChecksum
@@ -564,6 +625,474 @@ if arguments.count >= 4, arguments[1] == "--registry-bench" {
     exit(EXIT_SUCCESS)
 }
 
+struct ConsumerBenchmarkRecord: Encodable {
+    let schemaVersion = 1
+    let benchmark = "consumer-highlighting"
+    let scenario: String
+    let iterations: Int
+    let operations: Int
+    let totalElapsedSeconds: Double
+    let nanosecondsPerOperation: Double
+    let checksum: Int
+    let tokenCount: Int?
+    let attributedRunCount: Int?
+    let retainedBytes: Int?
+    let bytesPerUnit: Double?
+}
+
+func emitConsumerRecord(
+    scenario: String,
+    iterations: Int,
+    operations: Int,
+    seconds: Double,
+    checksum: Int,
+    tokenCount: Int? = nil,
+    attributedRunCount: Int? = nil,
+    retainedBytes: Int? = nil,
+    bytesPerUnit: Double? = nil
+) {
+    let record = ConsumerBenchmarkRecord(
+        scenario: scenario,
+        iterations: iterations,
+        operations: operations,
+        totalElapsedSeconds: seconds,
+        nanosecondsPerOperation: seconds / Double(max(1, operations)) * 1e9,
+        checksum: checksum,
+        tokenCount: tokenCount,
+        attributedRunCount: attributedRunCount,
+        retainedBytes: retainedBytes,
+        bytesPerUnit: bytesPerUnit
+    )
+    let encoder = JSONEncoder()
+    encoder.keyEncodingStrategy = .convertToSnakeCase
+    encoder.outputFormatting = [.sortedKeys, .withoutEscapingSlashes]
+    let data = try! encoder.encode(record)
+    FileHandle.standardOutput.write(data)
+    FileHandle.standardOutput.write(Data([0x0a]))
+}
+
+func attributedRunCount(_ string: NSAttributedString) -> Int {
+    var count = 0
+    string.enumerateAttributes(
+        in: NSRange(location: 0, length: string.length)
+    ) { _, _, _ in count += 1 }
+    return count
+}
+
+#if canImport(Darwin)
+func residentFootprintBytes() -> Int {
+    var info = task_vm_info_data_t()
+    var count = mach_msg_type_number_t(
+        MemoryLayout<task_vm_info_data_t>.size / MemoryLayout<natural_t>.size
+    )
+    let result = withUnsafeMutablePointer(to: &info) {
+        $0.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
+            task_info(mach_task_self_, task_flavor_t(TASK_VM_INFO), $0, &count)
+        }
+    }
+    return result == KERN_SUCCESS ? Int(info.phys_footprint) : 0
+}
+#else
+func residentFootprintBytes() -> Int { 0 }
+#endif
+
+#if canImport(AppKit)
+@MainActor
+func textKitViewportWorkload(
+    code: String,
+    result: HighlightResult,
+    iterations: Int
+) -> (seconds: Double, checksum: Int, runs: Int) {
+    _ = NSApplication.shared
+    let renderer = HighlightRenderer(theme: .githubLight)
+    var checksum = 0
+    var finalRuns = 0
+    let seconds = benchmarkSeconds {
+        for _ in 0..<iterations {
+            withBenchmarkAutoreleasePool {
+                let storage = NSTextStorage(
+                    string: code,
+                    attributes: [.font: renderer.regularFont]
+                )
+                _ = try! renderer.apply(result, to: storage)
+                finalRuns = attributedRunCount(storage)
+
+                let manager = NSLayoutManager()
+                let container = NSTextContainer(
+                    size: NSSize(width: 900, height: CGFloat.greatestFiniteMagnitude)
+                )
+                container.widthTracksTextView = true
+                manager.addTextContainer(container)
+                storage.addLayoutManager(manager)
+                let textView = NSTextView(
+                    frame: NSRect(x: 0, y: 0, width: 900, height: 640),
+                    textContainer: container
+                )
+                textView.isVerticallyResizable = true
+                textView.minSize = NSSize(width: 900, height: 640)
+                textView.maxSize = NSSize(width: 900, height: CGFloat.greatestFiniteMagnitude)
+                manager.ensureLayout(for: container)
+                let usedHeight = max(640, manager.usedRect(for: container).height)
+                textView.frame.size.height = usedHeight
+
+                let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: 900, height: 640))
+                scrollView.hasVerticalScroller = true
+                scrollView.documentView = textView
+                let maximumY = max(0, usedHeight - 640)
+                for viewport in 0..<40 {
+                    let fraction = Double(viewport) / 39.0
+                    let y = maximumY * fraction
+                    scrollView.contentView.scroll(to: NSPoint(x: 0, y: y))
+                    scrollView.reflectScrolledClipView(scrollView.contentView)
+                    let visible = NSRect(x: 0, y: y, width: 900, height: 640)
+                    if let bitmap = textView.bitmapImageRepForCachingDisplay(in: visible) {
+                        textView.cacheDisplay(in: visible, to: bitmap)
+                        checksum &+= bitmap.pixelsWide &+ bitmap.pixelsHigh
+                    }
+                    checksum &+= manager.glyphRange(
+                        forBoundingRect: visible,
+                        in: container
+                    ).length
+                }
+            }
+        }
+    }
+    return (seconds, checksum, finalRuns)
+}
+#endif
+
+// Consumer-oriented workloads:
+//   highlight-bench --consumer-bench <iterations> [scenario]
+// `all` runs small diff hunks, cold/warm/evicting/single-flight caches,
+// theme-only rerendering, token/run budgets, retained-cost probes, and the
+// macOS 40-viewport TextKit layout/drawing workload.
+if arguments.count >= 3, arguments[1] == "--consumer-bench" {
+    let iterations = max(1, Int(arguments[2]) ?? 1)
+    let requested = arguments.count > 3 ? arguments[3] : "all"
+    func includes(_ scenario: String) -> Bool {
+        requested == "all" || requested == scenario
+    }
+
+    let highlighter = Highlighter.shared
+    let mediumCode = String(sampleJS.prefix(sampleJS.count / 5))
+    let complete = try! highlighter.highlight(
+        mediumCode,
+        selection: .named("javascript")
+    )
+
+    if includes("small-hunks") {
+        let hunks = (0..<40).map { index in
+            (
+                "const oldValue\(index) = compute(\(index));\nreturn oldValue\(index);\n",
+                "const newValue\(index) = compute(\(index + 1));\nreturn newValue\(index);\n"
+            )
+        }
+        var checksum = 0
+        let seconds = benchmarkSeconds {
+            for _ in 0..<iterations {
+                for (old, new) in hunks {
+                    checksum &+= try! highlighter.highlight(
+                        old,
+                        selection: .named("javascript")
+                    ).tokens.count
+                    checksum &+= try! highlighter.highlight(
+                        new,
+                        selection: .named("javascript")
+                    ).tokens.count
+                }
+            }
+        }
+        emitConsumerRecord(
+            scenario: "small-hunks",
+            iterations: iterations,
+            operations: iterations * hunks.count * 2,
+            seconds: seconds,
+            checksum: checksum
+        )
+    }
+
+    if includes("cache-cold") {
+        let cache = HighlightCache(costLimit: 64 * 1024 * 1024)
+        var checksum = 0
+        let seconds = await benchmarkSeconds {
+            for index in 0..<iterations {
+                let result = try! await highlighter.highlight(
+                    mediumCode,
+                    selection: .named("javascript"),
+                    cache: cache,
+                    cacheKey: HighlightCacheKey(namespace: "bench-cold", value: "\(index)")
+                )
+                checksum &+= result.tokens.count
+            }
+        }
+        emitConsumerRecord(
+            scenario: "cache-cold",
+            iterations: iterations,
+            operations: iterations,
+            seconds: seconds,
+            checksum: checksum,
+            tokenCount: complete.tokens.count
+        )
+    }
+
+    if includes("cache-warm") || includes("theme-rerender") {
+        let cache = HighlightCache(costLimit: 64 * 1024 * 1024)
+        let key = HighlightCacheKey(namespace: "bench-warm", value: "blob")
+        _ = try! await highlighter.highlight(
+            mediumCode,
+            selection: .named("javascript"),
+            cache: cache,
+            cacheKey: key
+        )
+        if includes("cache-warm") {
+            var checksum = 0
+            let seconds = await benchmarkSeconds {
+                for _ in 0..<iterations {
+                    checksum &+= try! await highlighter.highlight(
+                        mediumCode,
+                        selection: .named("js"),
+                        cache: cache,
+                        cacheKey: key
+                    ).tokens.count
+                }
+            }
+            emitConsumerRecord(
+                scenario: "cache-warm",
+                iterations: iterations,
+                operations: iterations,
+                seconds: seconds,
+                checksum: checksum,
+                tokenCount: complete.tokens.count
+            )
+        }
+        if includes("theme-rerender") {
+            let cached = try! await highlighter.highlight(
+                mediumCode,
+                selection: .named("javascript"),
+                cache: cache,
+                cacheKey: key
+            )
+            let renderers = [
+                HighlightRenderer(theme: .githubLight),
+                HighlightRenderer(theme: .githubDark),
+            ]
+            var checksum = 0
+            let seconds = benchmarkSeconds {
+                for index in 0..<iterations {
+                    withBenchmarkAutoreleasePool {
+                        let rendered = renderers[index % renderers.count]
+                            .attributedString(for: mediumCode, result: cached)
+                        checksum &+= rendered.length
+                    }
+                }
+            }
+            emitConsumerRecord(
+                scenario: "theme-rerender",
+                iterations: iterations,
+                operations: iterations,
+                seconds: seconds,
+                checksum: checksum,
+                tokenCount: cached.tokens.count
+            )
+        }
+    }
+
+    if includes("cache-eviction") {
+        let cache = HighlightCache(costLimit: 64 * 1024 * 1024, countLimit: 4)
+        var checksum = 0
+        let operations = iterations * 8
+        let seconds = await benchmarkSeconds {
+            for index in 0..<operations {
+                checksum &+= try! await highlighter.highlight(
+                    mediumCode,
+                    selection: .named("javascript"),
+                    cache: cache,
+                    cacheKey: HighlightCacheKey(
+                        namespace: "bench-eviction",
+                        value: "\(index % 8)"
+                    )
+                ).tokens.count
+            }
+        }
+        emitConsumerRecord(
+            scenario: "cache-eviction",
+            iterations: iterations,
+            operations: operations,
+            seconds: seconds,
+            checksum: checksum,
+            tokenCount: complete.tokens.count
+        )
+    }
+
+    if includes("cache-single-flight") {
+        let cache = HighlightCache(costLimit: 64 * 1024 * 1024)
+        var checksum = 0
+        let waiterCount = 8
+        let seconds = await benchmarkSeconds {
+            for round in 0..<iterations {
+                await withTaskGroup(of: Int.self) { group in
+                    for _ in 0..<waiterCount {
+                        group.addTask {
+                            let result = try! await highlighter.highlight(
+                                mediumCode,
+                                selection: .named("javascript"),
+                                cache: cache,
+                                cacheKey: HighlightCacheKey(
+                                    namespace: "bench-flight",
+                                    value: "\(round)"
+                                )
+                            )
+                            return result.tokens.count
+                        }
+                    }
+                    for await value in group { checksum &+= value }
+                }
+            }
+        }
+        emitConsumerRecord(
+            scenario: "cache-single-flight",
+            iterations: iterations,
+            operations: iterations * waiterCount,
+            seconds: seconds,
+            checksum: checksum,
+            tokenCount: complete.tokens.count
+        )
+    }
+
+    if includes("token-budget") {
+        var checksum = 0
+        let seconds = benchmarkSeconds {
+            for _ in 0..<iterations {
+                let result = try! highlighter.highlight(
+                    mediumCode,
+                    selection: .named("javascript"),
+                    budget: HighlightBudget(maximumTokens: 100)
+                )
+                checksum &+= result.tokens.count &+ result.omittedTokenCount
+            }
+        }
+        emitConsumerRecord(
+            scenario: "token-budget-100",
+            iterations: iterations,
+            operations: iterations,
+            seconds: seconds,
+            checksum: checksum,
+            tokenCount: complete.tokens.count
+        )
+    }
+
+    if includes("run-budget") {
+        let renderer = HighlightRenderer(theme: .githubDark)
+        var checksum = 0
+        var appliedRuns = 0
+        let seconds = benchmarkSeconds {
+            for _ in 0..<iterations {
+                withBenchmarkAutoreleasePool {
+                    let storage = NSMutableAttributedString(
+                        string: mediumCode,
+                        attributes: [.font: renderer.regularFont]
+                    )
+                    let summary = try! renderer.apply(
+                        complete,
+                        to: storage,
+                        options: HighlightRenderOptions(maximumRenderedRuns: 200)
+                    )
+                    appliedRuns = summary.appliedRuns
+                    checksum &+= storage.length &+ summary.omittedRuns
+                }
+            }
+        }
+        emitConsumerRecord(
+            scenario: "run-budget-200",
+            iterations: iterations,
+            operations: iterations,
+            seconds: seconds,
+            checksum: checksum,
+            tokenCount: complete.tokens.count,
+            attributedRunCount: appliedRuns
+        )
+    }
+
+    if includes("retained-memory") {
+        let cache = HighlightCache(costLimit: 64 * 1024 * 1024)
+        let cacheFootprintBefore = residentFootprintBytes()
+        for index in 0..<max(1, iterations * 8) {
+            _ = try! await highlighter.highlight(
+                mediumCode,
+                selection: .named("javascript"),
+                cache: cache,
+                cacheKey: HighlightCacheKey(namespace: "bench-memory", value: "\(index)")
+            )
+        }
+        let metrics = await cache.metrics
+        let cachedTokens = complete.tokens.count * metrics.count
+        let cacheRetainedBytes = max(
+            0,
+            residentFootprintBytes() - cacheFootprintBefore
+        )
+        emitConsumerRecord(
+            scenario: "retained-cache-results",
+            iterations: iterations,
+            operations: metrics.count,
+            seconds: 0,
+            checksum: metrics.currentCost,
+            tokenCount: cachedTokens,
+            retainedBytes: cacheRetainedBytes,
+            bytesPerUnit: cachedTokens == 0
+                ? 0
+                : Double(cacheRetainedBytes) / Double(cachedTokens)
+        )
+
+        let renderer = HighlightRenderer(theme: .githubDark)
+        let retainedCount = max(4, min(32, iterations * 4))
+        let before = residentFootprintBytes()
+        var retained: [NSAttributedString] = []
+        retained.reserveCapacity(retainedCount)
+        var runs = 0
+        for _ in 0..<retainedCount {
+            let string = renderer.attributedString(for: mediumCode, result: complete)
+            runs += attributedRunCount(string)
+            retained.append(string)
+        }
+        let retainedBytes = max(0, residentFootprintBytes() - before)
+        emitConsumerRecord(
+            scenario: "retained-attributed-runs",
+            iterations: iterations,
+            operations: retainedCount,
+            seconds: 0,
+            checksum: retained.reduce(0) { $0 &+ $1.length },
+            tokenCount: complete.tokens.count * retainedCount,
+            attributedRunCount: runs,
+            retainedBytes: retainedBytes,
+            bytesPerUnit: runs == 0 ? 0 : Double(retainedBytes) / Double(runs)
+        )
+    }
+
+    if includes("textkit") {
+        #if canImport(AppKit)
+        let textKitResult = Highlighter.shared.benchmarkHighlight(sampleJS, as: "javascript")
+        let measurement = textKitViewportWorkload(
+            code: sampleJS,
+            result: textKitResult,
+            iterations: iterations
+        )
+        emitConsumerRecord(
+            scenario: "textkit-40-viewports",
+            iterations: iterations,
+            operations: iterations,
+            seconds: measurement.seconds,
+            checksum: measurement.checksum,
+            tokenCount: textKitResult.tokens.count,
+            attributedRunCount: measurement.runs
+        )
+        #else
+        fputs("textkit scenario requires macOS\n", stderr)
+        #endif
+    }
+
+    exit(EXIT_SUCCESS)
+}
+
 // Rendering benchmark: highlight once, then time repeated
 // attributedString(for:theme:) generation — the block-editor
 // re-render workload. `highlight-bench --render <iters> [language]`.
@@ -571,7 +1100,7 @@ if arguments.count >= 3, arguments[1] == "--render" {
     let iters = Int(arguments[2]) ?? 100
     let lang = arguments.count > 3 ? arguments[3] : "javascript"
     let code = sampleJS
-    let result = Highlighter.shared.highlight(code, as: lang)
+    let result = Highlighter.shared.benchmarkHighlight(code, as: lang)
     let theme = HighlightTheme.githubDark
     _ = result.attributedString(for: code, theme: theme) // warm
     let start = ContinuousClock.now
@@ -720,20 +1249,22 @@ if arguments.count >= 3, arguments[1] == "--auto" {
     var detected: String?
     let coldSeq = measure {
         let fresh = Highlighter()
-        detected = fresh.highlightAuto(code).language
+        detected = fresh.benchmarkHighlightAuto(code).language
     }
     let coldPar = await measureAsync {
         let fresh = Highlighter()
-        _ = await fresh.highlightAuto(code)
+        _ = await fresh.benchmarkHighlightAuto(code)
     }
-    _ = Highlighter.shared.highlightAuto(code) // warm the shared instance
+    _ = Highlighter.shared.benchmarkHighlightAuto(code) // warm the shared instance
     var warmSeq = 0.0
     var warmPar = 0.0
     for _ in 0..<iters {
-        warmSeq += measure { withBenchmarkAutoreleasePool { _ = Highlighter.shared.highlightAuto(code) } }
+        warmSeq += measure {
+            withBenchmarkAutoreleasePool { _ = Highlighter.shared.benchmarkHighlightAuto(code) }
+        }
     }
     for _ in 0..<iters {
-        warmPar += await measureAsync { _ = await Highlighter.shared.highlightAuto(code) }
+        warmPar += await measureAsync { _ = await Highlighter.shared.benchmarkHighlightAuto(code) }
     }
     let langCount = Highlighter.shared.languageNames.count
     print("auto-detect (\(units) units, \(langCount) languages) → \(detected ?? "nil")")
@@ -750,14 +1281,16 @@ let language = arguments.count > 2 ? arguments[2] : "javascript"
 // — the block-editor workload, where per-call fixed cost dominates.
 if arguments.count > 3, arguments[3] == "--incremental" {
     let lines = sampleJS.split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
-    _ = Highlighter.shared.highlight(sampleJS, as: language) // warm compile
+    _ = Highlighter.shared.benchmarkHighlight(sampleJS, as: language) // warm compile
     let start = ContinuousClock.now
     var totalTokens = 0
     for _ in 0..<runs {
         var continuation: Continuation?
         for line in lines {
             withBenchmarkAutoreleasePool {
-                let r = Highlighter.shared.highlight(line + "\n", as: language, continuation: continuation)
+                let r = Highlighter.shared.benchmarkHighlight(
+                    line + "\n", as: language, continuation: continuation
+                )
                 continuation = r.continuation
                 totalTokens += r.tokens.count
             }
@@ -781,13 +1314,13 @@ if arguments.count > 3 {
 let units = (code as NSString).length
 
 // warm-up (grammar compilation)
-_ = Highlighter.shared.highlight(code, as: language)
+_ = Highlighter.shared.benchmarkHighlight(code, as: language)
 
 let start = ContinuousClock.now
 var tokenCount = 0
 for _ in 0..<runs {
     withBenchmarkAutoreleasePool {
-        tokenCount = Highlighter.shared.highlight(code, as: language).tokens.count
+        tokenCount = Highlighter.shared.benchmarkHighlight(code, as: language).tokens.count
     }
 }
 let elapsed = ContinuousClock.now - start

@@ -1,0 +1,7 @@
+const std = @import("std");
+
+pub fn main(value: ?u32) void {
+    const out = std.mem.Copy;
+    // TODO: use value
+    return;
+}

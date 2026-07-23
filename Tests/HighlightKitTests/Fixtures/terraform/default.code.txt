@@ -1,0 +1,8 @@
+variable "region" {
+  default = "us-east-1"
+}
+
+resource "demo_instance" "main" {
+  count = 2
+  name  = "${merge(local.tags)}"
+}

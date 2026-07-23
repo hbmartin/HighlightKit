@@ -150,6 +150,22 @@ final class LanguageRegistry: Sendable {
         var entries: [String: Registration] = [:]
         var aliases: [String: Entry] = [:]
         var sortedNames: [String] = []
+        var filenames: [String: [String]] = [:]
+        var fileExtensions: [String: [String]] = [:]
+        var interpreters: [String: [String]] = [:]
+        var revision: UInt64 = 0
+
+        mutating func rebuildMetadataIndexes() {
+            filenames.removeAll(keepingCapacity: true)
+            fileExtensions.removeAll(keepingCapacity: true)
+            interpreters.removeAll(keepingCapacity: true)
+            for name in sortedNames {
+                guard let metadata = entries[name]?.entry.descriptor.metadata else { continue }
+                for filename in metadata.filenames { filenames[filename, default: []].append(name) }
+                for ext in metadata.fileExtensions { fileExtensions[ext, default: []].append(name) }
+                for interpreter in metadata.interpreters { interpreters[interpreter, default: []].append(name) }
+            }
+        }
     }
 
     /// One generation retained after the global table lock is released.
@@ -207,6 +223,8 @@ final class LanguageRegistry: Sendable {
             // here so every auto-detection call receives an O(1), COW
             // snapshot instead of sorting all language names again.
             state.sortedNames = state.entries.keys.sorted()
+            state.rebuildMetadataIndexes()
+            state.revision &+= 1
             return retired
         }
         // Releasing an Entry may destroy a descriptor factory capture or
@@ -217,6 +235,48 @@ final class LanguageRegistry: Sendable {
     /// Canonical names of all registered languages, sorted.
     var languageNames: [String] {
         state.withLock { $0.sortedNames }
+    }
+
+    var languageInfos: [LanguageInfo] {
+        state.withLock { state in
+            state.sortedNames.compactMap { name in
+                state.entries[name].map { registration in
+                    LanguageInfo(
+                        name: name,
+                        aliases: registration.entry.aliases,
+                        metadata: registration.entry.descriptor.metadata
+                    )
+                }
+            }
+        }
+    }
+
+    var revision: UInt64 { state.withLock { $0.revision } }
+
+    func exactFilenameCandidates(_ filename: String) -> [String] {
+        state.withLock { $0.filenames[filename.lowercased()] ?? [] }
+    }
+
+    func extensionCandidates(_ filename: String) -> [String] {
+        let filename = filename.lowercased()
+        return state.withLock { state in
+            var longest = -1
+            var candidates: [String] = []
+            for (ext, names) in state.fileExtensions {
+                guard filename == ext || filename.hasSuffix("." + ext) else { continue }
+                if ext.count > longest {
+                    longest = ext.count
+                    candidates = names
+                } else if ext.count == longest {
+                    candidates.append(contentsOf: names)
+                }
+            }
+            return Array(Set(candidates)).sorted()
+        }
+    }
+
+    func interpreterCandidates(_ interpreter: String) -> [String] {
+        state.withLock { $0.interpreters[interpreter.lowercased()] ?? [] }
     }
 
     private func entry(named name: String) -> Entry? {
@@ -436,7 +496,8 @@ final class LanguageRegistry: Sendable {
         languageName: String,
         ignoreIllegals: Bool,
         continuation: Continuation? = nil,
-        ancestry: LanguageAncestry? = nil
+        ancestry: LanguageAncestry? = nil,
+        cancellationProbe: HighlightEngine.CancellationProbe? = nil
     ) throws -> HighlightResult {
         let language = try compiledLanguage(named: languageName)
         return try highlight(
@@ -444,7 +505,8 @@ final class LanguageRegistry: Sendable {
             language: language,
             ignoreIllegals: ignoreIllegals,
             continuation: continuation,
-            ancestry: ancestry
+            ancestry: ancestry,
+            cancellationProbe: cancellationProbe
         )
     }
 
@@ -476,14 +538,27 @@ final class LanguageRegistry: Sendable {
                 relevance: result.relevance,
                 illegal: false,
                 tokens: result.tokens,
+                sourceLength: code.utf16.count,
                 continuation: Continuation(state: result.resumeState)
             )
         } catch let error as HighlightEngine.EngineError {
             switch error {
             case .illegal:
-                return HighlightResult(language: language.name, relevance: 0, illegal: true, tokens: [])
+                return HighlightResult(
+                    language: language.name,
+                    relevance: 0,
+                    illegal: true,
+                    tokens: [],
+                    sourceLength: code.utf16.count
+                )
             case .potentialInfiniteLoop, .recursiveSubLanguage:
-                return HighlightResult(language: language.name, relevance: 0, illegal: false, tokens: [])
+                return HighlightResult(
+                    language: language.name,
+                    relevance: 0,
+                    illegal: false,
+                    tokens: [],
+                    sourceLength: code.utf16.count
+                )
             }
         }
     }

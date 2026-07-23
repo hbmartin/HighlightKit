@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+function greet --argument-names name
+    set -l count 2
+    echo "hello $name" (string repeat -n $count '!')
+end

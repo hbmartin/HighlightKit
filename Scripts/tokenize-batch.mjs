@@ -3,6 +3,7 @@
 import path from 'node:path';
 import { existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import readline from 'readline';
 
 const referenceRoot = process.env.HIGHLIGHTJS_DIR;
@@ -19,7 +20,7 @@ if (!existsSync(corePath)) {
 const require = createRequire(import.meta.url);
 const HLJS = require(corePath).newInstance();
 
-const SUPPORTED = `plaintext ada apache applescript armasm bash basic c clojure cmake coffeescript cpp csharp css dart delphi diff dockerfile dos elm erlang fortran fsharp go groovy haskell http ini java javascript json kotlin leaf less lisp llvm lua makefile markdown matlab nginx nim nix objectivec ocaml perl php powershell prolog properties python r ruby rust scala scheme scss shell sql stylus swift typescript vim xml yaml`.split(' ');
+const SUPPORTED = `plaintext ada apache applescript armasm bash basic c clojure cmake coffeescript cpp csharp css dart delphi diff dockerfile dos elm elixir erlang fortran fsharp go graphql groovy haskell http ini java javascript json kotlin leaf less lisp llvm lua makefile markdown matlab nginx nim nix objectivec ocaml perl php powershell prolog properties protobuf python r ruby rust scala scheme scss shell sql stylus swift typescript vim xml yaml`.split(' ');
 
 class Emitter {
   constructor(){ this.stack=[]; this.offset=0; this.tokens=[]; }
@@ -76,6 +77,21 @@ for (const n of SUPPORTED) {
   const language = require(path.join(buildRoot, 'languages', `${n}.js`));
   HLJS.registerLanguage(n, language);
 }
+const terraformRoot = process.env.HIGHLIGHTJS_TERRAFORM_DIR;
+if (terraformRoot) {
+  const terraform = require(path.join(terraformRoot, 'terraform.js'));
+  HLJS.registerLanguage('terraform', terraform.definer);
+}
+const zigRoot = process.env.HIGHLIGHTJS_ZIG_DIR;
+if (zigRoot) {
+  const zig = require(path.join(zigRoot, 'src', 'index.js'));
+  HLJS.registerLanguage('zig', zig.zigLanguageSupport);
+}
+const scriptsRoot = path.dirname(fileURLToPath(import.meta.url));
+HLJS.registerLanguage(
+  'fish',
+  require(path.join(scriptsRoot, 'reference-grammars', 'fish.cjs'))
+);
 HLJS.configure({ __emitter: Emitter });
 
 const rl = readline.createInterface({ input: process.stdin });

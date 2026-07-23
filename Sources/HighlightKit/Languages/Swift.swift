@@ -2,7 +2,17 @@ import Foundation
 
 extension LanguageCatalog {
     /// Swift. Port of highlight.js `languages/swift.js`.
-    public static let swift = LanguageDescriptor(name: "swift") {
+    public static let swift = LanguageDescriptor(
+        name: "swift",
+        build: SwiftGrammar.makeDefinition
+    )
+}
+
+/// Keeping the grammar construction outside the descriptor closure gives
+/// Swift's constraint solver an explicit result boundary. This is important
+/// for the large, intentionally token-exact Swift grammar on Swift 6.2.
+private enum SwiftGrammar {
+    static func makeDefinition() -> LanguageDefinition {
         let whitespace = Mode(match: #"\s+"#, relevance: 0)
         // https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411
         let blockComment = CommonModes.comment(#"/\*"#, #"\*/"#) { mode in
@@ -309,13 +319,16 @@ extension LanguageCatalog {
             relevance: 0
         )
         // Matches tuples as well as the parameter list of a function type.
-        let tupleContains: [Mode] = [Mode.selfReference, tupleElementName]
-            + comments
-            + [regexp]
-            + keywordModes + builtIns + operators
-            + [number, string]
-            + identifiers + attributes
-            + [type]
+        var tupleContains: [Mode] = [Mode.selfReference, tupleElementName]
+        tupleContains.append(contentsOf: comments)
+        tupleContains.append(regexp)
+        tupleContains.append(contentsOf: keywordModes)
+        tupleContains.append(contentsOf: builtIns)
+        tupleContains.append(contentsOf: operators)
+        tupleContains.append(contentsOf: [number, string])
+        tupleContains.append(contentsOf: identifiers)
+        tupleContains.append(contentsOf: attributes)
+        tupleContains.append(type)
         let tuple = Mode(
             begin: #"\("#,
             end: #"\)"#,
@@ -339,11 +352,13 @@ extension LanguageCatalog {
             ],
             relevance: 0
         )
-        let functionParametersContains: [Mode] = [functionParameterName]
-            + comments + keywordModes + operators
-            + [number, string]
-            + attributes
-            + [type, tuple]
+        var functionParametersContains: [Mode] = [functionParameterName]
+        functionParametersContains.append(contentsOf: comments)
+        functionParametersContains.append(contentsOf: keywordModes)
+        functionParametersContains.append(contentsOf: operators)
+        functionParametersContains.append(contentsOf: [number, string])
+        functionParametersContains.append(contentsOf: attributes)
+        functionParametersContains.append(contentsOf: [type, tuple])
         let functionParameters = Mode(
             begin: #"\("#,
             end: #"\)"#,
@@ -473,27 +488,30 @@ extension LanguageCatalog {
             ]
         }
 
-        let rootContains: [Mode] = comments
-            + [
-                functionOrMacro,
-                initSubscript,
-                classFuncDeclaration,
-                classVarDeclaration,
-                typeDeclaration,
-                operatorDeclaration,
-                precedencegroupDeclaration,
-                Mode(
-                    beginKeywords: "import",
-                    end: "$",
-                    contains: comments,
-                    relevance: 0
-                ),
-                regexp,
-            ]
-            + keywordModes + builtIns + operators
-            + [number, string]
-            + identifiers + attributes
-            + [type, tuple]
+        var rootContains = comments
+        rootContains.append(contentsOf: [
+            functionOrMacro,
+            initSubscript,
+            classFuncDeclaration,
+            classVarDeclaration,
+            typeDeclaration,
+            operatorDeclaration,
+            precedencegroupDeclaration,
+            Mode(
+                beginKeywords: "import",
+                end: "$",
+                contains: comments,
+                relevance: 0
+            ),
+            regexp,
+        ])
+        rootContains.append(contentsOf: keywordModes)
+        rootContains.append(contentsOf: builtIns)
+        rootContains.append(contentsOf: operators)
+        rootContains.append(contentsOf: [number, string])
+        rootContains.append(contentsOf: identifiers)
+        rootContains.append(contentsOf: attributes)
+        rootContains.append(contentsOf: [type, tuple])
         return LanguageDefinition(
             name: "swift",
             root: Mode(

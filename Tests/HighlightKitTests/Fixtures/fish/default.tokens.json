@@ -1,0 +1,20 @@
+{
+  "language": "fish",
+  "relevance": 14,
+  "tokens": [
+    { "start": 0, "length": 19, "scopes": ["meta"] },
+    { "start": 20, "length": 8, "scopes": ["keyword"] },
+    { "start": 35, "length": 16, "scopes": ["meta"] },
+    { "start": 65, "length": 2, "scopes": ["meta"] },
+    { "start": 74, "length": 1, "scopes": ["number"] },
+    { "start": 85, "length": 7, "scopes": ["string"] },
+    { "start": 92, "length": 5, "scopes": ["string", "variable"] },
+    { "start": 97, "length": 1, "scopes": ["string"] },
+    { "start": 99, "length": 18, "scopes": ["subst"] },
+    { "start": 117, "length": 6, "scopes": ["subst", "variable"] },
+    { "start": 123, "length": 1, "scopes": ["subst"] },
+    { "start": 124, "length": 3, "scopes": ["subst", "string"] },
+    { "start": 127, "length": 1, "scopes": ["subst"] },
+    { "start": 129, "length": 3, "scopes": ["keyword"] }
+  ]
+}

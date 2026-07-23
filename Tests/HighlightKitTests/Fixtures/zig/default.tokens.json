@@ -1,0 +1,23 @@
+{
+  "language": "zig",
+  "relevance": 16,
+  "tokens": [
+    { "start": 0, "length": 5, "scopes": ["keyword"] },
+    { "start": 6, "length": 3, "scopes": ["built_in"] },
+    { "start": 10, "length": 1, "scopes": ["operator"] },
+    { "start": 12, "length": 7, "scopes": ["string"] },
+    { "start": 20, "length": 5, "scopes": ["string"] },
+    { "start": 29, "length": 3, "scopes": ["keyword"] },
+    { "start": 33, "length": 2, "scopes": ["function", "keyword"] },
+    { "start": 35, "length": 1, "scopes": ["function"] },
+    { "start": 36, "length": 4, "scopes": ["function", "title"] },
+    { "start": 40, "length": 13, "scopes": ["function", "params"] },
+    { "start": 54, "length": 4, "scopes": ["keyword"] },
+    { "start": 65, "length": 5, "scopes": ["keyword"] },
+    { "start": 75, "length": 1, "scopes": ["operator"] },
+    { "start": 77, "length": 3, "scopes": ["built_in"] },
+    { "start": 80, "length": 9, "scopes": ["property"] },
+    { "start": 95, "length": 18, "scopes": ["comment-todo"] },
+    { "start": 118, "length": 6, "scopes": ["keyword"] }
+  ]
+}

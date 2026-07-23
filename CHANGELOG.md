@@ -1,5 +1,39 @@
 # Changelog
 
+## Unreleased
+
+- Benchmarks: added diff-hunk, result-cache, theme-rerender, token/run-budget,
+  retained-memory, and macOS 40-viewport TextKit layout/drawing workloads,
+  plus source-breaking migration documentation and updated provenance.
+- Incremental: added actor-isolated `HighlightedDocument` with transactional
+  UTF-16 edits, line tokens, continuation checkpoints, suffix convergence,
+  preserved line endings, and capped visible-range snapshots.
+- Performance: added an explicit cost/count-bounded token-result LRU cache
+  with canonical effective keys, negative entries, single-flight request
+  coalescing, independent waiter cancellation, purge handling, and metrics.
+- Rendering: added a reusable overlay renderer with UTF-16 range rebasing,
+  independent color/trait controls, style coalescing, and exact rendered-run
+  budgets while preserving caller-owned attributes.
+- API: language descriptors now carry normalized extension, exact-filename,
+  and interpreter metadata. The async repository resolver handles overrides,
+  shebangs, compound extensions, and content-assisted ambiguous extensions.
+- Breaking: replaced nullable-language and silent-fallback entry points with
+  throwing `LanguageSelection` APIs, cancellable async named highlighting,
+  explicit parser options, and token budgets. Results now report UTF-16 source
+  length and omitted-token counts.
+- Languages: added a first-party Fish grammar based on Fish source/docs at
+  20569c4. It is excluded from unrestricted autodetection but remains
+  available by name, extension, and shebang.
+- Languages: added Zig from highlightjs-zig at 6225ff9.
+- Languages: added Terraform/HCL from highlightjs-terraform at eb1b966.
+- Languages: added Protocol Buffers from the pinned highlight.js 11.11.1 grammar.
+- Languages: added GraphQL from the pinned highlight.js 11.11.1 grammar.
+- Languages: added Elixir from the pinned highlight.js 11.11.1 grammar.
+- Build: moved the large Swift grammar factory behind an explicitly typed
+  construction boundary and replaced its remaining long array expressions
+  with incremental appends. This restores Swift 6.2.4/Xcode 26.3 builds
+  without changing grammar tokens.
+
 ## 0.2.0 — 2026-07-14
 
 - Fixed: a keyword listed under two scope groups of the same mode now

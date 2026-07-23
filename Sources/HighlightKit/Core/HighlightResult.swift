@@ -151,6 +151,16 @@ public struct HighlightResult: Sendable {
     /// covered by any token is plain.
     public let tokens: [HighlightToken]
 
+    /// UTF-16 length of the source that produced this result.
+    public let sourceLength: Int
+
+    /// Number of syntax tokens omitted by the caller's token budget.
+    public let omittedTokenCount: Int
+
+    /// Whether token output was truncated while relevance and continuation
+    /// were still computed for the complete source.
+    public var isTruncated: Bool { omittedTokenCount > 0 }
+
     /// Parser state for continuing this highlight on subsequent text.
     public let continuation: Continuation?
 
@@ -162,6 +172,8 @@ public struct HighlightResult: Sendable {
         relevance: Double,
         illegal: Bool,
         tokens: [HighlightToken],
+        sourceLength: Int = 0,
+        omittedTokenCount: Int = 0,
         continuation: Continuation? = nil,
         secondBest: (language: String, relevance: Double)? = nil
     ) {
@@ -169,13 +181,48 @@ public struct HighlightResult: Sendable {
         self.relevance = relevance
         self.illegal = illegal
         self.tokens = tokens
+        self.sourceLength = sourceLength
+        self.omittedTokenCount = omittedTokenCount
         self.continuation = continuation
         self.secondBest = secondBest
     }
 
     /// A no-highlighting result (plain text).
-    static func plain(language: String? = nil) -> HighlightResult {
-        HighlightResult(language: language, relevance: 0, illegal: false, tokens: [])
+    static func plain(language: String? = nil, sourceLength: Int = 0) -> HighlightResult {
+        HighlightResult(
+            language: language,
+            relevance: 0,
+            illegal: false,
+            tokens: [],
+            sourceLength: sourceLength
+        )
+    }
+
+    func normalizedSourceLength(_ sourceLength: Int) -> HighlightResult {
+        HighlightResult(
+            language: language,
+            relevance: relevance,
+            illegal: illegal,
+            tokens: tokens,
+            sourceLength: sourceLength,
+            omittedTokenCount: omittedTokenCount,
+            continuation: continuation,
+            secondBest: secondBest
+        )
+    }
+
+    func applying(_ budget: HighlightBudget?) -> HighlightResult {
+        guard let budget, tokens.count > budget.maximumTokens else { return self }
+        return HighlightResult(
+            language: language,
+            relevance: relevance,
+            illegal: illegal,
+            tokens: Array(tokens.prefix(budget.maximumTokens)),
+            sourceLength: sourceLength,
+            omittedTokenCount: tokens.count - budget.maximumTokens,
+            continuation: continuation,
+            secondBest: secondBest
+        )
     }
 }
 

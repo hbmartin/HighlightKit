@@ -14,7 +14,21 @@ swift build -c release
 .build/release/highlight-bench --auto 10                    # language detection
 .build/release/highlight-bench --render 20 javascript       # attributed string
 .build/release/highlight-bench 10 swift path/to/file.swift  # your own input
+.build/release/highlight-bench --consumer-bench 5 all       # cache/render/TextKit consumers
 ```
+
+`--consumer-bench` emits machine-readable JSONL for 40 old/new hunk pairs;
+cold, warm, evicting, and single-flight caches; theme-only rerendering; token
+and rendered-run budgets; retained cost per cached token and resident bytes per
+attributed run; and, on macOS, an offscreen TextKit workload that installs the
+overlay in `NSTextStorage`, forces layout, scrolls 40 deterministic viewports,
+and forces drawing with `cacheDisplay`.
+
+The first release-build snapshot for these workloads is recorded in
+[`Benchmarks/Results/2026-07-23-consumer-highlighting`](Benchmarks/Results/2026-07-23-consumer-highlighting/README.md).
+The 15-pair parser control against the restored green baseline is recorded in
+[`Benchmarks/Results/2026-07-23-repository-aware-runtime`](Benchmarks/Results/2026-07-23-repository-aware-runtime/README.md);
+it found no resolved regression across the existing parser workloads.
 
 ## Throughput (62 KB input, warm)
 

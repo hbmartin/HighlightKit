@@ -1,0 +1,21 @@
+{
+  "language": "elixir",
+  "relevance": 10,
+  "tokens": [
+    { "start": 0, "length": 9, "scopes": ["class", "keyword"] },
+    { "start": 9, "length": 1, "scopes": ["class"] },
+    { "start": 10, "length": 4, "scopes": ["class", "title"] },
+    { "start": 15, "length": 2, "scopes": ["keyword"] },
+    { "start": 20, "length": 10, "scopes": ["variable"] },
+    { "start": 31, "length": 5, "scopes": ["literal"] },
+    { "start": 39, "length": 3, "scopes": ["function", "keyword"] },
+    { "start": 42, "length": 1, "scopes": ["function"] },
+    { "start": 43, "length": 5, "scopes": ["function", "title"] },
+    { "start": 56, "length": 3, "scopes": ["symbol"] },
+    { "start": 60, "length": 9, "scopes": ["regex"] },
+    { "start": 69, "length": 7, "scopes": ["regex", "subst"] },
+    { "start": 76, "length": 2, "scopes": ["regex"] },
+    { "start": 81, "length": 3, "scopes": ["symbol"] },
+    { "start": 85, "length": 3, "scopes": ["keyword"] }
+  ]
+}

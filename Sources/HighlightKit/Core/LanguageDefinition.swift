@@ -43,11 +43,18 @@ public struct LanguageDefinition {
 public struct LanguageDescriptor: Sendable {
     public let name: String
     public let aliases: [String]
+    public let metadata: LanguageMetadata
     public let build: @Sendable () -> LanguageDefinition
 
-    public init(name: String, aliases: [String] = [], build: @escaping @Sendable () -> LanguageDefinition) {
+    public init(
+        name: String,
+        aliases: [String] = [],
+        metadata: LanguageMetadata? = nil,
+        build: @escaping @Sendable () -> LanguageDefinition
+    ) {
         self.name = name
         self.aliases = aliases
+        self.metadata = metadata ?? .bundled(language: name)
         self.build = build
     }
 }

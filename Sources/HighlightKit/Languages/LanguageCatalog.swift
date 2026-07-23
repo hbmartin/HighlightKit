@@ -29,6 +29,7 @@ public enum LanguageCatalog {
         elm,
         elixir,
         erlang,
+        fish,
         fortran,
         fsharp,
         go,

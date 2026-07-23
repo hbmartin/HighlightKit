@@ -3,6 +3,21 @@ import Testing
 
 @Suite("Added language grammars")
 struct AddedLanguageTests {
+    @Test func fishHighlightsVariablesSubstitutionsAndOptions() throws {
+        let code = "#!/usr/bin/env fish\nfor file in *.swift; echo \"$file (count $argv)\"; end"
+        let result = try LanguageRegistry(languages: [LanguageCatalog.fish]).highlight(
+            code,
+            languageName: "fish",
+            ignoreIllegals: true,
+            continuation: nil
+        )
+        #expect(result.language == "fish")
+        #expect(result.tokens.contains { $0.scope == "meta" })
+        #expect(result.tokens.contains { $0.scope == "variable" })
+        #expect(result.tokens.contains { $0.scope == "subst" })
+        #expect(LanguageCatalog.fish.build().disableAutodetect)
+    }
+
     @Test func zigHighlightsFunctionsBuiltinsAndOptionals() throws {
         let code = "const maybe: ?u32 = null; pub fn main() void { const out = std.mem.Copy; return; }"
         let result = try LanguageRegistry(languages: [LanguageCatalog.zig]).highlight(

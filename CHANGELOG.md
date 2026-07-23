@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Languages: added a first-party Fish grammar based on Fish source/docs at
+  20569c4. It is excluded from unrestricted autodetection but remains
+  available by name, extension, and shebang.
 - Languages: added Zig from highlightjs-zig at 6225ff9.
 - Languages: added Terraform/HCL from highlightjs-terraform at eb1b966.
 - Languages: added Protocol Buffers from the pinned highlight.js 11.11.1 grammar.

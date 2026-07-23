@@ -3,6 +3,7 @@
 import path from 'node:path';
 import { existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import readline from 'readline';
 
 const referenceRoot = process.env.HIGHLIGHTJS_DIR;
@@ -86,6 +87,11 @@ if (zigRoot) {
   const zig = require(path.join(zigRoot, 'src', 'index.js'));
   HLJS.registerLanguage('zig', zig.zigLanguageSupport);
 }
+const scriptsRoot = path.dirname(fileURLToPath(import.meta.url));
+HLJS.registerLanguage(
+  'fish',
+  require(path.join(scriptsRoot, 'reference-grammars', 'fish.cjs'))
+);
 HLJS.configure({ __emitter: Emitter });
 
 const rl = readline.createInterface({ input: process.stdin });

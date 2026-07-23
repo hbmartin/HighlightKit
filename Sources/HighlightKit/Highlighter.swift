@@ -109,12 +109,30 @@ public final class Highlighter: Sendable {
         budget: HighlightBudget? = nil,
         theme: HighlightTheme = .github
     ) async throws -> NSAttributedString {
-        try await highlight(
+        let result = try await highlight(
             code,
             selection: selection,
             options: options,
             budget: budget
-        ).attributedString(for: code, theme: theme)
+        )
+        try Task.checkCancellation()
+        let renderer = HighlightRenderer(theme: theme)
+        let text = NSMutableAttributedString(
+            string: code,
+            attributes: [
+                .font: renderer.regularFont,
+                .foregroundColor: theme.foregroundColor,
+            ]
+        )
+        _ = try renderer.apply(
+            result,
+            to: text,
+            mappings: nil,
+            options: HighlightRenderOptions(),
+            cancellationProbe: { Task.isCancelled }
+        )
+        try Task.checkCancellation()
+        return text
     }
 }
 

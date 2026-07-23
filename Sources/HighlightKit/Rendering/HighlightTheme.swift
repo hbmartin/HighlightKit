@@ -110,36 +110,7 @@ extension HighlightResult {
     ///   - code: the exact code string that produced this result.
     ///   - theme: colors and font to apply.
     public func attributedString(for code: String, theme: HighlightTheme) -> NSAttributedString {
-        let baseFont = theme.font.resolved()
-        let text = NSMutableAttributedString(
-            string: code,
-            attributes: [
-                .font: baseFont,
-                .foregroundColor: theme.foregroundColor,
-            ]
-        )
-        let fullLength = (code as NSString).length
-
-        var boldItalicCache: [String: HighlightFont] = [:]
-        for token in tokens {
-            guard let style = theme.style(for: token) else { continue }
-            guard token.range.location + token.range.length <= fullLength else { continue }
-
-            var attributes: [NSAttributedString.Key: Any] = [:]
-            if let color = style.color {
-                attributes[.foregroundColor] = color
-            }
-            if style.bold || style.italic {
-                let key = "\(style.bold ? "b" : "")\(style.italic ? "i" : "")"
-                let font = boldItalicCache[key] ?? baseFont.withTraits(bold: style.bold, italic: style.italic)
-                boldItalicCache[key] = font
-                attributes[.font] = font
-            }
-            if !attributes.isEmpty {
-                text.addAttributes(attributes, range: token.range)
-            }
-        }
-        return text
+        HighlightRenderer(theme: theme).attributedString(for: code, result: self)
     }
 }
 

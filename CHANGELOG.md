@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Rendering: added a reusable overlay renderer with UTF-16 range rebasing,
+  independent color/trait controls, style coalescing, and exact rendered-run
+  budgets while preserving caller-owned attributes.
 - API: language descriptors now carry normalized extension, exact-filename,
   and interpreter metadata. The async repository resolver handles overrides,
   shebangs, compound extensions, and content-assisted ambiguous extensions.

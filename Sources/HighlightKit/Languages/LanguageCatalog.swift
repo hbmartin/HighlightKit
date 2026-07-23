@@ -72,6 +72,7 @@ public enum LanguageCatalog {
         sql,
         stylus,
         swift,
+        terraform,
         typescript,
         vim,
         xml,

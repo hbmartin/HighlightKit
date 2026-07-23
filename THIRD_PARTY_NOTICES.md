@@ -16,3 +16,9 @@ every release asserts token-exact output against them.
 
 The GitHub light/dark themes are ports of highlight.js's `github.css` and
 `github-dark.css` (which in turn follow GitHub's Primer color system).
+
+## highlightjs-terraform
+
+MIT License, Copyright (c) 2020 highlightjs-terraform. The bundled
+Terraform/HCL grammar is a Swift port of commit
+`eb1b9661e143a43dff6b58b391128ce5cdad31d4`.

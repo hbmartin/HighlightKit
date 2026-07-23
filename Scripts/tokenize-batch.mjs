@@ -76,6 +76,11 @@ for (const n of SUPPORTED) {
   const language = require(path.join(buildRoot, 'languages', `${n}.js`));
   HLJS.registerLanguage(n, language);
 }
+const terraformRoot = process.env.HIGHLIGHTJS_TERRAFORM_DIR;
+if (terraformRoot) {
+  const terraform = require(path.join(terraformRoot, 'terraform.js'));
+  HLJS.registerLanguage('terraform', terraform.definer);
+}
 HLJS.configure({ __emitter: Emitter });
 
 const rl = readline.createInterface({ input: process.stdin });

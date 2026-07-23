@@ -3,6 +3,20 @@ import Testing
 
 @Suite("Added language grammars")
 struct AddedLanguageTests {
+    @Test func terraformHighlightsBlocksInterpolationAndFunctions() throws {
+        let code = #"resource "demo" "main" { value = "${merge(local.tags)}" }"#
+        let result = try LanguageRegistry(languages: [LanguageCatalog.terraform]).highlight(
+            code,
+            languageName: "hcl",
+            ignoreIllegals: true,
+            continuation: nil
+        )
+        #expect(result.language == "terraform")
+        #expect(result.tokens.contains { $0.scope == "keyword" })
+        #expect(result.tokens.contains { $0.scope == "variable" })
+        #expect(result.tokens.contains { $0.scope == "meta" })
+    }
+
     @Test func protobufHighlightsMessagesTypesAndRPCs() throws {
         let code = "message User { string name = 1; } service API { rpc Get(User) returns (User); }"
         let result = try LanguageRegistry(languages: [LanguageCatalog.protobuf]).highlight(

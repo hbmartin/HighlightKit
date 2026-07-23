@@ -60,6 +60,7 @@ public enum LanguageCatalog {
         powershell,
         prolog,
         properties,
+        protobuf,
         python,
         r,
         ruby,

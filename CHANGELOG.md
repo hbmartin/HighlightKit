@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Languages: added Protocol Buffers from the pinned highlight.js 11.11.1 grammar.
 - Languages: added GraphQL from the pinned highlight.js 11.11.1 grammar.
 - Languages: added Elixir from the pinned highlight.js 11.11.1 grammar.
 - Build: moved the large Swift grammar factory behind an explicitly typed

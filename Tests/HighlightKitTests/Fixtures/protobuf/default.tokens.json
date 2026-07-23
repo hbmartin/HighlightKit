@@ -1,0 +1,18 @@
+{
+  "language": "protobuf",
+  "relevance": 7,
+  "tokens": [
+    { "start": 9, "length": 8, "scopes": ["string"] },
+    { "start": 19, "length": 7, "scopes": ["keyword"] },
+    { "start": 34, "length": 8, "scopes": ["keyword"] },
+    { "start": 42, "length": 4, "scopes": ["title.class"] },
+    { "start": 51, "length": 6, "scopes": ["type"] },
+    { "start": 65, "length": 1, "scopes": ["number"] },
+    { "start": 71, "length": 8, "scopes": ["keyword"] },
+    { "start": 79, "length": 3, "scopes": ["title.class"] },
+    { "start": 87, "length": 3, "scopes": ["function", "keyword"] },
+    { "start": 90, "length": 11, "scopes": ["function"] },
+    { "start": 101, "length": 7, "scopes": ["function", "keyword"] },
+    { "start": 108, "length": 7, "scopes": ["function"] }
+  ]
+}

@@ -19,7 +19,7 @@ if (!existsSync(corePath)) {
 const require = createRequire(import.meta.url);
 const HLJS = require(corePath).newInstance();
 
-const SUPPORTED = `plaintext ada apache applescript armasm bash basic c clojure cmake coffeescript cpp csharp css dart delphi diff dockerfile dos elm elixir erlang fortran fsharp go graphql groovy haskell http ini java javascript json kotlin leaf less lisp llvm lua makefile markdown matlab nginx nim nix objectivec ocaml perl php powershell prolog properties python r ruby rust scala scheme scss shell sql stylus swift typescript vim xml yaml`.split(' ');
+const SUPPORTED = `plaintext ada apache applescript armasm bash basic c clojure cmake coffeescript cpp csharp css dart delphi diff dockerfile dos elm elixir erlang fortran fsharp go graphql groovy haskell http ini java javascript json kotlin leaf less lisp llvm lua makefile markdown matlab nginx nim nix objectivec ocaml perl php powershell prolog properties protobuf python r ruby rust scala scheme scss shell sql stylus swift typescript vim xml yaml`.split(' ');
 
 class Emitter {
   constructor(){ this.stack=[]; this.offset=0; this.tokens=[]; }

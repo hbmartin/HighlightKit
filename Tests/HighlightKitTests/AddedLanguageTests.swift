@@ -3,6 +3,20 @@ import Testing
 
 @Suite("Added language grammars")
 struct AddedLanguageTests {
+    @Test func protobufHighlightsMessagesTypesAndRPCs() throws {
+        let code = "message User { string name = 1; } service API { rpc Get(User) returns (User); }"
+        let result = try LanguageRegistry(languages: [LanguageCatalog.protobuf]).highlight(
+            code,
+            languageName: "proto",
+            ignoreIllegals: true,
+            continuation: nil
+        )
+        #expect(result.language == "protobuf")
+        #expect(result.tokens.contains { $0.scope == "title.class" })
+        #expect(result.tokens.contains { $0.scope == "type" })
+        #expect(result.tokens.contains { $0.scope == "function" })
+    }
+
     @Test func graphqlHighlightsOperationsVariablesAndFields() throws {
         let code = "query User($id: ID!) { user(id: $id) { name ...Details } }"
         let result = try LanguageRegistry(languages: [LanguageCatalog.graphql]).highlight(

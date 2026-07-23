@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Build: moved the large Swift grammar factory behind an explicitly typed
+  construction boundary and replaced its remaining long array expressions
+  with incremental appends. This restores Swift 6.2.4/Xcode 26.3 builds
+  without changing grammar tokens.
+
 ## 0.2.0 — 2026-07-14
 
 - Fixed: a keyword listed under two scope groups of the same mode now

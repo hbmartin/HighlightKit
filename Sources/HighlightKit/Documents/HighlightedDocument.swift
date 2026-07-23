@@ -75,7 +75,16 @@ public actor HighlightedDocument {
     private var selection: LanguageSelection
     private var source: String
     private var lines: [Line]
+    /// UTF-16 start offset of each line plus a trailing total-length
+    /// sentinel, so snapshots can binary-search the lines a range touches.
+    private var lineStartOffsets: [Int]
     private var checkpoints: [Checkpoint]
+
+    /// FIFO gate for `replaceCharacters`. The method suspends at interior
+    /// highlight calls, so without this gate actor reentrancy would let a
+    /// second edit start from — and later commit over — pre-edit state.
+    private var editInProgress = false
+    private var editWaiters: [CheckedContinuation<Void, Never>] = []
 
     public init(
         text: String,
@@ -92,6 +101,7 @@ public actor HighlightedDocument {
         self.selection = .plain
         self.source = ""
         self.lines = []
+        self.lineStartOffsets = [0]
         self.checkpoints = []
 
         let resolved = try await Self.resolveSelection(
@@ -115,6 +125,7 @@ public actor HighlightedDocument {
         self.selection = resolved
         self.source = text
         self.lines = build.lines
+        self.lineStartOffsets = Self.lineStartOffsets(of: build.lines)
         self.checkpoints = build.checkpoints
     }
 
@@ -123,11 +134,16 @@ public actor HighlightedDocument {
 
     /// Applies a UTF-16 edit transactionally. Cancellation or highlighting
     /// failure leaves the previous text, tokens, and checkpoints untouched.
+    /// Concurrent calls are applied strictly in arrival order: a later edit
+    /// suspends until every earlier edit has committed or failed, and its
+    /// range is validated against the text those edits produced.
     @discardableResult
     public func replaceCharacters(
         in range: NSRange,
         with replacement: String
     ) async throws -> HighlightedDocumentUpdate {
+        await beginEdit()
+        defer { endEdit() }
         guard range.location >= 0,
               range.length >= 0,
               NSMaxRange(range) <= source.utf16.count,
@@ -207,6 +223,7 @@ public actor HighlightedDocument {
         let reused = convergedAt.map { newLineTexts.count - $0 } ?? 0
         source = updatedSource
         lines = newLines
+        lineStartOffsets = Self.lineStartOffsets(of: newLines)
         checkpoints = Self.normalizedCheckpoints(
             newCheckpoints,
             lineCount: newLines.count
@@ -235,10 +252,14 @@ public actor HighlightedDocument {
               let swiftRange = Self.exactRange(range, in: source)
         else { throw HighlightedDocumentError.invalidUTF16Range(range) }
 
+        // Tokens never cross a line, so only lines intersecting the range
+        // can contribute; snapshot cost scales with the selected range.
         var candidates: [HighlightToken] = []
-        var lineOffset = 0
-        for line in lines {
-            for token in line.tokens {
+        let rangeEnd = NSMaxRange(range)
+        var lineIndex = firstLineIndex(endingAfter: range.location)
+        while lineIndex < lines.count, lineStartOffsets[lineIndex] < rangeEnd {
+            let lineOffset = lineStartOffsets[lineIndex]
+            for token in lines[lineIndex].tokens {
                 let global = NSRange(
                     location: lineOffset + token.range.location,
                     length: token.range.length
@@ -253,7 +274,7 @@ public actor HighlightedDocument {
                     scopes: token.scopes
                 ))
             }
-            lineOffset += line.text.utf16.count
+            lineIndex += 1
         }
         let count = min(maximumTokens ?? candidates.count, candidates.count)
         return HighlightedDocumentSnapshot(
@@ -320,6 +341,51 @@ public actor HighlightedDocument {
         }
         try Task.checkCancellation()
         return Build(lines: lines, checkpoints: checkpoints)
+    }
+
+    private func beginEdit() async {
+        if !editInProgress {
+            editInProgress = true
+            return
+        }
+        await withCheckedContinuation { editWaiters.append($0) }
+    }
+
+    private func endEdit() {
+        if editWaiters.isEmpty {
+            editInProgress = false
+        } else {
+            // Ownership transfers directly to the next queued edit.
+            editWaiters.removeFirst().resume()
+        }
+    }
+
+    /// Index of the first line whose UTF-16 end offset exceeds `location`;
+    /// `lines.count` when no line does.
+    private func firstLineIndex(endingAfter location: Int) -> Int {
+        var low = 0
+        var high = lines.count
+        while low < high {
+            let middle = (low + high) / 2
+            if lineStartOffsets[middle + 1] <= location {
+                low = middle + 1
+            } else {
+                high = middle
+            }
+        }
+        return low
+    }
+
+    private static func lineStartOffsets(of lines: [Line]) -> [Int] {
+        var offsets: [Int] = []
+        offsets.reserveCapacity(lines.count + 1)
+        var offset = 0
+        for line in lines {
+            offsets.append(offset)
+            offset += line.text.utf16.count
+        }
+        offsets.append(offset)
+        return offsets
     }
 
     private static func splitLines(_ text: String) -> [String] {

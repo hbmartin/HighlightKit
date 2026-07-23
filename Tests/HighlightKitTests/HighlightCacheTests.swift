@@ -166,12 +166,34 @@ struct HighlightCacheTests {
         #expect(metrics.hits == 1)
         #expect(metrics.evictions == 2)
         #expect(metrics.count == 2)
+        #expect(metrics.currentCost > 0)
 
         await cache.handleMemoryPressure()
         metrics = await cache.metrics
         #expect(metrics.purges == 1)
         #expect(metrics.count == 0)
         #expect(metrics.currentCost == 0)
+    }
+
+    @Test func unknownLanguageNegativeEntriesIgnoreSourceLengthAndContinuation() async throws {
+        let highlighter = Highlighter(languages: [])
+        let cache = HighlightCache(costLimit: 1_000_000)
+        for code in ["a", "a much longer source text"] {
+            do {
+                _ = try await highlighter.highlight(
+                    code,
+                    selection: .named("nope"),
+                    cache: cache,
+                    cacheKey: key
+                )
+                Issue.record("unknown language unexpectedly succeeded")
+            } catch HighlightError.unknownLanguage(let name) {
+                #expect(name == "nope")
+            }
+        }
+        let metrics = await cache.metrics
+        #expect(metrics.count == 1)
+        #expect(metrics.negativeHits == 1)
     }
 
     @Test func concurrentRequestsUseOneProducerAndCancelWaitersIndependently() async throws {

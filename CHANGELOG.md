@@ -7,13 +7,22 @@
   plus source-breaking migration documentation and updated provenance.
 - Incremental: added actor-isolated `HighlightedDocument` with transactional
   UTF-16 edits, line tokens, continuation checkpoints, suffix convergence,
-  preserved line endings, and capped visible-range snapshots.
+  preserved line endings, and capped visible-range snapshots. Concurrent
+  edits serialize in arrival order (actor reentrancy cannot lose an edit),
+  and range snapshots binary-search retained line offsets so their cost
+  scales with the selected range, not the document.
 - Performance: added an explicit cost/count-bounded token-result LRU cache
   with canonical effective keys, negative entries, single-flight request
   coalescing, independent waiter cancellation, purge handling, and metrics.
+  Total cost is tracked incrementally (no per-insert or per-metrics table
+  rescans), unknown-language negative entries are stored once per name and
+  registry revision, and automatic memory-pressure purging covers all Apple
+  platforms, not only macOS.
 - Rendering: added a reusable overlay renderer with UTF-16 range rebasing,
   independent color/trait controls, style coalescing, and exact rendered-run
-  budgets while preserving caller-owned attributes.
+  budgets while preserving caller-owned attributes. The default (unmapped)
+  overlay clips to the shared prefix of result and text, so the non-throwing
+  conveniences degrade gracefully on mismatched pairings instead of trapping.
 - API: language descriptors now carry normalized extension, exact-filename,
   and interpreter metadata. The async repository resolver handles overrides,
   shebangs, compound extensions, and content-assisted ambiguous extensions.

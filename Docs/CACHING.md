@@ -27,7 +27,8 @@ Cancelled, failed, and token-truncated results are never inserted. A budgeted
 request may consume a complete hit, but a miss bypasses insertion.
 
 `metrics` reports hits, misses, coalesced requests, negative hits, bypasses,
-insertions, evictions, purges, count, and current cost. `purge()` is always
-available; macOS caches also purge automatically on dispatch memory-pressure
-events. Other platforms can forward their host lifecycle notification to
-`handleMemoryPressure()`.
+insertions, evictions, purges, count, and current cost; cost is tracked
+incrementally, so reading metrics never rescans the table. `purge()` is always
+available; on Apple platforms caches also purge automatically on dispatch
+memory-pressure events. Other platforms can forward their host lifecycle
+notification to `handleMemoryPressure()`.

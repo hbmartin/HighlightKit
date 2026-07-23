@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Performance: added an explicit cost/count-bounded token-result LRU cache
+  with canonical effective keys, negative entries, single-flight request
+  coalescing, independent waiter cancellation, purge handling, and metrics.
 - Rendering: added a reusable overlay renderer with UTF-16 range rebasing,
   independent color/trait controls, style coalescing, and exact rendered-run
   budgets while preserving caller-owned attributes.

@@ -64,7 +64,80 @@ public final class Highlighter: Sendable {
         selection: LanguageSelection,
         options: HighlightOptions = HighlightOptions(),
         budget: HighlightBudget? = nil,
-        continuation: Continuation? = nil
+        continuation: Continuation? = nil,
+        cache: HighlightCache? = nil,
+        cacheKey: HighlightCacheKey? = nil
+    ) async throws -> HighlightResult {
+        guard let cache, let cacheKey else {
+            if let cache { await cache.recordBypass() }
+            return try await highlightUncached(
+                code,
+                selection: selection,
+                options: options,
+                budget: budget,
+                continuation: continuation
+            )
+        }
+
+        try Task.checkCancellation()
+        let canonicalSelection: LanguageSelection
+        let selectionIdentity: String
+        switch selection {
+        case .plain:
+            canonicalSelection = .plain
+            selectionIdentity = "plain"
+        case .named(let requested):
+            guard let canonical = registry.canonicalName(for: requested) else {
+                let key = makeCacheRequestKey(
+                    caller: cacheKey,
+                    selection: "unknown:\(requested.lowercased())",
+                    options: options,
+                    sourceLength: code.utf16.count,
+                    continuation: continuation
+                )
+                _ = await cache.recordUnknownLanguage(requested, for: key)
+                throw HighlightError.unknownLanguage(requested)
+            }
+            canonicalSelection = .named(canonical)
+            selectionIdentity = "named:\(canonical)"
+        case .automatic:
+            let subset = options.automaticSubset.map { names in
+                names.compactMap(registry.canonicalName(for:))
+            }
+            canonicalSelection = .automatic
+            selectionIdentity = "automatic:\(subset?.joined(separator: ",") ?? "*")"
+        }
+
+        let sourceLength = code.utf16.count
+        let requestKey = makeCacheRequestKey(
+            caller: cacheKey,
+            selection: selectionIdentity,
+            options: options,
+            sourceLength: sourceLength,
+            continuation: continuation
+        )
+        let result = try await cache.value(
+            for: requestKey,
+            allowsInsertion: budget == nil
+        ) { [self] in
+            try await highlightUncached(
+                code,
+                selection: canonicalSelection,
+                options: options,
+                budget: nil,
+                continuation: continuation
+            )
+        }
+        try Task.checkCancellation()
+        return result.applying(budget)
+    }
+
+    private func highlightUncached(
+        _ code: String,
+        selection: LanguageSelection,
+        options: HighlightOptions,
+        budget: HighlightBudget?,
+        continuation: Continuation?
     ) async throws -> HighlightResult {
         try Task.checkCancellation()
         let sourceLength = code.utf16.count
@@ -85,6 +158,24 @@ public final class Highlighter: Sendable {
         }
         try Task.checkCancellation()
         return result.normalizedSourceLength(sourceLength).applying(budget)
+    }
+
+    private func makeCacheRequestKey(
+        caller: HighlightCacheKey,
+        selection: String,
+        options: HighlightOptions,
+        sourceLength: Int,
+        continuation: Continuation?
+    ) -> HighlightCacheRequestKey {
+        HighlightCacheRequestKey(
+            caller: caller,
+            registry: ObjectIdentifier(registry),
+            registryRevision: registry.revision,
+            selection: selection,
+            ignoreIllegals: options.ignoreIllegals,
+            sourceLength: sourceLength,
+            continuation: continuation.map { ObjectIdentifier($0.state) }
+        )
     }
 
     public func attributedString(

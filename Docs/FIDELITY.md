@@ -4,7 +4,7 @@ This engine aims to reproduce highlight.js 11.11.1's token stream — the same
 UTF-16 ranges, scope stacks, and relevance — subject to the documented ICU
 Unicode boundary difference below. Two complementary methods verify it:
 
-1. **Corpus fixtures** (`Tests/HighlightKitTests/Fixtures`, 375 cases): an
+1. **Corpus fixtures** (`Tests/HighlightKitTests/Fixtures`, 381 cases): an
    upstream-derived corpus plus reviewed adversarial additions is run through
    the real pinned highlight.js source with a token-capturing emitter. The
    Swift port must match the generated expectations token-for-token, with
@@ -53,8 +53,17 @@ inject only ASCII/NUL, while 160 corpus-derived inputs retain non-ASCII text.
 The run normalized **106** synthetic reference EOF units (CSS 31, Less 30,
 SCSS 23, Stylus 22); every Swift token was already source-bounded. Re-run it
 with the HighlightKit and highlight.js commit IDs recorded whenever matcher or
-grammar behavior changes; the fixed 375-case fixture suite remains the
+grammar behavior changes; the fixed 381-case fixture suite remains the
 per-commit CI guarantee.
+
+For the repository-language expansion, Elixir, GraphQL, and Protocol Buffers
+were verified against highlight.js commit
+`08cb242e7d4aee787114eb04cc7ab18314d82f92`; Terraform/HCL against
+highlightjs-terraform `eb1b9661e143a43dff6b58b391128ce5cdad31d4`; Zig
+against highlightjs-zig `6225ff9ed3ebf7e43b80a688a88fc135452beec2`; and
+Fish against the checked-in first-party JavaScript reference grammar. Each
+grammar passed compilation, a reviewed fixture, and a seeded 1,000-generated-
+input differential run before its independently buildable commit was created.
 
 ## Known difference: Unicode `\d` / `\w` / `\b` (documented, not a bug)
 
@@ -87,7 +96,7 @@ exist.
 (`(?<![0-9A-Za-z_])(?=[0-9A-Za-z_])…`). `\b` appears in nearly every
 number and keyword rule, so this would impose a pervasive lookaround
 cost on the hottest patterns — a real, measurable slowdown — to change
-output only on rare Unicode-adjacent syntax (all 375 corpus fixtures and all
+output only on rare Unicode-adjacent syntax (all 381 corpus fixtures and all
 28,750 inputs in the recorded default campaign already match).
 That trade fails the project's "high-performance, avoid unnecessary
 cost" bar. If exact Unicode-adjacent fidelity is ever required, the

@@ -173,7 +173,7 @@ scope, …) but **cannot flip a boolean flag from `true` back to `false`**
 in Swift these are non-optional `Bool` defaulting `false`, so "variant
 set false" is indistinguishable from "variant left it unset" — and the
 Swift `Mode` initializer cannot even *express* an explicit `false`
-override. No bundled grammar relies on this (all 375 fixtures pass), and
+override. No bundled grammar relies on this (all 381 fixtures pass), and
 it is unreachable from the Swift API, so it is left as documented rather
 than modeled with tri-state optionals.
 

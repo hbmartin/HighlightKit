@@ -18,6 +18,16 @@ HIGHLIGHTJS_DIR=/path/to/highlight.js \
   python3 Scripts/difftest.py <language> [count] [seed]
 ```
 
+Terraform and Zig also require their pinned external module checkouts; Fish
+uses the checked-in first-party reference grammar:
+
+```sh
+HIGHLIGHTJS_DIR=/path/to/highlight.js \
+HIGHLIGHTJS_TERRAFORM_DIR=/path/to/highlightjs-terraform \
+HIGHLIGHTJS_ZIG_DIR=/path/to/highlightjs-zig \
+  python3 Scripts/difftest.py terraform 1000 1
+```
+
 `count` is the number of generated fuzz cases; fixed edge cases and mutations
 of checked-in fixtures are added to it. `seed` makes generation deterministic.
 You can pass `--reference /path/to/highlight.js` and

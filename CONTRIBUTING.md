@@ -24,7 +24,7 @@ swift test --show-codecov-path
 HighlightKit is verified against highlight.js itself, and PRs are held to
 that:
 
-- **375 token-exact fidelity fixtures** (`Tests/HighlightKitTests/Fixtures/`)
+- **381 token-exact fidelity fixtures** (`Tests/HighlightKitTests/Fixtures/`)
   assert identical token streams to the reference highlight.js on every
   `swift test`. A change that shifts any token is either a bug or needs
   regenerated fixtures with justification.

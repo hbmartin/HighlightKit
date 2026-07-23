@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Benchmarks: added diff-hunk, result-cache, theme-rerender, token/run-budget,
+  retained-memory, and macOS 40-viewport TextKit layout/drawing workloads,
+  plus source-breaking migration documentation and updated provenance.
 - Incremental: added actor-isolated `HighlightedDocument` with transactional
   UTF-16 edits, line tokens, continuation checkpoints, suffix convergence,
   preserved line endings, and capped visible-range snapshots.

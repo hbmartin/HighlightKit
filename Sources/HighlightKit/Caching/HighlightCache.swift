@@ -42,12 +42,23 @@ struct HighlightCacheRequestKey: Hashable, Sendable {
     let continuation: ObjectIdentifier?
 }
 
+struct HighlightCacheUnknownLanguageKey: Hashable, Sendable {
+    let registry: ObjectIdentifier
+    let registryRevision: UInt64
+    let language: String
+}
+
+private enum HighlightCacheEntryKey: Hashable, Sendable {
+    case request(HighlightCacheRequestKey)
+    case unknownLanguage(HighlightCacheUnknownLanguageKey)
+}
+
 /// An explicit cost-bounded LRU cache for theme-independent highlight
 /// results. The cache retains tokens and continuations, never source text.
 public actor HighlightCache {
     private enum StoredValue: Sendable {
         case result(HighlightResult)
-        case unknownLanguage(String)
+        case unknownLanguage
     }
 
     private struct Entry: Sendable {
@@ -77,7 +88,7 @@ public actor HighlightCache {
     public let costLimit: Int
     public let countLimit: Int?
 
-    private var entries: [HighlightCacheRequestKey: Entry] = [:]
+    private var entries: [HighlightCacheEntryKey: Entry] = [:]
     private var flights: [HighlightCacheRequestKey: Flight] = [:]
     private var clock: UInt64 = 0
     /// Sum of `entries` costs, maintained incrementally so limit checks and
@@ -138,18 +149,16 @@ public actor HighlightCache {
 
     /// Atomically checks or inserts an unknown-language failure. Returning
     /// true means the failure was already cached for this registry revision.
-    func recordUnknownLanguage(
-        _ language: String,
-        for key: HighlightCacheRequestKey
-    ) -> Bool {
-        if let entry = entries[key],
+    func recordUnknownLanguage(for key: HighlightCacheUnknownLanguageKey) -> Bool {
+        let entryKey = HighlightCacheEntryKey.unknownLanguage(key)
+        if let entry = entries[entryKey],
            case .unknownLanguage = entry.value {
             statistics.negativeHits += 1
-            touch(key)
+            touch(entryKey)
             return true
         }
         statistics.misses += 1
-        insert(.unknownLanguage(language), for: key, cost: 1)
+        insert(.unknownLanguage, for: entryKey, cost: 1)
         return false
     }
 
@@ -159,9 +168,10 @@ public actor HighlightCache {
         producer: @escaping @Sendable () async throws -> HighlightResult
     ) async throws -> HighlightResult {
         try Task.checkCancellation()
-        if let entry = entries[key], case .result(let result) = entry.value {
+        let entryKey = HighlightCacheEntryKey.request(key)
+        if let entry = entries[entryKey], case .result(let result) = entry.value {
             statistics.hits += 1
-            touch(key)
+            touch(entryKey)
             return result
         }
 
@@ -230,7 +240,11 @@ public actor HighlightCache {
         switch outcome {
         case .success(let result):
             if flight.allowsInsertion, !result.isTruncated {
-                insert(.result(result), for: key, cost: Self.cost(of: result))
+                insert(
+                    .result(result),
+                    for: .request(key),
+                    cost: Self.cost(of: result)
+                )
             }
             for continuation in flight.waiters.values {
                 continuation.resume(returning: result)
@@ -242,7 +256,7 @@ public actor HighlightCache {
         }
     }
 
-    private func touch(_ key: HighlightCacheRequestKey) {
+    private func touch(_ key: HighlightCacheEntryKey) {
         guard var entry = entries[key] else { return }
         clock &+= 1
         entry.lastAccess = clock
@@ -251,7 +265,7 @@ public actor HighlightCache {
 
     private func insert(
         _ value: StoredValue,
-        for key: HighlightCacheRequestKey,
+        for key: HighlightCacheEntryKey,
         cost: Int
     ) {
         guard cost <= costLimit, countLimit != 0 else { return }

@@ -198,6 +198,76 @@ struct HighlightedDocumentTests {
         #expect(await document.text == "word ONE\nword TWO\n")
     }
 
+    @Test func cancellingQueuedEditDoesNotWaitForActiveEdit() async throws {
+        let shouldBlock = Mutex(false)
+        let blocked = Mutex(false)
+        let secondStarted = Mutex(false)
+        let secondFinished = Mutex(false)
+        let release = DispatchSemaphore(value: 0)
+        let highlighter = Highlighter(languages: [
+            LanguageDescriptor(name: "gated") {
+                LanguageDefinition(
+                    name: "gated",
+                    root: Mode(contains: [Mode(
+                        scope: "keyword",
+                        begin: "word",
+                        onBegin: { _, _ in
+                            let mustWait = shouldBlock.withLock { value in
+                                let first = value
+                                value = false
+                                return first
+                            }
+                            if mustWait {
+                                blocked.withLock { $0 = true }
+                                release.wait()
+                            }
+                        }
+                    )])
+                )
+            },
+        ])
+        let document = try await HighlightedDocument(
+            text: "word one\nword two\n",
+            highlighter: highlighter,
+            selection: .named("gated"),
+            checkpointInterval: 1
+        )
+        let source = await document.text as NSString
+        let oneRange = source.range(of: "one")
+        let twoRange = source.range(of: "two")
+
+        shouldBlock.withLock { $0 = true }
+        let first = Task {
+            try await document.replaceCharacters(in: oneRange, with: "ONE")
+        }
+        while !blocked.withLock({ $0 }) { await Task.yield() }
+
+        let second = Task {
+            secondStarted.withLock { $0 = true }
+            defer { secondFinished.withLock { $0 = true } }
+            return try await document.replaceCharacters(in: twoRange, with: "TWO")
+        }
+        while !secondStarted.withLock({ $0 }) { await Task.yield() }
+        second.cancel()
+
+        let clock = ContinuousClock()
+        let deadline = clock.now.advanced(by: .seconds(1))
+        while !secondFinished.withLock({ $0 }), clock.now < deadline {
+            await Task.yield()
+        }
+        let cancelledPromptly = secondFinished.withLock { $0 }
+
+        release.signal()
+        _ = try await first.value
+        do {
+            _ = try await second.value
+            Issue.record("cancelled queued edit unexpectedly succeeded")
+        } catch is CancellationError {}
+
+        #expect(cancelledPromptly)
+        #expect(await document.text == "word ONE\nword two\n")
+    }
+
     @Test func snapshotCapReportsExactOmission() async throws {
         let document = try await HighlightedDocument(
             text: "let a = 1\nlet b = 2\n",

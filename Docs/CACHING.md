@@ -20,6 +20,9 @@ canonical language (or ordered automatic subset), parser options, UTF-16 source
 length, and initial continuation identity. It deliberately excludes source
 contents, themes, fonts, and renderers. The caller is responsible for ensuring
 that a content identity is not reused for different same-length source text.
+Unknown-language entries are keyed separately by registry identity, revision,
+and folded language name because they are independent of content and parser
+options.
 
 The cache coalesces identical in-flight work. Cancelling a waiter stops only
 that waiter's request; the producer is cancelled when no waiter remains.

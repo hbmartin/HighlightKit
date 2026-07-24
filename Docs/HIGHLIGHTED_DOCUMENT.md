@@ -22,7 +22,8 @@ published only after the complete edit succeeds and passes its final
 cancellation check. Concurrent edits are applied strictly in arrival order —
 a later `replaceCharacters` call suspends until every earlier edit commits or
 fails, and its range is validated against the text those edits produced, so
-overlapping awaits can never clobber each other.
+overlapping awaits can never clobber each other. Cancelling a queued edit
+removes it from the FIFO immediately rather than waiting for active work.
 
 Snapshot token ranges are clipped to the selected source range and rebased to
 the returned snapshot text. This makes a visible-range snapshot directly

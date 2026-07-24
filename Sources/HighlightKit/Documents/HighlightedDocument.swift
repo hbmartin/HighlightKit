@@ -84,7 +84,9 @@ public actor HighlightedDocument {
     /// highlight calls, so without this gate actor reentrancy would let a
     /// second edit start from — and later commit over — pre-edit state.
     private var editInProgress = false
-    private var editWaiters: [CheckedContinuation<Void, Never>] = []
+    private var editWaiterOrder: [UUID] = []
+    private var editWaiterCursor = 0
+    private var editWaiters: [UUID: CheckedContinuation<Void, any Error>] = [:]
 
     public init(
         text: String,
@@ -136,21 +138,22 @@ public actor HighlightedDocument {
     /// failure leaves the previous text, tokens, and checkpoints untouched.
     /// Concurrent calls are applied strictly in arrival order: a later edit
     /// suspends until every earlier edit has committed or failed, and its
-    /// range is validated against the text those edits produced.
+    /// range is validated against the text those edits produced. Cancelling
+    /// a queued edit removes it from the FIFO without waiting for active work.
     @discardableResult
     public func replaceCharacters(
         in range: NSRange,
         with replacement: String
     ) async throws -> HighlightedDocumentUpdate {
-        await beginEdit()
+        try await beginEdit()
         defer { endEdit() }
+        try Task.checkCancellation()
         guard range.location >= 0,
               range.length >= 0,
               NSMaxRange(range) <= source.utf16.count,
               let swiftRange = Self.exactRange(range, in: source)
         else { throw HighlightedDocumentError.invalidUTF16Range(range) }
 
-        try Task.checkCancellation()
         let updatedSource = source.replacingCharacters(in: swiftRange, with: replacement)
         let newLineTexts = Self.splitLines(updatedSource)
         let changedLine = Self.lineIndex(at: range.location, in: lines)
@@ -343,21 +346,49 @@ public actor HighlightedDocument {
         return Build(lines: lines, checkpoints: checkpoints)
     }
 
-    private func beginEdit() async {
+    private func beginEdit() async throws {
+        try Task.checkCancellation()
         if !editInProgress {
             editInProgress = true
             return
         }
-        await withCheckedContinuation { editWaiters.append($0) }
+
+        let waiterID = UUID()
+        try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation {
+                (continuation: CheckedContinuation<Void, any Error>) in
+                if Task.isCancelled {
+                    continuation.resume(throwing: CancellationError())
+                    return
+                }
+                editWaiterOrder.append(waiterID)
+                editWaiters[waiterID] = continuation
+            }
+        } onCancel: {
+            Task { [weak self] in
+                await self?.cancelEditWaiter(waiterID)
+            }
+        }
     }
 
     private func endEdit() {
-        if editWaiters.isEmpty {
-            editInProgress = false
-        } else {
-            // Ownership transfers directly to the next queued edit.
-            editWaiters.removeFirst().resume()
+        while editWaiterCursor < editWaiterOrder.count {
+            let waiterID = editWaiterOrder[editWaiterCursor]
+            editWaiterCursor += 1
+            if let continuation = editWaiters.removeValue(forKey: waiterID) {
+                // Ownership transfers directly to the next queued edit.
+                continuation.resume()
+                return
+            }
         }
+        editInProgress = false
+        editWaiterOrder.removeAll(keepingCapacity: true)
+        editWaiterCursor = 0
+    }
+
+    private func cancelEditWaiter(_ waiterID: UUID) {
+        guard let continuation = editWaiters.removeValue(forKey: waiterID) else { return }
+        continuation.resume(throwing: CancellationError())
     }
 
     /// Index of the first line whose UTF-16 end offset exceeds `location`;

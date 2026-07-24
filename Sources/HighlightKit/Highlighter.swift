@@ -88,18 +88,14 @@ public final class Highlighter: Sendable {
             selectionIdentity = "plain"
         case .named(let requested):
             guard let canonical = registry.canonicalName(for: requested) else {
-                // An unknown name is unknown for the whole registry
-                // revision, so the negative entry ignores source length and
-                // continuation identity — one entry per name, not one per
-                // request shape.
-                let key = makeCacheRequestKey(
-                    caller: cacheKey,
-                    selection: "unknown:\(requested.lowercased())",
-                    options: options,
-                    sourceLength: 0,
-                    continuation: nil
+                // Unknown names depend only on the registry generation, not
+                // the caller's content identity or parser request shape.
+                let key = HighlightCacheUnknownLanguageKey(
+                    registry: ObjectIdentifier(registry),
+                    registryRevision: registry.revision,
+                    language: requested.lowercased()
                 )
-                _ = await cache.recordUnknownLanguage(requested, for: key)
+                _ = await cache.recordUnknownLanguage(for: key)
                 throw HighlightError.unknownLanguage(requested)
             }
             canonicalSelection = .named(canonical)

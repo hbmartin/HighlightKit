@@ -175,25 +175,45 @@ struct HighlightCacheTests {
         #expect(metrics.currentCost == 0)
     }
 
-    @Test func unknownLanguageNegativeEntriesIgnoreSourceLengthAndContinuation() async throws {
+    @Test func unknownLanguageNegativeEntriesUseOnlyNameAndRegistryRevision() async throws {
         let highlighter = Highlighter(languages: [])
         let cache = HighlightCache(costLimit: 1_000_000)
-        for code in ["a", "a much longer source text"] {
+        let continuation = try await Highlighter.shared.highlight(
+            "/* open",
+            selection: .named("swift")
+        ).continuation
+        let requests: [(String, String, String, HighlightOptions, Continuation?)] = [
+            ("a", "nope", "first", HighlightOptions(), nil),
+            (
+                "a much longer source text",
+                "NOPE",
+                "second",
+                HighlightOptions(ignoreIllegals: false),
+                continuation
+            ),
+            ("different source", "nope", "third", HighlightOptions(), nil),
+        ]
+        for (code, requested, caller, options, continuation) in requests {
             do {
                 _ = try await highlighter.highlight(
                     code,
-                    selection: .named("nope"),
+                    selection: .named(requested),
+                    options: options,
+                    continuation: continuation,
                     cache: cache,
-                    cacheKey: key
+                    cacheKey: HighlightCacheKey(namespace: "negative", value: caller)
                 )
                 Issue.record("unknown language unexpectedly succeeded")
             } catch HighlightError.unknownLanguage(let name) {
-                #expect(name == "nope")
+                #expect(name.lowercased() == "nope")
             }
         }
         let metrics = await cache.metrics
         #expect(metrics.count == 1)
-        #expect(metrics.negativeHits == 1)
+        #expect(metrics.currentCost == 1)
+        #expect(metrics.misses == 1)
+        #expect(metrics.negativeHits == 2)
+        #expect(metrics.insertions == 1)
     }
 
     @Test func concurrentRequestsUseOneProducerAndCancelWaitersIndependently() async throws {

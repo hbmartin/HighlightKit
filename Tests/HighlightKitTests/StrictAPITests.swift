@@ -1,4 +1,6 @@
+import Dispatch
 import Foundation
+import Synchronization
 import Testing
 @testable import HighlightKit
 
@@ -38,15 +40,43 @@ struct StrictAPITests {
     }
 
     @Test func asyncNamedCancellationThrows() async {
-        let task = Task {
-            try await Highlighter.shared.highlight(
-                String(repeating: "let value = 42\n", count: 20_000),
-                selection: .named("swift")
+        let (starts, startsContinuation) = AsyncStream<Void>.makeStream(
+            bufferingPolicy: .bufferingNewest(1)
+        )
+        let matchCount = Mutex(0)
+        let resume = DispatchSemaphore(value: 0)
+        let descriptor = LanguageDescriptor(name: "cancellable") {
+            LanguageDefinition(
+                name: "cancellable",
+                root: Mode(contains: [
+                    Mode(begin: "x", onBegin: { _, _ in
+                        let first = matchCount.withLock { count in
+                            count += 1
+                            return count == 1
+                        }
+                        if first {
+                            startsContinuation.yield()
+                            resume.wait()
+                        }
+                    })
+                ])
             )
         }
+        let highlighter = Highlighter(languages: [descriptor])
+        let task = Task {
+            try await highlighter.highlight(
+                "x",
+                selection: .named("cancellable")
+            )
+        }
+
+        var iterator = starts.makeAsyncIterator()
+        _ = await iterator.next()
         task.cancel()
+        resume.signal()
         await #expect(throws: CancellationError.self) {
             try await task.value
         }
+        startsContinuation.finish()
     }
 }

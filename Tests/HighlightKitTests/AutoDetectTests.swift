@@ -24,6 +24,24 @@ struct AutoDetectTests {
         "",
     ]
 
+    @Test func internalSelectionPreservesSourceMetadata() {
+        let descriptor = LanguageDescriptor(name: "metadata") {
+            LanguageDefinition(
+                name: "metadata",
+                root: Mode(contains: [
+                    Mode(scope: "keyword", begin: "x", relevance: 1)
+                ])
+            )
+        }
+        let code = "x😀"
+        let result = LanguageRegistry(languages: [descriptor])
+            .highlightAuto(code, subset: nil)
+
+        #expect(result.language == "metadata")
+        #expect(result.sourceLength == code.utf16.count)
+        #expect(result.omittedTokenCount == 0)
+    }
+
     /// The concurrent overload must be indistinguishable from the
     /// sequential one: same language, relevance, tokens, second-best.
     @Test func concurrentMatchesSequential() async {

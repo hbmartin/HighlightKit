@@ -110,6 +110,11 @@ public final class HighlightRenderer: @unchecked Sendable {
 
     /// Applies syntax attributes to existing storage and returns exact run
     /// accounting after token/range/font intersections.
+    ///
+    /// When `mappings` is omitted, the overlay covers the shared prefix of
+    /// the result's source length and `text`; a mismatched pairing renders
+    /// a clipped overlay instead of failing. Explicit mappings are always
+    /// validated and throw on any inconsistency.
     @discardableResult
     public func apply(
         _ result: HighlightResult,
@@ -135,17 +140,26 @@ public final class HighlightRenderer: @unchecked Sendable {
     ) throws -> HighlightRenderSummary {
         if cancellationProbe?() == true { throw CancellationError() }
         let sourceLength = result.sourceLength == 0 ? text.length : result.sourceLength
-        let mappings = requestedMappings ?? [HighlightRangeMapping(
-            sourceRange: NSRange(location: 0, length: sourceLength),
-            destinationRange: NSRange(location: 0, length: text.length)
-        )]
-        for mapping in mappings {
-            guard mapping.sourceRange.location >= 0,
-                  mapping.destinationRange.location >= 0,
-                  mapping.sourceRange.length == mapping.destinationRange.length,
-                  NSMaxRange(mapping.sourceRange) <= sourceLength,
-                  NSMaxRange(mapping.destinationRange) <= text.length
-            else { throw HighlightRenderingError.invalidRangeMapping(mapping) }
+        let mappings: [HighlightRangeMapping]
+        if let requestedMappings {
+            for mapping in requestedMappings {
+                guard mapping.sourceRange.location >= 0,
+                      mapping.destinationRange.location >= 0,
+                      mapping.sourceRange.length == mapping.destinationRange.length,
+                      NSMaxRange(mapping.sourceRange) <= sourceLength,
+                      NSMaxRange(mapping.destinationRange) <= text.length
+                else { throw HighlightRenderingError.invalidRangeMapping(mapping) }
+            }
+            mappings = requestedMappings
+        } else {
+            // A result paired with text of a different length (a stale cache
+            // entry, the wrong string) must degrade to a clipped overlay:
+            // the non-throwing public conveniences build on this path.
+            let overlap = min(sourceLength, text.length)
+            mappings = [HighlightRangeMapping(
+                sourceRange: NSRange(location: 0, length: overlap),
+                destinationRange: NSRange(location: 0, length: overlap)
+            )]
         }
         guard options.appliesForegroundColors || options.appliesFontTraits else {
             return HighlightRenderSummary(appliedRuns: 0, omittedRuns: 0)
@@ -229,7 +243,7 @@ public final class HighlightRenderer: @unchecked Sendable {
                 .foregroundColor: theme.foregroundColor,
             ]
         )
-        try! apply(result, to: text, options: options)
+        _ = try? apply(result, to: text, options: options)
         return text
     }
 

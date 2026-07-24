@@ -2,6 +2,13 @@ import Foundation
 
 extension LanguageCatalog {
     /// Zig. Port of highlightjs-zig at 6225ff9.
+    ///
+    /// Upstream quirks are preserved intentionally — the `meme`/`@ass`
+    /// built-ins, the `blk` keyword, three overlapping `@identifier` modes,
+    /// operator keyword entries the word pattern can never match, and a
+    /// regexp mode for a language without regex literals. Fidelity fixtures
+    /// assert token-exact output against that pinned commit; do not "fix"
+    /// these here without regenerating fixtures from a changed reference.
     public static let zig = LanguageDescriptor(name: "zig") {
         let keywords = Keywords([
             "keyword": Keywords.Group(words: [

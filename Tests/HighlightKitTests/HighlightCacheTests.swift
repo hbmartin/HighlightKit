@@ -8,8 +8,16 @@ import Testing
 struct HighlightCacheTests {
     private let key = HighlightCacheKey(namespace: "test", value: "blob-1")
 
+    private func makeCache(countLimit: Int? = nil) -> HighlightCache {
+        HighlightCache(
+            costLimit: 1_000_000,
+            countLimit: countLimit,
+            automaticallyPurgesOnMemoryPressure: false
+        )
+    }
+
     @Test func aliasesShareCanonicalEntriesAndBudgetsConsumeCompleteHits() async throws {
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
         let code = "const answer = 42"
         let full = try await Highlighter.shared.highlight(
             code,
@@ -42,7 +50,7 @@ struct HighlightCacheTests {
     }
 
     @Test func budgetedMissBypassesInsertion() async throws {
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
         _ = try await Highlighter.shared.highlight(
             "let x = 1",
             selection: .named("swift"),
@@ -66,7 +74,7 @@ struct HighlightCacheTests {
     }
 
     @Test func effectiveKeyIncludesCallerOptionsLengthContinuationAndRegistry() async throws {
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
         let highlighter = Highlighter()
         let first = try await highlighter.highlight(
             "/* open",
@@ -108,7 +116,7 @@ struct HighlightCacheTests {
 
     @Test func grammarReplacementAndNegativeCacheUseRegistryRevision() async throws {
         let highlighter = Highlighter(languages: [])
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
 
         for expectedHit in [false, true] {
             do {
@@ -146,7 +154,7 @@ struct HighlightCacheTests {
     }
 
     @Test func lruEvictionIsDeterministicAndPressurePurges() async throws {
-        let cache = HighlightCache(costLimit: 1_000_000, countLimit: 2)
+        let cache = makeCache(countLimit: 2)
         let highlighter = Highlighter.shared
         func request(_ value: String) async throws {
             _ = try await highlighter.highlight(
@@ -177,7 +185,7 @@ struct HighlightCacheTests {
 
     @Test func unknownLanguageNegativeEntriesUseOnlyNameAndRegistryRevision() async throws {
         let highlighter = Highlighter(languages: [])
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
         let continuation = try await Highlighter.shared.highlight(
             "/* open",
             selection: .named("swift")
@@ -228,7 +236,7 @@ struct HighlightCacheTests {
             )
         }
         let highlighter = Highlighter(languages: [descriptor])
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
         let first = Task {
             try await highlighter.highlight(
                 "word",
@@ -275,7 +283,7 @@ struct HighlightCacheTests {
             )
         }
         let highlighter = Highlighter(languages: [descriptor])
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
         let first = Task {
             try await highlighter.highlight(
                 "word",
@@ -319,7 +327,7 @@ struct HighlightCacheTests {
             )
         }
         let highlighter = Highlighter(languages: [invalid])
-        let cache = HighlightCache(costLimit: 1_000_000)
+        let cache = makeCache()
         for _ in 0..<2 {
             do {
                 _ = try await highlighter.highlight(
